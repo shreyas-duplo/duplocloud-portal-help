@@ -1,0 +1,10 @@
+{
+    "lang": "en", 
+    "data": {
+        "FORM": {
+            "AddRDS": {
+                "Identifier": "Unique identifier for the RDS across all tenants"
+            }
+        }
+    }
+}
