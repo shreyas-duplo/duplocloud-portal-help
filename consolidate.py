@@ -1,4 +1,5 @@
 import json
+import yaml
 
 import os
 # assign directory
@@ -16,7 +17,7 @@ forms = finalJson["data"]["FORM"];
 # that directory
 for filename in os.listdir(directory):
     f = open(directory + "/" + filename)
-    data = json.load(f)
+    data = yaml.load(f,Loader=yaml.FullLoader)
     formName = filename.replace(".json", "")
     forms[formName] = data
 
