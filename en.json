@@ -2,7 +2,7 @@
     "lang": "en", 
     "data": {
         "FORM": {
-            "AddRDS.yml": {
+            "AddRDS": {
                 "Username": "Specify an alphanumeric string that defines the login ID for the master user. You use the master user login to start defining all users, objects, and permissions in a databases of your DB instance. Master Username must start with a letter.", 
                 "AutoPause": "Specify the amount of time to pass with no database traffic before you scale to zero processing capacity. When database traffic resumes, your Serverless cluster resumes processing capacity and scales to handle the traffic.\\", 
                 "DBParameterGroupName": "Database parameters group name.", 
