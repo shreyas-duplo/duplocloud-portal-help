@@ -1,5 +1,5 @@
 Name: Friendly name for host. Your name will be appended by prefix as "duploservice-<tenant_name>-"
-InstanceType: Instance type for the host. Select type as "Other" if you dont see desired option in the dropdown.
+InstanceType: Instance type for the host. Select type as "Other" if you don't see desired option in the dropdown.
 InstanceCount: Desired capacity for the autoscaling group. 
 minInstanceCount: Minimum Instance Count. Autoscaling group will make sure that total no of instance will always be greater than or equal to min count.
 maxInstanceCount: Maximum Instance Count. Autoscaling group will make sure that total no of instance will always be less than or equal to min count.
@@ -12,11 +12,11 @@ agentPlatform: |
   3. **EKS Linux:** Select this options if you want to run services on the Kubenetes Cluster.
   4. **None:** This option has to be selected when EC2 instance is not used for running containers.
 
-ImageId: AMI id for the EC2 instance. AMI should be compatible with the agent platform. Select type as "Other" if you dont see desired option in dropdown.
+ImageId: AMI id for the EC2 instance. AMI should be compatible with the agent platform. Select type as "Other" if you don't see desired option in dropdown.
 blockEBSOptimization: Set this to enable block EBS optimization.
 enableHibernation: Set this to enable hibernation as an additional stop behavior.
 #metaDataServiceFlag: To be added
-base64: Base64 encoded user data. On linux machine you can encode script file using command ```cat <falepath> | base64 -w 0 ```.
+base64: Base64 encoded user data. On Linux machine you can encode script file using command ```cat <falepath> | base64 -w 0 ```.
 tags: |
   Tags to be added to ec2 instance. Format for adding tags is as below.
   ```js
