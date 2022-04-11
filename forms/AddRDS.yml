@@ -6,7 +6,7 @@ Username: Specify an alphanumeric string that defines the login ID for the maste
 Password: Specify a string that defines the password for the master user. Master Password must be at least eight characters long.
 ClusterIdentifier: Cluster Identifier
 DbSize: Instance size for RDS. Select type as 'Other' if you don't see desired option in dropdown list.
-AllocatedStorage: Storage allication for RDS instance in GB.
+AllocatedStorage: Storage allocation for RDS instance in GB.
 MinCapacity: Set the minimum capacity unit for the DB cluster. Each capacity unit is equivalent to a specific compute and memory configuration.
 MaxCapacity: Set the maximum capacity unit for the DB cluster. Each capacity unit is equivalent to a specific compute and memory configuration.
 AutoPause: Specify the amount of time to pass with no database traffic before you scale to zero processing capacity. When database traffic resumes, your Serverless cluster resumes processing capacity and scales to handle the traffic.\

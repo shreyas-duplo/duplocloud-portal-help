@@ -1,15 +1,15 @@
-Name: Friendly name for host. Your name will be appended by duplo prefix as "duploservice-<tenant_name>-"
+Name: Friendly name for host. Your name will be appended by prefix as "duploservice-<tenant_name>-"
 InstanceType: Instance type for the host. Select type as "Other" if you dont see desired option in the dropdown.
 InstanceCount: Desired capacity for the autoscaling group. 
-minInstanceCount: Minimum Instance Count. Autoscaling group will make sure that total no of instance will always be greater than or equal to min coiunt.
-maxInstanceCount: Maximum Instance Count. Autoscaling group will make sure that total no of instance will always be less than or equal to min coiunt.
-IsClusterAutoscaled: Check this when you want kubernetese cluster autoscaller to manage this cluster auto scalling.
-allocationTags: Allocation tags for the Host. Allocation tags can be used to distribute the services accross hosts.
+minInstanceCount: Minimum Instance Count. Autoscaling group will make sure that total no of instance will always be greater than or equal to min count.
+maxInstanceCount: Maximum Instance Count. Autoscaling group will make sure that total no of instance will always be less than or equal to min count.
+IsClusterAutoscaled: Check this when you want kubernetes cluster autoscaler to manage this cluster auto scaling.
+allocationTags: Allocation tags for the Host. Allocation tags can be used to distribute the services across hosts.
 agentPlatform: |
-  Select container orchastration platform.
-  1. **Linux Docker/Native:** Select this option if you want to run docker native serices which are Linux based.
-  2. **Windows Docker/Native:** Select this option if you want to run docker native serices which are Windwows based.
-  3. **EKS Linux:** Select this options if you want to run services on the Kubenetese Cluster.
+  Select container orchestration platform.
+  1. **Linux Docker/Native:** Select this option if you want to run docker native services which are Linux based.
+  2. **Windows Docker/Native:** Select this option if you want to run docker native services which are Windows based.
+  3. **EKS Linux:** Select this options if you want to run services on the Kubenetes Cluster.
   4. **None:** This option has to be selected when EC2 instance is not used for running containers.
 
 ImageId: AMI id for the EC2 instance. AMI should be compatible with the agent platform. Select type as "Other" if you dont see desired option in dropdown.
