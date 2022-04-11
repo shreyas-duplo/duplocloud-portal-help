@@ -26,7 +26,7 @@
                 "maxInstanceCount": "Maximum Instance Count. Autoscaling group will make sure that total no of instance will always be less than or equal to min coiunt.", 
                 "InstanceCount": "Desired capacity for the autoscaling group.", 
                 "Name": "Friendly name for host. Your name will be appended by duplo prefix as \"duploservice-<tenant_name>-\"", 
-                "tags": "Tags to be added to ec2 instance. Format for adding tags is as below\nTags to be added to ec2 instance. Format for adding tags is as below\n```js\n{\n    \"key\" : \"value\"\n}\n```\n", 
+                "tags": "Tags to be added to ec2 instance. Format for adding tags is as below.\n```js\n{\n    \"key\" : \"value\"\n}\n```\n", 
                 "volumes": "Array of extra block devices in json format as below.\n```js\n[\n    {\n        \"Name\":\"/dev/sdA\", \n        \"VolumeType\":\"Gp2\", \n        \"Size\":\"100\"\n    }\n]\n```\n", 
                 "minInstanceCount": "Minimum Instance Count. Autoscaling group will make sure that total no of instance will always be greater than or equal to min coiunt.", 
                 "base64": "Base64 encoded user data. On linux machine you can encode script file using command ```cat <falepath> | base64 -w 0 ```.", 
@@ -34,7 +34,7 @@
                 "agentPlatform": "Select container orchastration platform.\n1. **Linux Docker/Native:** Select this option if you want to run docker native serices which are Linux based.\n2. **Windows Docker/Native:** Select this option if you want to run docker native serices which are Windwows based.\n3. **EKS Linux:** Select this options if you want to run services on the Kubenetese Cluster.\n4. **None:** This option has to be selected when EC2 instance is not used for running containers.\n", 
                 "allocationTags": "Allocation tags for the Host. Allocation tags can be used to distribute the services accross hosts.", 
                 "IsClusterAutoscaled": "Check this when you want kubernetese cluster autoscaller to manage this cluster auto scalling.", 
-                "nwInterfaces": "Extra network interfaces to be attached to the ec2 host in a JSON format as below.\n```js\n  [\n  {\n    \"NetworkInterfaceId\": \"eni-095827b411091db43\",\n    \"DeviceIndex\": 0\n  },\n  {\n    \"NetworkInterfaceId\": \"eni-0df26c4b283cde675\",\n    \"DeviceIndex\": 1\n  }\n] \n```", 
+                "nwInterfaces": "Extra network interfaces to be attached to the ec2 host in a JSON format as below.\n```js\n[\n  {\n    \"NetworkInterfaceId\": \"eni-095827b411091db43\",\n    \"DeviceIndex\": 0\n  },\n  {\n    \"NetworkInterfaceId\": \"eni-0df26c4b283cde675\",\n    \"DeviceIndex\": 1\n  }\n] \n```", 
                 "ImageId": "AMI id for the EC2 instance. AMI should be compatible with the agent platform. Select type as \"Other\" if you dont see desired option in dropdown.", 
                 "blockEBSOptimization": "Set this to enable block EBS optimization.", 
                 "enableHibernation": "Set this to enable hibernation as an additional stop behavior."

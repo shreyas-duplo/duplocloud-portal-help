@@ -18,8 +18,7 @@ enableHibernation: Set this to enable hibernation as an additional stop behavior
 #metaDataServiceFlag: To be added
 base64: Base64 encoded user data. On linux machine you can encode script file using command ```cat <falepath> | base64 -w 0 ```.
 tags: |
-  Tags to be added to ec2 instance. Format for adding tags is as below
-  Tags to be added to ec2 instance. Format for adding tags is as below
+  Tags to be added to ec2 instance. Format for adding tags is as below.
   ```js
   {
       "key" : "value"
@@ -39,7 +38,7 @@ volumes: |
 nwInterfaces: |
   Extra network interfaces to be attached to the ec2 host in a JSON format as below.
   ```js
-    [
+  [
     {
       "NetworkInterfaceId": "eni-095827b411091db43",
       "DeviceIndex": 0
