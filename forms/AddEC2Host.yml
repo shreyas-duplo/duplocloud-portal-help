@@ -1,4 +1,4 @@
-Name: Friendly name for host. Your name will be appended by prefix as "duploservice-<tenant_name>-"
+Name: Friendly name for host. User provided name will be appended by prefix as "duploservice-<tenant_name>-" after host is created.
 InstanceType: Instance type for the host. Select type as "Other" if you don't see desired option in the dropdown.
 InstanceCount: Desired capacity for the autoscaling group. 
 minInstanceCount: Minimum Instance Count. Autoscaling group will make sure that total no of instance will always be greater than or equal to min count.
