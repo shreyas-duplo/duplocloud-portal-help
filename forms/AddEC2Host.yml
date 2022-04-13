@@ -2,7 +2,7 @@ Name: Friendly name for host. Your name will be appended by prefix as "duploserv
 InstanceType: Instance type for the host. Select type as "Other" if you don't see desired option in the dropdown.
 InstanceCount: Desired capacity for the autoscaling group. 
 minInstanceCount: Minimum Instance Count. Autoscaling group will make sure that total no of instance will always be greater than or equal to min count.
-maxInstanceCount: Maximum Instance Count. Autoscaling group will make sure that total no of instance will always be less than or equal to min count.
+maxInstanceCount: Maximum Instance Count. Autoscaling group will make sure that total no of instance will always be less than or equal to max count.
 IsClusterAutoscaled: Check this when you want kubernetes cluster autoscaler to manage this cluster auto scaling.
 allocationTags: Allocation tags for the Host. Allocation tags can be used to distribute the services across hosts.
 agentPlatform: |
