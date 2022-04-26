@@ -1,6 +1,6 @@
 Name: The name of your service. Up to 255 letters (uppercase and lowercase), numbers, hyphens, and underscores are allowed.
 vcpus: Task definition with revision.
-Replicas: Replica services place and maintain a desired number of tasks across your cluster.
+Replicas: ECS makes sure a specified number of replicas run across your cluster.
 DnsPrfx: Prefix which will get added to the base domain registered in the plan for this tenant. If not specified default value will be `<service-name>-<tenant-name>`
 HealthCheckGracePeriodSeconds: |
   The period of time, in seconds, that the Amazon ECS service scheduler ignores unhealthy Elastic Load Balancing target health checks after a task has first started. 
