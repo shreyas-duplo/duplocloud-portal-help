@@ -39,6 +39,32 @@
                 "EnableLogging": "Select this option to enable logging for the RDS instance.",
                 "MultiAZ": "Create database in multiple availability zones for high availability."
             },
+            "ecsservice": {
+                "Name": "The name of your service. Up to 255 letters (uppercase and lowercase), numbers, hyphens, and underscores are allowed.",
+                "vcpus": "Task definition with revision.",
+                "Replicas": "Replica services place and maintain a desired number of tasks across your cluster.",
+                "DnsPrfx": "Prefix which will get added to the base domain registered in the plan for this tenant. If not specified default value will be `<service-name>-<tenant-name>`",
+                "HealthCheckGracePeriodSeconds": "The period of time, in seconds, that the Amazon ECS service scheduler ignores unhealthy Elastic Load Balancing target health checks after a task has first started. \nThis is only used when your service is configured to use a load balancer. If your service has a load balancer defined and you don't specify a health check grace period value, the default value of 0 is used.\n",
+                "OldTaskDefinitionBufferSize": "Old task definitions buffer size. This can be used to limit the size the stale task definitions in buffer. Default value is 10.",
+                "CapacityProvider": "Add a capacity provider to the custom capacity provider strategy for the cluster. Add a capacity provider to the custom capacity provider strategy for the cluster. If there are no existing capacity providers, create a new capacity provider from the capacity providers tab on the cluster details screen."
+            },
+            "lbListener": {
+                "lbType": "Type of AWS loadbalencer. It supports following two types\n1. **Application**: Use this type when user wants to expose HTTP or HTTPS port using the Loadbalencer.\n2. **Network**: For any other ports use this type.\n",
+                "ContainerPort": "Port exposed by the container.",
+                "ExternalPort": "Port user want to expose using loadbalencer. It may not be same as to the contaiener port.\n",
+                "visibility": "Visibility of the service to be exposed which can be either Internal or Public.\n1 **Internal Only**: When this option is selected service will accessible within the infrastructure created in AWS.\n2. **Public**: When this option is selected, service will be accessible to the internet. \n",
+                "HealthCheck": "Helath check URL for this container. This required paramter when Application load balencer is selected. \nIt helps AWS ALB to decide whether service is up and running.\n",
+                "BackendProtocol": "Protocol for the service exposed by the container.",
+                "BeProtocolVersion": "Protocol version only applicatible when application loadbalencer is selected\n1. **HTTP1**: Send requests to targets using HTTP/1.1. Supported when the request protocol is HTTP/1.1 or HTTP/2.\n2. **HTTP2**: Send requests to targets using HTTP/2. Supported when the request protocol is HTTP/2 or gRPC, but gRPC-specific features are not available.\n3. **gRPC**: Send requests to targets using gRPC. Supported when the request protocol is gRPC.\n",
+                "Certificates": "AWS Certificate to be attached to loadbalencer to expose the service over SSL.",
+                "TgCount": "Target group count.",
+                "HealthyThresholdCount": "The number of consecutive health checks successes required before considering an unhealthy target healthy.",
+                "UnHealthyThresholdCount": "The number of consecutive health check failures required before considering a target unhealthy.",
+                "HealthCheckTimeoutSeconds": "The amount of time, in seconds, during which no response means a failed health check.",
+                "HealthCheckIntervalSeconds": "The approximate amount of time between health checks of an individual target.",
+                "HttpSuccessCode": "The HTTP codes to use when checking for a successful response from a target. You can specify multiple values (for example, \"200,202\") or a range of values (for example, \"200-299\").",
+                "GrpcSuccessCode": "The gRPC codes to use when checking for a successful response from a target. You can specify multiple values (for example, \"20,25\") or a range of values (for example, \"0-99\"). Only applicable when protocol version is selected as **GRPc**."
+            },
             "taskdef": {
                 "Name": "Specify a name for your task definition. Up to 255 letters (uppercase and lowercase), numbers, hyphens, and underscores are allowed.",
                 "Image": "Image for your docker container.",

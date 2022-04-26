@@ -1,0 +1,31 @@
+lbType: |
+  Type of AWS loadbalencer. It supports following two types
+  1. **Application**: Use this type when user wants to expose HTTP or HTTPS port using the Loadbalencer.
+  2. **Network**: For any other ports use this type.
+ContainerPort: Port exposed by the container. 
+ExternalPort: |
+  Port user want to expose using loadbalencer. It may not be same as to the contaiener port.
+visibility: |
+  Visibility of the service to be exposed which can be either Internal or Public.
+  1 **Internal Only**: When this option is selected service will accessible within the infrastructure created in AWS.
+  2. **Public**: When this option is selected, service will be accessible to the internet. 
+HealthCheck: |
+  Helath check URL for this container. This required paramter when Application load balencer is selected. 
+  It helps AWS ALB to decide whether service is up and running.
+BackendProtocol: Protocol for the service exposed by the container.
+BeProtocolVersion: |
+  Protocol version only applicatible when application loadbalencer is selected
+  1. **HTTP1**: Send requests to targets using HTTP/1.1. Supported when the request protocol is HTTP/1.1 or HTTP/2.
+  2. **HTTP2**: Send requests to targets using HTTP/2. Supported when the request protocol is HTTP/2 or gRPC, but gRPC-specific features are not available.
+  3. **gRPC**: Send requests to targets using gRPC. Supported when the request protocol is gRPC.
+Certificates: AWS Certificate to be attached to loadbalencer to expose the service over SSL.
+TgCount: Target group count.
+HealthyThresholdCount: The number of consecutive health checks successes required before considering an unhealthy target healthy.
+UnHealthyThresholdCount: The number of consecutive health check failures required before considering a target unhealthy.
+HealthCheckTimeoutSeconds: The amount of time, in seconds, during which no response means a failed health check.
+HealthCheckIntervalSeconds: The approximate amount of time between health checks of an individual target.
+HttpSuccessCode: The HTTP codes to use when checking for a successful response from a target. You can specify multiple values (for example, "200,202") or a range of values (for example, "200-299").
+GrpcSuccessCode: The gRPC codes to use when checking for a successful response from a target. You can specify multiple values (for example, "20,25") or a range of values (for example, "0-99"). Only applicable when protocol version is selected as **GRPc**. 
+
+
+

@@ -1,0 +1,9 @@
+Name: The name of your service. Up to 255 letters (uppercase and lowercase), numbers, hyphens, and underscores are allowed.
+vcpus: Task definition with revision.
+Replicas: Replica services place and maintain a desired number of tasks across your cluster.
+DnsPrfx: Prefix which will get added to the base domain registered in the plan for this tenant. If not specified default value will be `<service-name>-<tenant-name>`
+HealthCheckGracePeriodSeconds: |
+  The period of time, in seconds, that the Amazon ECS service scheduler ignores unhealthy Elastic Load Balancing target health checks after a task has first started. 
+  This is only used when your service is configured to use a load balancer. If your service has a load balancer defined and you don't specify a health check grace period value, the default value of 0 is used.
+OldTaskDefinitionBufferSize: Old task definitions buffer size. This can be used to limit the size the stale task definitions in buffer. Default value is 10.
+CapacityProvider: Add a capacity provider to the custom capacity provider strategy for the cluster. Add a capacity provider to the custom capacity provider strategy for the cluster. If there are no existing capacity providers, create a new capacity provider from the capacity providers tab on the cluster details screen.
