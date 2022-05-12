@@ -1,0 +1,36 @@
+name: Name for your ingress object.
+ingressClassName: Select ingress controller name.
+dNSPrefix: Provide the DNS prefix to expose services using Route53 domain.
+visibility:  |
+  Visibility can be use to manage the accessibility of services expoxed by Ingress.
+  *internal*: Services will be accessible within tenant and to other tenants if allowed by security rules.
+  *internet-facing*: Services will be accessible over internet.
+certificateArn: Select certificate ARN to expose services over HTTPS.
+ingressRules: |
+  Ingress rules as documented [here](https://kubernetes.io/docs/concepts/services-networking/ingress/#ingress-rules)
+  Example value for the ingress rules as below.
+  ```js
+  - host: "foo.bar.com"
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/bar"
+        backend:
+          service:
+            name: service1
+            port:
+              number: 80
+  - host: "*.foo.com"
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/foo"
+        backend:
+          service:
+            name: service2
+            port:
+              number: 80
+  ```
+ingressAnnotations: |
+  Annotate your Ingress object with key value pairs. 
+  Annotations can also be used to controll the behavior of the Ingress. Each ingress controller will define the set if
