@@ -6,7 +6,7 @@ This repository has all the helps which is rendered on the DuploCloud entity for
 3. Start adding help for form fields as key-value pair. Where key is the name of field and value is detailed description about the field.
 
 ## Commit changes
-If you have made any kind of changes in the help, do not forgot to regenerate the "en.ts" file with below command
+If you have made any kind of changes in the help, do not forgot to regenerate the "en.json" file with below command
 ```
 python consolidate.py
 ```
