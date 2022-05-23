@@ -9,14 +9,14 @@ agentPlatform: |
   Select container orchestration platform.
   1. **Linux Docker/Native:** Select this option if you want to run docker native services which are Linux based.
   2. **Windows Docker/Native:** Select this option if you want to run docker native services which are Windows based.
-  3. **EKS Linux:** Select this options if you want to run services on the Kubenetes Cluster.
+  3. **EKS Linux:** Select this options if you want to run services on the Kubernetes Cluster.
   4. **None:** This option has to be selected when EC2 instance is not used for running containers.
 
 ImageId: AMI id for the EC2 instance. AMI should be compatible with the agent platform. Select type as "Other" if you don't see desired option in dropdown.
 blockEBSOptimization: Set this to enable block EBS optimization.
 enableHibernation: Set this to enable hibernation as an additional stop behavior.
 #metaDataServiceFlag: To be added
-base64: Base64 encoded user data. On Linux machine you can encode script file using command ```cat <falepath> | base64 -w 0 ```.
+base64: Base64 encoded user data. On Linux machine you can encode script file using command ```cat <filepath> | base64 -w 0 ```.
 tags: |
   Tags to be added to ec2 instance. Format for adding tags is as below.
   ```js
