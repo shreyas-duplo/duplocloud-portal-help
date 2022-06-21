@@ -1,10 +1,14 @@
 Name: Friendly name for host. User provided name will be appended by prefix as "duploservice-<tenant_name>-" after host is created.
-InstanceType: Instance type for the host. Select type as "Other" if you don't see desired option in the dropdown.
+Zone: |
+  AWS availibility zone to create an EC2 instance.
+  1. **Automatic:** Select this option to automatically assign the availbilty zone to EC2 host. DuploCloud will automatically assign a zone with subnet having most availble IPv4 addresses.
+InstanceType: Select an instance type that meets your computing, memory, networking, or storage needs. Select type as "Other" if you don't see desired option in the dropdown.
 InstanceCount: Desired capacity for the autoscaling group. 
 minInstanceCount: Minimum Instance Count. Autoscaling group will make sure that total no of instance will always be greater than or equal to min count.
 maxInstanceCount: Maximum Instance Count. Autoscaling group will make sure that total no of instance will always be less than or equal to max count.
 IsClusterAutoscaled: Check this when you want kubernetes cluster autoscaler to manage this cluster auto scaling.
-allocationTags: Allocation tags for the Host. Allocation tags can be used to distribute the services across hosts.
+allocationTags: Allocation tags is the simplest way to constraint contaieners/pods with hosts/nodes. DuploCloud/Kubernetese orchastrator will make sure containers will run on the hosts having same allocation tags.
+diskSize: EBS volume size in GB. If not specified volume size will be same as defined the AMI.
 agentPlatform: |
   Select container orchestration platform.
   1. **Linux Docker/Native:** Select this option if you want to run docker native services which are Linux based.
@@ -14,8 +18,8 @@ agentPlatform: |
 
 ImageId: AMI id for the EC2 instance. AMI should be compatible with the agent platform. Select type as "Other" if you don't see desired option in dropdown.
 blockEBSOptimization: Set this to enable block EBS optimization.
-enableHibernation: Set this to enable hibernation as an additional stop behavior.
-#metaDataServiceFlag: To be added
+enableHibernation: Hibernation stops your instance and saves the contents of the instance’s RAM to the root volume. You cannot enable hibernation after EC2 host is launch. 
+metaDataServiceFlag: Select `Disabled` to turn off access to instance metadata. Otherwise you can set `V1 and V2`, or just `V2`. If you do not specify a value, the default is V1 and V2.
 base64: Base64 encoded user data. On Linux machine you can encode script file using command ```cat <filepath> | base64 -w 0 ```.
 tags: |
   Tags to be added to ec2 instance. Format for adding tags is as below.

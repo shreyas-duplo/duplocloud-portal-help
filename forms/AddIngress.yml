@@ -3,8 +3,8 @@ ingressClassName: Select ingress controller name.
 dNSPrefix: Provide the DNS prefix to expose services using Route53 domain.
 visibility:  |
   Visibility can be used to manage the accessibility of services exposed by Ingress load belancer.
-  *internal*: Services will be accessible within tenant and to other tenants only if allowed by security rules.
-  *internet-facing*: Services will be accessible over internet.
+  *Internal Only*: Services will be accessible within tenant and to other tenants only if allowed by security rules.
+  *Public*: Services will be accessible over internet.
 certificateArn: Select AWS certificate ARN to expose services over HTTPS.
 ingressRules: |
   Ingress rules specifications as documented [here](https://kubernetes.io/docs/concepts/services-networking/ingress/#ingress-rules)
