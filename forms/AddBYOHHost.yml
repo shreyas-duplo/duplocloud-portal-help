@@ -7,4 +7,4 @@ FleetType: |
   3. **None:** Select this option no agent/container orchestrator is running on the EC2 host.
 Username: Username to login to your host. This is an optional field.
 Password: Password to login to your host. This is an optional field.
-PrivateKey: Private Key to login to your host using SSH. This is again an optional field. User can either specify `Password` or `Private Key`. 
+PrivateKey: Private Key to login to your host using SSH. This is again an optional field. User can either specify `Password` or `Private Key`.   
