@@ -1,0 +1,22 @@
+OtherJobProperties: |
+  All Other Submit Job Definition Request parameters as documented
+        [here](https://docs.aws.amazon.com/batch/latest/APIReference/API_SubmitJob.html#Batch-SubmitJob-request-containerOverrides).
+  Sample
+        Value for the Other Job properties to set **ContainerOverrides** is as below
+  ```js
+  {
+
+          "ContainerOverrides" : {
+          "Command" : [ "echo", "hiii"],
+      "Environment":
+        [
+          {
+              "name": "KEY1",
+              "value": "123"
+
+                }
+        ]
+    }
+
+  }
+  ```

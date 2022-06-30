@@ -1,0 +1,609 @@
+Name: Unique Data Pipeline Name
+PipeLineDef: |-
+  Please provide Data Pipeline defination json. Provide EmrCluster details If using existing  EmrCluster.
+                      ```js
+                      {
+                      "PipelineObjects": [
+                        {
+                            "Id": "Default",
+                            "Name": "Default",
+                            "Fields": [
+                                {
+                                    "Key": "failureAndRerunMode",
+                                    "StringValue": "CASCADE"
+                                },
+                                {
+                                    "Key": "pipelineLogUri",
+                                    "StringValue": "s3://YOUR-S3-FOLDER/logs/data-pipelines/"
+                                },
+                                {
+                                    "Key": "scheduleType",
+                                    "StringValue": "cron"
+                                }
+                            ]
+                        },
+                        {
+                            "Id": "EmrConfigurationId_Q9rpL",
+                            "Name": "DefaultEmrConfiguration1",
+                            "Fields": [
+                                {
+                                    "Key": "configuration",
+                                    "RefValue": "EmrConfigurationId_LFzOl"
+                                },
+                                {
+                                    "Key": "type",
+                                    "StringValue": "EmrConfiguration"
+                                },
+                                {
+                                    "Key": "classification",
+                                    "StringValue": "spark-env"
+                                }
+                            ]
+                        },
+                        {
+                            "Id": "ActionId_SUEgm",
+                            "Name": "TriggerNotificationOnFail",
+                            "Fields": [
+                                {
+                                    "Key": "subject",
+                                    "StringValue": "Backcountry-clickstream-delta-hourly: #{node.@pipelineId} Error: #{node.errorMessage}"
+                                },
+                                {
+                                    "Key": "message",
+                                    "StringValue": "Backcountry-clickstream-delta-hourly failed to run"
+                                },
+                                {
+                                    "Key": "type",
+                                    "StringValue": "SnsAlarm"
+                                },
+                                {
+                                    "Key": "topicArn",
+                                    "StringValue": "arn:aws:sns:us-west-2:269378226633:duploservices-pravin-test-del77-128329325849"
+                                }
+                            ]
+                        },
+                        {
+                            "Id": "EmrActivityObj",
+                            "Name": "EmrActivityObj",
+                            "Fields": [
+                                {
+                                    "Key": "schedule",
+                                    "RefValue": "ScheduleId_NfOUF"
+                                },
+                                {
+                                    "Key": "step",
+                                    "StringValue": "#{myEmrStep}"
+                                },
+                                {
+                                    "Key": "runsOn",
+                                    "RefValue": "EmrClusterObj"
+                                },
+                                {
+                                    "Key": "type",
+                                    "StringValue": "EmrActivity"
+                                }
+                            ]
+                        },
+                        {
+                            "Id": "EmrConfigurationId_LFzOl",
+                            "Name": "DefaultEmrConfiguration2",
+                            "Fields": [
+                                {
+                                    "Key": "property",
+                                    "RefValue": "PropertyId_NA18c"
+                                },
+                                {
+                                    "Key": "classification",
+                                    "StringValue": "export"
+                                },
+                                {
+                                    "Key": "type",
+                                    "StringValue": "EmrConfiguration"
+                                }
+                            ]
+                        },
+                        {
+                            "Id": "EmrClusterObj",
+                            "Name": "EmrClusterObj",
+                            "Fields": [
+                                {
+                                    "Key": "taskInstanceType",
+                                    "StringValue": "#{myTaskInstanceType}"
+                                },
+                                {
+                                    "Key": "onFail",
+                                    "RefValue": "ActionId_SUEgm"
+                                },
+                                {
+                                    "Key": "maximumRetries",
+                                    "StringValue": "1"
+                                },
+                                {
+                                    "Key": "configuration",
+                                    "RefValue": "EmrConfigurationId_Q9rpL"
+                                },
+                                {
+                                    "Key": "coreInstanceCount",
+                                    "StringValue": "#{myCoreInstanceCount}"
+                                },
+                                {
+                                    "Key": "masterInstanceType",
+                                    "StringValue": "#{myMasterInstanceType}"
+                                },
+                                {
+                                    "Key": "releaseLabel",
+                                    "StringValue": "#{myEMRReleaseLabel}"
+                                },
+                                {
+                                    "Key": "type",
+                                    "StringValue": "EmrCluster"
+                                },
+                                {
+                                    "Key": "terminateAfter",
+                                    "StringValue": "3 Hours"
+                                },
+                                {
+                                    "Key": "bootstrapAction",
+                                    "StringValue": "#{myBootstrapAction}"
+                                },
+                                {
+                                    "Key": "taskInstanceCount",
+                                    "StringValue": "#{myTaskInstanceCount}"
+                                },
+                                {
+                                    "Key": "coreInstanceType",
+                                    "StringValue": "#{myCoreInstanceType}"
+                                },
+                                {
+                                    "Key": "applications",
+                                    "StringValue": "spark"
+                                }
+                            ]
+                        },
+                        {
+                            "Id": "ScheduleId_NfOUF",
+                            "Name": "Every 10 hr",
+                            "Fields": [
+                                {
+                                    "Key": "period",
+                                    "StringValue": "10 Hours start time 2"
+                                },
+                                {
+                                    "Key": "startDateTime",
+                                    "StringValue": "2022-01-07T21:21:00"
+                                },
+                                {
+                                    "Key": "type",
+                                    "StringValue": "Schedule"
+                                },
+                                {
+                                    "Key": "endDateTime",
+                                    "StringValue": "2022-01-08T15:44:28"
+                                }
+                            ]
+                        },
+                        {
+                            "Id": "PropertyId_NA18c",
+                            "Name": "DefaultProperty1",
+                            "Fields": [
+                                {
+                                    "Key": "type",
+                                    "StringValue": "Property"
+                                },
+                                {
+                                    "Key": "value",
+                                    "StringValue": "/usr/bin/python3"
+                                },
+                                {
+                                    "Key": "key",
+                                    "StringValue": "PYSPARK_PYTHON"
+                                }
+                            ]
+                        }
+                      ],
+                      "ParameterValues": [
+                        {
+                            "Id": "myEMRReleaseLabel",
+                            "StringValue": "emr-6.1.0"
+                        },
+                        {
+                            "Id": "myMasterInstanceType",
+                            "StringValue": "m3.xlarge"
+                        },
+                        {
+                            "Id": "myBootstrapAction",
+                            "StringValue": "s3://YOUR-S3-FOLDER/bootstrap_actions/your_boottrap_and_python_lib_installer.sh"
+                        },
+                        {
+                            "Id": "myEmrStep",
+                            "StringValue": "command-runner.jar,spark-submit,--packages,io.delta:delta-core_2.12:0.8.0,--conf,spark.sql.extensions=io.delta.sql.DeltaSparkSessionExtension,--conf,spark.sql.catalog.spark_catalog=org.apache.spark.sql.delta.catalog.DeltaCatalog,--num-executors,2,--executor-cores,2,--executor-memory,2G,--conf,spark.driver.memoryOverhead=4096,--conf,spark.executor.memoryOverhead=4096,--conf,spark.dynamicAllocation.enabled=false,--name,PixelClickstreamData,--py-files,s3://YOUR-S3-FOLDER/libraries/librariy1.zip,--py-files,s3://YOUR-S3-FOLDER/libraries/librariy2.zip,s3://YOUR-S3-FOLDER/your_script.py, your_script_arg1, your_script_arg2"
+                        },
+                        {
+                            "Id": "myEmrStep",
+                            "StringValue": "command-runner.jar,aws,athena,start-query-execution,--query-string,MSCK REPAIR TABLE your_database.your_table,--result-configuration,OutputLocation=s3://YOUR-S3-FOLDER/logs/your_query_parquest"
+                        },
+                        {
+                            "Id": "myCoreInstanceType",
+                            "StringValue": "m3.xlarge"
+                        },
+                        {
+                            "Id": "myCoreInstanceCount",
+                            "StringValue": "1"
+                        }
+                      ],
+                      "ParameterObjects": [
+                        {
+                            "Id": "myEC2KeyPair",
+                            "Attributes": [
+                                {
+                                    "Key": "helpText",
+                                    "StringValue": "An existing EC2 key pair to SSH into the master node of the EMR cluster as the user \"hadoop\"."
+                                },
+                                {
+                                    "Key": "description",
+                                    "StringValue": "EC2 key pair"
+                                },
+                                {
+                                    "Key": "optional",
+                                    "StringValue": "true"
+                                },
+                                {
+                                    "Key": "type",
+                                    "StringValue": "String"
+                                }
+                            ]
+                        },
+                        {
+                            "Id": "myEmrStep",
+                            "Attributes": [
+                                {
+                                    "Key": "helpLink",
+                                    "StringValue": "https://docs.aws.amazon.com/console/datapipeline/emrsteps"
+                                },
+                                {
+                                    "Key": "watermark",
+                                    "StringValue": "s3://myBucket/myPath/myStep.jar,firstArg,secondArg"
+                                },
+                                {
+                                    "Key": "helpText",
+                                    "StringValue": "A step is a unit of work you submit to the cluster. You can specify one or more steps"
+                                },
+                                {
+                                    "Key": "description",
+                                    "StringValue": "EMR step(s)"
+                                },
+                                {
+                                    "Key": "isArray",
+                                    "StringValue": "true"
+                                },
+                                {
+                                    "Key": "type",
+                                    "StringValue": "String"
+                                }
+                            ]
+                        },
+                        {
+                            "Id": "myTaskInstanceType",
+                            "Attributes": [
+                                {
+                                    "Key": "helpText",
+                                    "StringValue": "Task instances run Hadoop tasks."
+                                },
+                                {
+                                    "Key": "description",
+                                    "StringValue": "Task node instance type"
+                                },
+                                {
+                                    "Key": "optional",
+                                    "StringValue": "true"
+                                },
+                                {
+                                    "Key": "type",
+                                    "StringValue": "String"
+                                }
+                            ]
+                        },
+                        {
+                            "Id": "myCoreInstanceType",
+                            "Attributes": [
+                                {
+                                    "Key": "default",
+                                    "StringValue": "m1.medium"
+                                },
+                                {
+                                    "Key": "helpText",
+                                    "StringValue": "Core instances run Hadoop tasks and store data using the Hadoop Distributed File System (HDFS)."
+                                },
+                                {
+                                    "Key": "description",
+                                    "StringValue": "Core node instance type"
+                                },
+                                {
+                                    "Key": "type",
+                                    "StringValue": "String"
+                                }
+                            ]
+                        },
+                        {
+                            "Id": "myEMRReleaseLabel",
+                            "Attributes": [
+                                {
+                                    "Key": "default",
+                                    "StringValue": "emr-5.13.0"
+                                },
+                                {
+                                    "Key": "helpText",
+                                    "StringValue": "Determines the base configuration of the instances in your cluster, including the Hadoop version."
+                                },
+                                {
+                                    "Key": "description",
+                                    "StringValue": "EMR Release Label"
+                                },
+                                {
+                                    "Key": "type",
+                                    "StringValue": "String"
+                                }
+                            ]
+                        },
+                        {
+                            "Id": "myCoreInstanceCount",
+                            "Attributes": [
+                                {
+                                    "Key": "default",
+                                    "StringValue": "2"
+                                },
+                                {
+                                    "Key": "description",
+                                    "StringValue": "Core node instance count"
+                                },
+                                {
+                                    "Key": "type",
+                                    "StringValue": "Integer"
+                                }
+                            ]
+                        },
+                        {
+                            "Id": "myTaskInstanceCount",
+                            "Attributes": [
+                                {
+                                    "Key": "description",
+                                    "StringValue": "Task node instance count"
+                                },
+                                {
+                                    "Key": "optional",
+                                    "StringValue": "true"
+                                },
+                                {
+                                    "Key": "type",
+                                    "StringValue": "Integer"
+                                }
+                            ]
+                        },
+                        {
+                            "Id": "myBootstrapAction",
+                            "Attributes": [
+                                {
+                                    "Key": "helpLink",
+                                    "StringValue": "https://docs.aws.amazon.com/console/datapipeline/emr_bootstrap_actions"
+                                },
+                                {
+                                    "Key": "helpText",
+                                    "StringValue": "Bootstrap actions are scripts that are executed during setup before Hadoop starts on every cluster node."
+                                },
+                                {
+                                    "Key": "description",
+                                    "StringValue": "Bootstrap action(s)"
+                                },
+                                {
+                                    "Key": "isArray",
+                                    "StringValue": "true"
+                                },
+                                {
+                                    "Key": "optional",
+                                    "StringValue": "true"
+                                },
+                                {
+                                    "Key": "type",
+                                    "StringValue": "String"
+                                }
+                            ]
+                        },
+                        {
+                            "Id": "myMasterInstanceType",
+                            "Attributes": [
+                                {
+                                    "Key": "default",
+                                    "StringValue": "m1.medium"
+                                },
+                                {
+                                    "Key": "helpText",
+                                    "StringValue": "The Master instance assigns Hadoop tasks to core and task nodes, and monitors their status."
+                                },
+                                {
+                                    "Key": "description",
+                                    "StringValue": "Master node instance type"
+                                },
+                                {
+                                    "Key": "type",
+                                    "StringValue": "String"
+                                }
+                            ]
+                        }
+                      ]
+                      }
+                      ```
+PipeLineDefAws: |-
+  Please provide Data Pipeline defination json. Provide EmrCluster details If using existing  EmrCluster.
+                      ```js
+                      {
+                      "objects": [
+                      {
+                      "failureAndRerunMode": "CASCADE",
+                      "resourceRole": "DataPipelineDefaultResourceRole",
+                      "role": "DataPipelineDefaultRole",
+                      "pipelineLogUri": "s3://YOUR-S3-FOLDER/logs/data-pipelines/",
+                      "scheduleType": "cron",
+                      "name": "Default",
+                      "id": "Default"
+                      },
+                      {
+                      "configuration": {
+                        "ref": "EmrConfigurationId_LFzOl"
+                      },
+                      "name": "DefaultEmrConfiguration1",
+                      "id": "EmrConfigurationId_Q9rpL",
+                      "type": "EmrConfiguration",
+                      "classification": "spark-env"
+                      },
+                      {
+                      "role": "DataPipelineDefaultRole",
+                      "subject": "Backcountry-clickstream-delta-hourly: #{node.@pipelineId} Error: #{node.errorMessage}",
+                      "name": "TriggerNotificationOnFail",
+                      "id": "ActionId_SUEgm",
+                      "message": "Backcountry-clickstream-delta-hourly failed to run",
+                      "type": "SnsAlarm",
+                      "topicArn": "arn:aws:sns:us-west-2:269378226633:duploservices-pravin-test-del77-128329325849"
+                      },
+                      {
+                      "schedule": {
+                        "ref": "ScheduleId_NfOUF"
+                      },
+                      "name": "EmrActivityObj",
+                      "step": "#{myEmrStep}",
+                      "runsOn": {
+                        "ref": "EmrClusterObj"
+                      },
+                      "id": "EmrActivityObj",
+                      "type": "EmrActivity"
+                      },
+                      {
+                      "name": "DefaultEmrConfiguration2",
+                      "property": {
+                        "ref": "PropertyId_NA18c"
+                      },
+                      "id": "EmrConfigurationId_LFzOl",
+                      "classification": "export",
+                      "type": "EmrConfiguration"
+                      },
+                      {
+                      "taskInstanceType": "#{myTaskInstanceType}",
+                      "onFail": {
+                        "ref": "ActionId_SUEgm"
+                      },
+                      "maximumRetries": "1",
+                      "configuration": {
+                        "ref": "EmrConfigurationId_Q9rpL"
+                      },
+                      "coreInstanceCount": "#{myCoreInstanceCount}",
+                      "masterInstanceType": "#{myMasterInstanceType}",
+                      "releaseLabel": "#{myEMRReleaseLabel}",
+                      "type": "EmrCluster",
+                      "terminateAfter": "3 Hours",
+                      "availabilityZone": "us-west-2b",
+                      "bootstrapAction": "#{myBootstrapAction}",
+                      "taskInstanceCount": "#{myTaskInstanceCount}",
+                      "name": "EmrClusterObj",
+                      "coreInstanceType": "#{myCoreInstanceType}",
+                      "keyPair": "#{myEC2KeyPair}",
+                      "id": "EmrClusterObj",
+                      "applications": [
+                        "spark"
+                      ]
+                      },
+                      {
+                      "period": "10 Hours start time 2",
+                      "startDateTime": "2022-01-07T21:21:00",
+                      "name": "Every 10 hr",
+                      "id": "ScheduleId_NfOUF",
+                      "type": "Schedule",
+                      "endDateTime": "2022-01-08T15:44:28"
+                      },
+                      {
+                      "name": "DefaultProperty1",
+                      "id": "PropertyId_NA18c",
+                      "type": "Property",
+                      "value": "/usr/bin/python3",
+                      "key": "PYSPARK_PYTHON"
+                      }
+                      ],
+                      "parameters": [
+                      {
+                      "helpText": "An existing EC2 key pair to SSH into the master node of the EMR cluster as the user \"hadoop\".",
+                      "description": "EC2 key pair",
+                      "optional": "true",
+                      "id": "myEC2KeyPair",
+                      "type": "String"
+                      },
+                      {
+                      "helpLink": "https://docs.aws.amazon.com/console/datapipeline/emrsteps",
+                      "watermark": "s3://myBucket/myPath/myStep.jar,firstArg,secondArg",
+                      "helpText": "A step is a unit of work you submit to the cluster. You can specify one or more steps",
+                      "description": "EMR step(s)",
+                      "isArray": "true",
+                      "id": "myEmrStep",
+                      "type": "String"
+                      },
+                      {
+                      "helpText": "Task instances run Hadoop tasks.",
+                      "description": "Task node instance type",
+                      "optional": "true",
+                      "id": "myTaskInstanceType",
+                      "type": "String"
+                      },
+                      {
+                      "default": "m1.medium",
+                      "helpText": "Core instances run Hadoop tasks and store data using the Hadoop Distributed File System (HDFS).",
+                      "description": "Core node instance type",
+                      "id": "myCoreInstanceType",
+                      "type": "String"
+                      },
+                      {
+                      "default": "emr-5.13.0",
+                      "helpText": "Determines the base configuration of the instances in your cluster, including the Hadoop version.",
+                      "description": "EMR Release Label",
+                      "id": "myEMRReleaseLabel",
+                      "type": "String"
+                      },
+                      {
+                      "default": "2",
+                      "description": "Core node instance count",
+                      "id": "myCoreInstanceCount",
+                      "type": "Integer"
+                      },
+                      {
+                      "description": "Task node instance count",
+                      "optional": "true",
+                      "id": "myTaskInstanceCount",
+                      "type": "Integer"
+                      },
+                      {
+                      "helpLink": "https://docs.aws.amazon.com/console/datapipeline/emr_bootstrap_actions",
+                      "helpText": "Bootstrap actions are scripts that are executed during setup before Hadoop starts on every cluster node.",
+                      "description": "Bootstrap action(s)",
+                      "isArray": "true",
+                      "optional": "true",
+                      "id": "myBootstrapAction",
+                      "type": "String"
+                      },
+                      {
+                      "default": "m1.medium",
+                      "helpText": "The Master instance assigns Hadoop tasks to core and task nodes, and monitors their status.",
+                      "description": "Master node instance type",
+                      "id": "myMasterInstanceType",
+                      "type": "String"
+                      }
+                      ],
+                      "values": {
+                      "myEMRReleaseLabel": "emr-6.1.0",
+                      "myMasterInstanceType": "m3.xlarge",
+                      "myBootstrapAction": "s3://YOUR-S3-FOLDER/bootstrap_actions/your_boottrap_and_python_lib_installer.sh",
+                      "myEmrStep": [
+                      "command-runner.jar,spark-submit,--packages,io.delta:delta-core_2.12:0.8.0,--conf,spark.sql.extensions=io.delta.sql.DeltaSparkSessionExtension,--conf,spark.sql.catalog.spark_catalog=org.apache.spark.sql.delta.catalog.DeltaCatalog,--num-executors,2,--executor-cores,2,--executor-memory,2G,--conf,spark.driver.memoryOverhead=4096,--conf,spark.executor.memoryOverhead=4096,--conf,spark.dynamicAllocation.enabled=false,--name,PixelClickstreamData,--py-files,s3://YOUR-S3-FOLDER/libraries/librariy1.zip,--py-files,s3://YOUR-S3-FOLDER/libraries/librariy2.zip,s3://YOUR-S3-FOLDER/your_script.py, your_script_arg1, your_script_arg2",
+                      "command-runner.jar,aws,athena,start-query-execution,--query-string,MSCK REPAIR TABLE your_database.your_table,--result-configuration,OutputLocation=s3://YOUR-S3-FOLDER/logs/your_query_parquest"
+                      ],
+                      "myCoreInstanceType": "m3.xlarge",
+                      "myCoreInstanceCount": "1"
+                      }
+                      }
+
+                      ```

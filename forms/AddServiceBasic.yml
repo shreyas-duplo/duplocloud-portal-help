@@ -1,0 +1,187 @@
+ServiceName: Any friendly name to identify your service.
+AllocationTag: A string value that needs to be a substring of the corresponding
+  allocation tag value set on a Host. If there is no host with such an allocation
+  tag value then service will not get deployed. simplest example is if you want
+  the container to be deployed in a certain set of hosts only then set an allocation
+  tag on those hosts called web and then set the allocation tag here to be web.
+IsDaemonset: Enable Daemonset to run instance of this service on each host in
+  selected tenant
+IsAnyHostAllowed: If "Yes", the service can run on any host in the same plan as
+  the selected tenant.
+asgName: Selecting an auto scaling group here will ensure that the replicas of
+  this service will match the nodes in the auto scaling group. The value set for
+  replicas in this form will be overridden
+ReplicaCollocation: If this is enabled then 2 containers (replicas) of the same
+  service can be allocated to same node. But if this is false then each replica
+  of a certain service needs to be on a separate host. Note still a single host
+  can hold containers from different services
+LBSyncedDeployment: This enables Zero Downtime Updates. When this flag is turned
+  on then during update before tearing down a certain replica, the replica is
+  set to draining mode in the load balancer, then removed from the LB and then
+  an update performed then added back to the LB. This is done for each replica
+  one by one. If this flag is turned off the containers are updated one after
+  the other without co-ordination with the load balancer. While turning this on
+  enables zero down time but makes the rollout slow. If the flag is off we have
+  typically seen a 5 to 20 sec glitch for customers during upgrade. When this
+  flag is turned on then the update takes a few minutes for each replica as against
+  a  few seconds when it is off.
+LivenessProbe: |
+  Example of livenessprobe
+  ```js
+  {
+      "failureThreshold":3,
+
+      "httpGet":{
+          "path":"/healthz/live",
+          "port":80,
+
+            "scheme":"HTTP"
+      },
+      "periodSeconds":10,
+      "successThreshold":1,
+
+      "timeoutSeconds":5
+  }
+  ```
+ReadinessProbe: |
+  "Example of readinessprobe
+  ```js
+  {
+      "failureThreshold":3,
+
+      "httpGet": 
+      {
+          "path":"/healthz/ready",
+          "port":80,
+
+          "scheme":"HTTP"
+      },
+      "periodSeconds":10,
+      "successThreshold":1,
+
+      "timeoutSeconds":5
+  }
+  ```
+securityContext: |
+  Example of Security context
+  ```js
+  {
+    "Capabilities":
+    {
+      "Add": [
+        "NET_BIND_SERVICE"
+      ],
+      "Drop":
+    [
+        "ALL"
+      ]
+    },
+    "ReadOnlyRootFilesystem": false,
+
+    "RunAsNonRoot": true,
+    "RunAsUser": 1000
+  }
+  ```
+k8sPodConfig: |
+  Any generic Kubernetes Pod configuration can be passed here, for
+  example resource limits, restart policy. As an example: 
+  ```js
+  {
+    "RestartPolicy":
+    "Always",
+    "envFrom": [
+      {
+        "configMapRef": {
+          "name":
+    "api-configs"
+        }
+      },
+      {
+        "secretRef": {
+
+          "name": "api-secrets"
+        }
+      },
+      {
+        "configMapRef":
+    {
+          "name": "api-db",
+          "optional": true
+        }
+
+      }
+    ],
+    "resources": {
+      "limits": {
+        "memory":
+    "1Gi"
+      },
+      "requests": {
+        "memory": "384Mi"
+
+      }
+    }
+  }
+  ```
+podSecurityContext: |
+  Example: 
+  ```js
+  {
+  "FsGroup":1001,
+  "RunAsUser":1001
+  }
+  ```
+EnvVariablesK8s: |-
+  Environment variables to be passed to the containers in the YAML format.
+  ```yaml
+  ---
+  - Name: DB_HOST
+    Value: abc.com
+  - Name: DB_USER
+    Value: myuser
+  - Name: DB_PASSWORD
+    Value: mypassword
+  ```
+VolumeMappings: |
+  Example of mounting a host drive into the container
+  ```js
+  "/home/ubuntu/data:/data","/home/ubuntu/confg:/config"
+  ```
+otherDockerConfig: |
+  Any custom docker create container can be passed here based
+    on the documentation at https://docs.docker.com/engine/api/v1.41/#operation/ContainerCreate
+    for example the following config overrides the entrypoint of the container and
+    sets a few labels
+  ```js
+  {
+  "Entrypoint": "["/bin/bash", "-c",
+    "sleep 1h"],
+  "Labels": {
+  "com.example.vendor": "Acme",
+  "com.example.license":
+    "GPL",
+  "com.example.version": "1.0"
+  }
+  }
+  ```
+NetworkMode: If host network is selected then the container will share the same
+  networking stack as host. This means any port in the container is accessible
+  as is on host ip address without any explicit port mapping
+ReplicationStrategy: |
+  Replication Strategy can be used to manage the replica count for this Deployment/StatefulSet. Replication Strategy has three options as below.
+    1. **Static**: This option can be used to set fixed count for the replicas.
+    2. **Daemonset**: If this option is selected, DuploCloud will make sure pods will run on every host created in this tenant.
+    3. **Horizontal Pod Autoscaler**: This is more advanced option which user can use to automcatically scale up or down the replicas as per the different metrics like CPU Usage, Memory Usage, Ingress requests per second etc. [Click Here](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale-walkthrough/) for more information on *Horizontal Pod Autoscaler*.
+HPAConfig: |-
+  Horizontal pod autoscaller specifications as documented [here](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale-walkthrough/). Sample value can be like below.
+  ```yaml
+  maxReplicas: 5
+  metrics:
+    - resource:
+        name: cpu
+        target:
+          averageUtilization: 80
+          type: Utilization
+      type: Resource
+  minReplicas: 2
+  ```

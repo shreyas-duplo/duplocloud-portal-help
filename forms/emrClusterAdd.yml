@@ -1,0 +1,232 @@
+
+Name: Unique Cluster Name
+ReleaseLabel: Choose ReleaseLabel or to provide ReleaseLabel not in list choose
+  Other.
+IdleTimeBeforeShutdown: Idle time (when no job is running) in hours before terminating
+  the cluster.
+StepConcurrencyLevel: How many jobs can run concurrenly. This settinngs should
+  depend on avialable resources.
+Applications: |
+  Applications to be installed in cluster (master and slaves).
+  ```js
+  [
+  {
+  "Name" : "Hadoop"
+  },
+  {
+  "Name" : "JupyterHub"
+  },
+  {
+  "Name" : "Spark"
+  },
+  {
+  "Name" : "Hive"
+  }
+  ]
+  ```
+Configurations: |-
+  Configurations to be installed in cluster (master and slaves).
+  ```js
+  [
+  {
+  "Classification" : "hive-site",
+  "Properties" : {
+  "hive.metastore.client.factory.class" : "com.amazonaws.glue.catalog.metastore.AWSGlueDataCatalogHiveClientFactory",
+  "spark.sql.catalog.my_catalog" : "org.apache.iceberg.spark.SparkCatalog",
+  "spark.sql.catalog.my_catalog.catalog-impl" : "org.apache.iceberg.aws.glue.GlueCatalog",
+  "spark.sql.catalog.my_catalog.io-impl" : "org.apache.iceberg.aws.s3.S3FileIO",
+  "spark.sql.catalog.my_catalog.lock-impl" : "org.apache.iceberg.aws.glue.DynamoLockManager",
+  "spark.sql.catalog.my_catalog.lock.table" : "myGlueLockTable",
+  "spark.sql.catalog.sampledb.warehouse" : "s3://name-of-my-bucket/icebergcatalog"
+  }
+  }
+  ]
+  ```
+BootstrapActions: |-
+  BootstrapActions during cluster setup.
+  ```js
+  [
+  {
+  "Name": "InstallApacheIceberg",
+  "ScriptBootstrapAction": {
+  "Args": [
+  "name",
+  "value"
+  ],
+  "Path": "s3://name-of-my-bucket/bootstrap-iceberg.sh"
+  }
+  }
+  ]
+  ```
+Steps: |-
+  Jobs to be executed on cluster. Please update s3 and py file.
+  ```js
+  [
+  {
+  "ActionOnFailure" : "CONTINUE",
+  "Name"              : "sparkstepTest",
+  "HadoopJarStep" : {
+  "Jar" : "command-runner.jar",
+  "Args" : [
+  "spark-submit",
+  "s3://YOUR-S3-FOLDER/script3.py"
+  ]
+  }
+  }
+  ]
+  ```
+InstanceFleets: |-
+  InstanceFleets example.
+  ```js
+  [
+  {
+  "Name" : "Masterfleet",
+  "InstanceFleetType" : "MASTER",
+  "TargetSpotCapacity" : 1,
+  "LaunchSpecifications" : {
+  "SpotSpecification" : {
+  "TimeoutDurationMinutes" : 120,
+  "TimeoutAction" : "SWITCH_TO_ON_DEMAND"
+  }
+  },
+  "InstanceTypeConfigs" : [
+  {
+  "InstanceType" : "m5.xlarge",
+  "BidPrice" : "0.89"
+  }
+  ]
+  },
+  {
+  "Name" : "Corefleet",
+  "InstanceFleetType" : "CORE",
+  "TargetSpotCapacity" : 1,
+  "TargetOnDemandCapacity" : 1,
+  "LaunchSpecifications" : {
+  "OnDemandSpecification" : {
+  "AllocationStrategy" : "lowest-price",
+  "CapacityReservationOptions" : {
+  "UsageStrategy" : "use-capacity-reservations-first",
+  "CapacityReservationResourceGroupArn" : "String"
+  }
+  },
+  "SpotSpecification" : {
+  "AllocationStrategy" : "capacity-optimized",
+  "TimeoutDurationMinutes" : 120,
+  "TimeoutAction" : "TERMINATE_CLUSTER"
+  }
+  },
+  "InstanceTypeConfigs" : [
+  {
+  "InstanceType" : "m4.xlarge",
+  "BidPriceAsPercentageOfOnDemandPrice" : 100
+  }
+  ]
+  },
+  {
+  "Name" : "Taskfleet",
+  "InstanceFleetType" : "TASK",
+  "TargetSpotCapacity" : 1,
+  "LaunchSpecifications" : {
+  "OnDemandSpecification" : {
+  "AllocationStrategy" : "lowest-price",
+  "CapacityReservationOptions" : {
+  "CapacityReservationPreference" : "none"
+  }
+  },
+  "SpotSpecification" : {
+  "TimeoutDurationMinutes" : 120,
+  "TimeoutAction" : "TERMINATE_CLUSTER"
+  }
+  },
+  "InstanceTypeConfigs" : [
+  {
+  "InstanceType" : "m4.xlarge",
+  "BidPrice" : "0.89"
+  }
+  ]
+  }
+  ]
+
+  ```
+InstanceGroups: |-
+  InstanceGroups example.
+  ```js
+  [
+  {
+  "Name": "Master",
+  "Market": "ON_DEMAND",
+  "InstanceRole": "MASTER",
+  "InstanceType": "m4.large",
+  "InstanceCount": 1,
+  "EbsConfiguration": {
+  "EbsBlockDeviceConfigs": [
+  {
+  "VolumeSpecification": {
+  "VolumeType": "gp2",
+  "SizeInGB": 10
+  },
+  "VolumesPerInstance": 1
+  }
+
+  ],
+  "EbsOptimized": false
+  }
+  },
+  {
+  "Name": "Core",
+  "Market": "ON_DEMAND",
+  "InstanceRole": "CORE",
+  "InstanceType": "m4.large",
+  "InstanceCount": 1,
+  "EbsConfiguration": {
+  "EbsBlockDeviceConfigs": [
+  {
+  "VolumeSpecification": {
+  "VolumeType": "gp2",
+  "SizeInGB": 10
+  },
+  "VolumesPerInstance": 1
+  }
+
+  ],
+  "EbsOptimized": false
+  }
+  },
+  {
+  "Name": "Task",
+  "Market": "ON_DEMAND",
+  "InstanceRole": "TASK",
+  "InstanceType": "m4.large",
+  "InstanceCount": 1,
+  "EbsConfiguration": {
+  "EbsBlockDeviceConfigs": [
+  {
+  "VolumeSpecification": {
+  "VolumeType": "gp2",
+  "SizeInGB": 10
+  },
+  "VolumesPerInstance": 1
+  }
+
+  ],
+  "EbsOptimized": false
+  }
+  }
+
+  ]
+
+  ```
+ManagedScalingPolicy: |-
+  ManagedScalingPolicy example.
+  ```js
+  {
+  "ComputeLimits" : {
+  "UnitType" : "Instances",
+  "MinimumCapacityUnits" : 2,
+  "MaximumCapacityUnits" : 5,
+  "MaximumOnDemandCapacityUnits" : 5,
+  "MaximumCoreCapacityUnits" : 3
+  }
+  }
+  ```
+VisibleToAllUsers: Cluster Visible To All Users.

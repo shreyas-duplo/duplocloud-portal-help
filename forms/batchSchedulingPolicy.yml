@@ -1,0 +1,23 @@
+Name: Up to 128 letters (uppercase and lowercase), numbers, hyphens, and underscores
+      are allowed.
+Tags: |
+  A tag is a label that you assign to an AWS resource. Each tag consists of a key and an optional value. You can use tags to search and filter your resources or track your AWS costs
+  Sample Value for **Tags** is as below
+  ```js
+  {
+      "Key" : "Value"
+  }
+
+  ```
+ShareDistribution: |
+  An array of SharedIdentifier objects that contain the weights for the fair share identifiers for the fair share policy. Fair share identifiers that aren't included have a default weight of 1.0.
+  [Click Here](https://docs.aws.amazon.com/batch/latest/APIReference/API_ShareAttributes.html) to know more about **ShareDistribution**.
+  Sample Value for the Other Job properties to set **ContainerOverrides** is as below
+  ```js
+  [
+      {
+          "ShareIdentifier": "SomeIdentifier",
+          "WeightFactor": 0.1
+      }
+  ]
+  ```

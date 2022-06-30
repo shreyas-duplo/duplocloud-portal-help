@@ -1,0 +1,14 @@
+OtherConfigurations: |
+  All Other Create Compute Environment Request parameters as documented [here](https://docs.aws.amazon.com/batch/latest/APIReference/API_CreateComputeEnvironment.html).
+  Sample Value for customized EC2 configuration.
+  ```js
+  {
+      "ComputeResources": {
+          "Ec2Configuration": [
+              {
+                  "ImageType": "ECS_AL2_NVIDIA"
+              }
+          ]
+      }
+  }
+  ```

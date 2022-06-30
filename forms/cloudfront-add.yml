@@ -1,0 +1,30 @@
+Name: Any friendly name to the cloudfront distribution
+certificate: Certificate ARN to be used by the distribution
+DefaultRootObject: 'Default root object object that will be returned while accessing
+  root of the domain. Example: index.html. Should not start with "/"'
+defaultCachePolicyId: "Default Cache policy applied to the Distribution\n        [Click
+  Here](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/using-managed-cache-policies.html)
+  to know more about Amazon Managed policy\n        You can also create your custom
+  cache policy and provide the ID of the policy\n        "
+defaultTargetOriginId: Target Origin to apply the cache policy. This Origin will
+  be used as the default ("*") source by the cloudfront
+itemAliasName0: The number of CNAME aliases, that you want to associate with this
+  distribution. End User will be able to access the disribution using this URL
+itemDomainName0: Origin Domain Name where the content will be fetched by the CDN.
+  It can be S3 bucket or custom URL (api service url etc)
+itemId0: Unique Id for the origin. This Id will be refered in default cache behavior
+  and custom cache behavior.
+itemPath0: "Path that will suffixed to the origin domain name (url) while fetching
+  content.\n        For S3: If the content that need to be served is under prefix
+  static. You should enter \"/static\" in path.\n        For custom url: If all
+  the API have a prefix like v1. You should enter \"/v1\" in path "
+customCachePolicyId0: "Cache policy applied to the this custom path\n        [Click
+  Here](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/using-managed-cache-policies.html)
+  to know more about Amazon Managed policy\n        You can also create your custom
+  cache policy and provide the ID of the policy\n        "
+customCachePathPattern0: The pattern (for example, images/*.jpg ) that specifies
+  which requests to apply the behavior to. When CloudFront receives a viewer request,
+  the requested path is compared with path patterns in the order in which cache
+  behaviors are listed in the distribution.
+customTargetOriginId0: Target Origin to apply the cache policy. This Origin will
+  be used as source by the cloudfront if the request URL matches the path pattern

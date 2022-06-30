@@ -1,0 +1,30 @@
+AddSteps: |-
+  Jobs to be executed on cluster. Please update s3 and py file.
+  ```js
+  [
+  {
+  "ActionOnFailure" : "CONTINUE",
+  "Name"              : "sparkstepTest",
+  "HadoopJarStep" : {
+  "Jar" : "command-runner.jar",
+  "Args" : [
+    "spark-submit",
+    "s3://YOUR-S3-FOLDER/script3.py"
+  ]
+  }
+  }
+  ]
+  ```
+ManagedScaling: |
+  ManagedScalingPolicy example.
+  ```js
+  {
+  "ComputeLimits" : {
+  "UnitType" : "Instances",
+  "MinimumCapacityUnits" : 2,
+  "MaximumCapacityUnits" : 5,
+  "MaximumOnDemandCapacityUnits" : 5,
+  "MaximumCoreCapacityUnits" : 3
+  }
+  }
+  ```

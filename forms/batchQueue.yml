@@ -1,0 +1,9 @@
+tags: |
+  Key value pair of tags to be assigned to queues
+  Sample Value for tags configuration:
+  ```js
+  {
+      "key1" : "value1",
+      "key2" : "valuev"
+  }
+  ```

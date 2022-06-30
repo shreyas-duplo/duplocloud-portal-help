@@ -1,0 +1,25 @@
+OtherContainerProperties: |
+  All Other Container Properties for the Register Job Definition Request parameters as documented [here](https://docs.aws.amazon.com/batch/latest/APIReference/API_RegisterJobDefinition.html) only for the **ContainerProperties** section.
+  Sample Value for the Other Container properties to override **Command** is as below
+  ```js
+  {
+      "Command" : ["sleep", "5"]
+  }
+  ```
+OtherJobProperties: |
+  All Other Job Properties for the Register Job Definition Request parameters as documented [here](https://docs.aws.amazon.com/batch/latest/APIReference/API_RegisterJobDefinition.html) except the **ContainerProperties** section.
+  Sample Value for the Other Job properties to set **RetryStrategy** is as below
+  ```js
+  {
+      "RetryStrategy": {
+        "EvaluateOnExit": [
+            {
+              "Action": "EXIT",
+              "OnExitCode": "1*",
+              "OnReason": "reason*",
+              "OnStatusReason": "status"
+            }
+        ]
+      }
+  }
+  ```
