@@ -30,7 +30,7 @@ pvcAnnotations: |
   key1: value1
   key2: value2
   ```
-resources: |
+pvcLabels: |
   Kubernetes labels in key value format. Sample value is like below
   ```yml
   key1: value1
