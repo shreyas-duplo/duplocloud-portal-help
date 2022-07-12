@@ -34,10 +34,10 @@ VolumeMappingsK8s: |-
         Name: nginx
   # Deployment using PersistentVolumeClaim. 
   - Name: nginx
-      Path: /usr/share/nginx/html
-      Spec:
+    Path: /usr/share/nginx/html
+    Spec:
       PersistentVolumeClaim:
-          claimName: efs-claim
+        claimName: efs-claim
   ```
 PodConfigK8s: |-
   Deployment and Pod confiiguration
