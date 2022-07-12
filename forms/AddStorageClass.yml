@@ -1,12 +1,14 @@
 name: Storage Class Name.
 provisioner: Each StorageClass has a provisioner that determines what volume plugin is used for provisioning PVs. This field must be specified.
 reclaimPolicy: |
-  PersistentVolumes that are dynamically created by a StorageClass will have the reclaim policy specified in the reclaimPolicy field of the class, which can be either Delete or Retain. If no reclaimPolicy is specified when a StorageClass object is created, it will default to Delete.
+  PersistentVolumes that are dynamically created by a StorageClass will have the reclaim policy specified in the reclaimPolicy field of the class, which can be either `Delete`or `Retain`. If no reclaimPolicy is specified when a StorageClass object is created, it will default to `Delete`.
   PersistentVolumes that are created manually and managed via a StorageClass will have whatever reclaim policy they were assigned at creation.
 volumeBindingMode: |
-  The volumeBindingMode field controls when volume binding and dynamic provisioning should occur. When unset, "Immediate" mode is used by default.
-  The Immediate mode indicates that volume binding and dynamic provisioning occurs once the PersistentVolumeClaim is created. For storage backends that are topology-constrained and not globally accessible from all Nodes in the cluster, PersistentVolumes will be bound or provisioned without knowledge of the Pod's scheduling requirements. This may result in unschedulable Pods.
-  A cluster administrator can address this issue by specifying the WaitForFirstConsumer mode which will delay the binding and provisioning of a PersistentVolume until a Pod using the PersistentVolumeClaim is created. PersistentVolumes will be selected or provisioned conforming to the topology that is specified by the Pod's scheduling constraints. 
+  The Volume Binding Mode field controls when volume binding and dynamic provisioning should occur. When unset, `Immediate` mode is used by default.  
+  The `Immediate` mode indicates that volume binding and dynamic provisioning occurs once the PersistentVolumeClaim is created. 
+  For storage backends that are topology-constrained and not globally accessible from all Nodes in the cluster, PersistentVolumes will be bound or provisioned without knowledge of the Pod's scheduling requirements. 
+  This may result in unschedulable Pods.  
+  A cluster administrator can address this issue by specifying the `WaitForFirstConsumer` mode which will delay the binding and provisioning of a PersistentVolume until a Pod using the PersistentVolumeClaim is created. PersistentVolumes will be selected or provisioned conforming to the topology that is specified by the Pod's scheduling constraints. 
 allowVolumeExpansion: PersistentVolumes can be configured to be expandable. This feature when set to true, allows the users to resize the volume by editing the corresponding PVC object.
 parameters: |
   Storage Classes have parameters that describe volumes belonging to the storage class. Different parameters may be accepted depending on the provisioner. 

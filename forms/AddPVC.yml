@@ -1,12 +1,12 @@
-Name: Name for Persistent Volume Claim.
+name: Name for Persistent Volume Claim.
 storageClassName: Storage Class Name for the Persistent Volume Claim to be created.
 volumeName: Provide Volume Name to claim exiting PV.
 volumeMode: |
-  Kubernetes supports two volumeModes of PersistentVolumes: `Filesystem` and `Block`.
-  volumeMode is an optional API parameter. Filesystem is the default mode used when volumeMode parameter is omitted.
-  A volume with volumeMode: Filesystem is mounted into Pods into a directory. If the volume is backed by a block device and the device is empty, Kubernetes creates a filesystem on the device before mounting it for the first time.
-  You can set the value of volumeMode to Block to use a volume as a raw block device. Such volume is presented into a Pod as a block device, without any filesystem on it. This mode is useful to provide a Pod the fastest possible way to access a volume, without any filesystem layer between the Pod and the volume.
-accessMode: |
+  Kubernetes supports two volumeModes of PersistentVolumes: `Filesystem` and `Block`.  
+  Volume Mode is an optional API parameter. `Filesystem` is the default mode used when volumeMode parameter is omitted.  
+  A volume with volumeMode: `Filesystem` is mounted into Pods into a directory. If the volume is backed by a block device and the device is empty, Kubernetes creates a filesystem on the device before mounting it for the first time.  
+  You can set the value of volumeMode to `Block` to use a volume as a raw block device. Such volume is presented into a Pod as a block device, without any filesystem on it. This mode is useful to provide a Pod the fastest possible way to access a volume, without any filesystem layer between the Pod and the volume.  
+accessModes: |
   A PersistentVolume can be mounted on a host in any way supported by the resource provider. As shown below, providers will have different capabilities and each PV's access modes are set to the specific modes supported by that particular volume. For example, NFS can support multiple read/write clients, but a specific NFS PV might be exported on the server as read-only. Each PV gets its own set of access modes describing that specific PV's capabilities.
   The access modes are:
   1. **ReadWriteOnce**
@@ -23,4 +23,16 @@ Resources: |
   ```yml
   requests:
     storage: 10Gi
+  ```
+pvcAnnotations: |
+  Kubernetes annotations in key value format. Sample value is like below
+  ```yml
+  key1: value1
+  key2: value2
+  ```
+resources: |
+  Kubernetes labels in key value format. Sample value is like below
+  ```yml
+  key1: value1
+  key2: value2
   ```
