@@ -1,0 +1,16 @@
+Name: Friendly name for Elastic File System. User provided name will be appended with prefix as "duploservice-<tenant_name>-".
+CreationToken: A string of up to 64 ASCII characters. Amazon EFS uses this to ensure idempotent creation.
+ProvisionedThroughputInMibps: |
+  The throughput, measured in MiB/s, that you want to provision for a file system that you're creating. 
+  Valid values are 1-1024. Required if ThroughputMode is set to provisioned . The upper limit for throughput is 1024 MiB/s.
+performanceMode: |
+  The performance mode of the file system. We recommend generalPurpose performance mode for most file systems. 
+  File systems using the maxIO performance mode can scale to higher levels of aggregate throughput and operations per second with a tradeoff of slightly higher latencies for most file operations. The performance mode can't be changed after the file system has been created.
+  Note: The maxIO mode is not supported on file systems using One Zone storage classes.
+throughputMode: |
+  Specifies the throughput mode for the file system, either bursting or provisioned . If you set ThroughputMode to provisioned , you must also set a value for ProvisionedThroughputInMibps. 
+  After you create the file system, you can decrease your file system's throughput in Provisioned Throughput mode or change between the throughput modes, as long as it’s been more than 24 hours since the last decrease or throughput mode change.
+Backup: | 
+  Specifies whether automatic backups are enabled on the file system that you are creating. Set the value to true to enable automatic backups. 
+  If you are creating a file system that uses One Zone storage classes, automatic backups are enabled by default.
+Encrypted: A Boolean value that, if true, creates an encrypted file system. When creating an encrypted file system, you have the option of specifying an existing Key Management Service key (KMS key).

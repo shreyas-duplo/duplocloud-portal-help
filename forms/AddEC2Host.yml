@@ -1,4 +1,4 @@
-Name: Friendly name for host. User provided name will be appended by prefix as "duploservice-<tenant_name>-" after host is created.
+Name: Friendly name for host. User provided name will be appended by prefix as "duploservice-<tenant_name>-".
 Zone: |
   AWS availibility zone to create an EC2 instance.
   1. **Automatic:** Select this option to automatically assign the availbilty zone to EC2 host. DuploCloud will automatically assign a zone with subnet having most availble IPv4 addresses.
