@@ -1,13 +1,13 @@
 Name: Friendly name for host. User provided name will be appended by prefix as "duploservice-<tenant_name>-".
 Zone: |
-  AWS availibility zone to create an EC2 instance.
-  1. **Automatic:** Select this option to automatically assign the availbilty zone to EC2 host. DuploCloud will automatically assign a zone with subnet having most availble IPv4 addresses.
+  AWS Availability Zone to create an EC2 instance.
+  1. **Automatic:** Select this option to automatically assign the availability zone to EC2 host. DuploCloud will automatically assign a zone with subnet having most available IPv4 addresses.
 InstanceType: Select an instance type that meets your computing, memory, networking, or storage needs. Select type as "Other" if you don't see desired option in the dropdown.
 InstanceCount: Desired capacity for the autoscaling group. 
 minInstanceCount: Minimum Instance Count. Autoscaling group will make sure that total no of instance will always be greater than or equal to min count.
 maxInstanceCount: Maximum Instance Count. Autoscaling group will make sure that total no of instance will always be less than or equal to max count.
 IsClusterAutoscaled: Check this when you want kubernetes cluster autoscaler to manage this cluster auto scaling.
-allocationTags: Allocation tags is the simplest way to constraint contaieners/pods with hosts/nodes. DuploCloud/Kubernetese orchastrator will make sure containers will run on the hosts having same allocation tags.
+allocationTags: Allocation tags is the simplest way to constraint containers/pods with hosts/nodes. DuploCloud/Kubernetes Orchestrator will make sure containers will run on the hosts having same allocation tags.
 diskSize: EBS volume size in GB. If not specified volume size will be same as defined the AMI.
 agentPlatform: |
   Select container orchestration platform.
@@ -33,8 +33,8 @@ volumes: |
   ```js
   [
       {
-          "Name":"/dev/sdA", 
-          "VolumeType":"Gp2", 
+          "Name":"/dev/sda", 
+          "VolumeType":"gp2", 
           "Size":"100"
       }
   ]

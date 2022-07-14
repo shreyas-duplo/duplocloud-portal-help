@@ -12,13 +12,13 @@
             },
             "AddEC2Host": {
                 "Name": "Friendly name for host. User provided name will be appended by prefix as \"duploservice-<tenant_name>-\".",
-                "Zone": "AWS availibility zone to create an EC2 instance.\n1. **Automatic:** Select this option to automatically assign the availbilty zone to EC2 host. DuploCloud will automatically assign a zone with subnet having most availble IPv4 addresses.\n",
+                "Zone": "AWS Availability Zone to create an EC2 instance.\n1. **Automatic:** Select this option to automatically assign the availability zone to EC2 host. DuploCloud will automatically assign a zone with subnet having most available IPv4 addresses.\n",
                 "InstanceType": "Select an instance type that meets your computing, memory, networking, or storage needs. Select type as \"Other\" if you don't see desired option in the dropdown.",
                 "InstanceCount": "Desired capacity for the autoscaling group.",
                 "minInstanceCount": "Minimum Instance Count. Autoscaling group will make sure that total no of instance will always be greater than or equal to min count.",
                 "maxInstanceCount": "Maximum Instance Count. Autoscaling group will make sure that total no of instance will always be less than or equal to max count.",
                 "IsClusterAutoscaled": "Check this when you want kubernetes cluster autoscaler to manage this cluster auto scaling.",
-                "allocationTags": "Allocation tags is the simplest way to constraint contaieners/pods with hosts/nodes. DuploCloud/Kubernetese orchastrator will make sure containers will run on the hosts having same allocation tags.",
+                "allocationTags": "Allocation tags is the simplest way to constraint containers/pods with hosts/nodes. DuploCloud/Kubernetes Orchestrator will make sure containers will run on the hosts having same allocation tags.",
                 "diskSize": "EBS volume size in GB. If not specified volume size will be same as defined the AMI.",
                 "agentPlatform": "Select container orchestration platform.\n1. **Linux Docker/Native:** Select this option if you want to run docker native services which are Linux based.\n2. **Windows Docker/Native:** Select this option if you want to run docker native services which are Windows based.\n3. **EKS Linux:** Select this options if you want to run services on the Kubernetes Cluster.\n4. **None:** This option has to be selected when EC2 instance is not used for running containers.\n",
                 "ImageId": "AMI id for the EC2 instance. AMI should be compatible with the agent platform. Select type as \"Other\" if you don't see desired option in dropdown.",
@@ -27,7 +27,7 @@
                 "metaDataServiceFlag": "Select `Disabled` to turn off access to instance metadata. Otherwise you can set `V1 and V2`, or just `V2`. If you do not specify a value, the default is V1 and V2.",
                 "base64": "Base64 encoded user data. On Linux machine you can encode script file using command ```cat <filepath> | base64 -w 0 ```.",
                 "tags": "Tags to be added to ec2 instance. Format for adding tags is as below.\n```js\n{\n    \"key\" : \"value\"\n}\n```\n",
-                "volumes": "Array of extra block devices in json format as below.\n```js\n[\n    {\n        \"Name\":\"/dev/sdA\", \n        \"VolumeType\":\"Gp2\", \n        \"Size\":\"100\"\n    }\n]\n```\n",
+                "volumes": "Array of extra block devices in json format as below.\n```js\n[\n    {\n        \"Name\":\"/dev/sda\", \n        \"VolumeType\":\"gp2\", \n        \"Size\":\"100\"\n    }\n]\n```\n",
                 "nwInterfaces": "Extra network interfaces to be attached to the ec2 host in a JSON format as below.\n```js\n[\n  {\n    \"NetworkInterfaceId\": \"eni-095827b411091db43\",\n    \"DeviceIndex\": 0\n  },\n  {\n    \"NetworkInterfaceId\": \"eni-0df26c4b283cde675\",\n    \"DeviceIndex\": 1\n  }\n] \n```\n"
             },
             "AddEFS": {
@@ -48,12 +48,13 @@
                 "ingressRules": "Ingress rules specifications as documented [here](https://kubernetes.io/docs/concepts/services-networking/ingress/#ingress-rules)\nClick on the `Add Rule` button to add the rules for the kubernetes services created using DuploCloud.\n```\n",
                 "ingressAnnotations": "List of Key Value pairs to annotate the Ingress Object. \nAnnotations are used for controlling the behavior of the services exposed by the Ingress. \nEach ingress controller defines the set of annotations which can be used to controll the behavior, for e.g. you can find the documentation for AWS ALB ingress controller [here](https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.2/guide/ingress/annotations/)\n",
                 "httpPort": "HTTP Listener Port. If you dont want to exposed your services over HTTP, make it blank.",
-                "httpsPort": "HTTPS Listener Port. HTTPS Listener port can be specified only when SSL certificate ARN is specified."
+                "httpsPort": "HTTPS Listener Port. HTTPS Listener port can be specified only when SSL certificate ARN is specified.",
+                "AddIngressingressLabels": "Key Value pair of labels to be added to SecretProviderClass\nSample Value Can be as bellow\n```yaml\nkey1: value1\nkey2: value2\n```"
             },
             "AddPVC": {
                 "name": "Name for Persistent Volume Claim.",
                 "storageClassName": "Storage Class Name for the Persistent Volume Claim to be created.",
-                "volumeName": "Provide Volume Name to claim exiting PV.",
+                "volumeName": "Provide Volume Name to claim existing PV.",
                 "volumeMode": "Kubernetes supports two volumeModes of PersistentVolumes: `Filesystem` and `Block`.  \nVolume Mode is an optional API parameter. `Filesystem` is the default mode used when volumeMode parameter is omitted.  \nA volume with volumeMode: `Filesystem` is mounted into Pods into a directory. If the volume is backed by a block device and the device is empty, Kubernetes creates a filesystem on the device before mounting it for the first time.  \nYou can set the value of volumeMode to `Block` to use a volume as a raw block device. Such volume is presented into a Pod as a block device, without any filesystem on it. This mode is useful to provide a Pod the fastest possible way to access a volume, without any filesystem layer between the Pod and the volume.  \n",
                 "accessModes": "A PersistentVolume can be mounted on a host in any way supported by the resource provider. As shown below, providers will have different capabilities and each PV's access modes are set to the specific modes supported by that particular volume. For example, NFS can support multiple read/write clients, but a specific NFS PV might be exported on the server as read-only. Each PV gets its own set of access modes describing that specific PV's capabilities.\nThe access modes are:\n1. **ReadWriteOnce**\nthe volume can be mounted as read-write by a single node. ReadWriteOnce access mode still can allow multiple pods to access the volume when the pods are running on the same node.\n2. **ReadOnlyMany**\nthe volume can be mounted as read-only by many nodes.\n3. **ReadWriteMany**\nthe volume can be mounted as read-write by many nodes.\n4. **ReadWriteOncePod**\nthe volume can be mounted as read-write by a single Pod. Use ReadWriteOncePod access mode if you want to ensure that only one pod across whole cluster can read that PVC or write to it. This is only supported for CSI volumes and Kubernetes version 1.22+.\n",
                 "Resources": "Claims, like Pods, can request specific quantities of a resource. In this case, the request is for storage. The same **[resource model]**(https://github.com/kubernetes/design-proposals-archive/blob/main/scheduling/resources.md) applies to both volumes and claims.\nSample Value\n```yml\nrequests:\n  storage: 10Gi\n```\n",

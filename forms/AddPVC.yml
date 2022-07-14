@@ -1,6 +1,6 @@
 name: Name for Persistent Volume Claim.
 storageClassName: Storage Class Name for the Persistent Volume Claim to be created.
-volumeName: Provide Volume Name to claim exiting PV.
+volumeName: Provide Volume Name to claim existing PV.
 volumeMode: |
   Kubernetes supports two volumeModes of PersistentVolumes: `Filesystem` and `Block`.  
   Volume Mode is an optional API parameter. `Filesystem` is the default mode used when volumeMode parameter is omitted.  
