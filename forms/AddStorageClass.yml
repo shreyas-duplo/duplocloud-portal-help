@@ -22,3 +22,25 @@ parameters: |
   gidRangeEnd: "2000" # optional
   basePath: "/dynamic_provisioning" # optional
   ```
+storageClassAnnotations: |
+  Kubernetes annotations in key value format. Sample value is like below
+  ```yml
+  key1: value1
+  key2: value2
+  ```
+storageClassLabels: |
+  Kubernetes labels in key value format. Sample value is like below
+  ```yml
+  key1: value1
+  key2: value2
+  ```
+allowedTopologies: |
+  When a cluster operator specifies the `WaitForFirstConsumer` volume binding mode, it is no longer necessary to restrict provisioning to specific topologies in most situations. However, if still required, `allowedTopologies` can be specified.
+  Sample Value Allowed Toplogies
+  ```yml
+  - matchLabelExpressions:
+    - key: failure-domain.beta.kubernetes.io/zone
+      values:
+      - us-central-1a
+      - us-central-1b
+  ```
