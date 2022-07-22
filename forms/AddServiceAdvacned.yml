@@ -69,6 +69,14 @@ PodConfigK8s: |-
     - name: myregistrykey
   ServiceAccountName: my-service-account-name
   AutomountServiceAccountToken: true
+  # mount secretprovider class volume
+  Volumes:
+  - Name: <secretvolume-name>
+    Csi:
+      driver: secrets-store.csi.k8s.io
+      readOnlyProperty: true
+      VolumeAttributes:
+        secretProviderClass: <my-secret-provider-class>
   ```
 ContainerConfigK8s: |-
   Deployment and Pod confiiguration
@@ -107,5 +115,13 @@ ContainerConfigK8s: |-
   - secretRef:
       name: <secret_name>
   - configMapRef:
-      name: <secret_name>
+      name: <configmap_name>
+  # Mount SecretProvider
+  VolumesMounts:
+  - Name: <volumename>
+    MountPath: /mnt/secrets
+    readOnlyProperty: true
+  EnvFrom:
+  - SecretRef:
+      Name: <secretobject-name>
   ```

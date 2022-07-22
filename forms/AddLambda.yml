@@ -1,0 +1,11 @@
+FunctionName: Unique name for your Lambda Function.
+Description: Description of what your Lambda Function does.
+PackageType: |
+  Lambda deployment package type.
+  1. **Zip:** Upload a .zip file as your deployment package using Amazon Simple Storage Service (Amazon S3).
+  2. **Image:** Upload your container images to Amazon Elastic Container Registry (Amazon ECR).
+RuntimeValue: Runtime is required if the deployment package type is a `Zip` file archive.
+MemorySize: Amount of memory in MB your Lambda Function can use at runtime.
+TimeoutInt: The amount of time in seconds that Lambda allows a function to run before stopping it.
+Handler: The name of the method within your code that Lambda calls to execute your function. Handler is required if the deployment package type is a `Zip` file archive.
+EnvironmentVariables: Map of environment variables that are accessible from the function code during execution.

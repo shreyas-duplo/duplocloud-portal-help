@@ -17,7 +17,7 @@ accessModes: |
   the volume can be mounted as read-write by many nodes.
   4. **ReadWriteOncePod**
   the volume can be mounted as read-write by a single Pod. Use ReadWriteOncePod access mode if you want to ensure that only one pod across whole cluster can read that PVC or write to it. This is only supported for CSI volumes and Kubernetes version 1.22+.
-Resources: |
+resources: |
   Claims, like Pods, can request specific quantities of a resource. In this case, the request is for storage. The same **[resource model]**(https://github.com/kubernetes/design-proposals-archive/blob/main/scheduling/resources.md) applies to both volumes and claims.
   Sample Value
   ```yml
