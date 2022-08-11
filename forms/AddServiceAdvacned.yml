@@ -74,7 +74,7 @@ PodConfigK8s: |-
   - Name: <secretvolume-name>
     Csi:
       driver: secrets-store.csi.k8s.io
-      readOnlyProperty: true
+      readOnly: true
       VolumeAttributes:
         secretProviderClass: <my-secret-provider-class>
   ```
@@ -120,7 +120,7 @@ ContainerConfigK8s: |-
   VolumesMounts:
   - Name: <volumename>
     MountPath: /mnt/secrets
-    readOnlyProperty: true
+    readOnly: true
   EnvFrom:
   - SecretRef:
       Name: <secretobject-name>
