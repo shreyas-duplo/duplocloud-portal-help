@@ -141,6 +141,12 @@ EnvVariablesK8s: |-
     Value: myuser
   - Name: DB_PASSWORD
     Value: mypassword
+  # use secret object from SecretProvider Class
+  - name: SECRET_USERNAME
+    valueFrom:
+    secretKeyRef:
+      name: <secret-name configured in SecretProvider>
+      key: <secret-key>
   ```
 VolumeMappings: |
   Example of mounting a host drive into the container
