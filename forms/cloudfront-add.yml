@@ -1,5 +1,5 @@
 Name: Any friendly name to the cloudfront distribution
-certificate: Certificate ARN to be used by the distribution
+certificate: Certificate ARN to be used by the distribution. Make sure the certificate is in the us-east-1 region.
 DefaultRootObject: 'Default root object object that will be returned while accessing
   root of the domain. Example: index.html. Should not start with "/"'
 defaultCachePolicyId: "Default Cache policy applied to the Distribution\n        [Click
