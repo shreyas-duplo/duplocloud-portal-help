@@ -1,0 +1,138 @@
+VolumeMappingsK8s: |-
+  Volumes and Volume mount setting in the Duplo simplied format. If you specify Volumes here, Duplo will take care of configuring pod volumes and volume mounts.
+  ```yaml
+  ---
+  # Statefulset using EBS volume
+  - AccessMode: ReadWriteOnce
+    Name: data
+    Path: /attachedvolume
+    Size: 10Gi
+  # Deployment using host directory mount in read-only mode
+  - Name: rootfs   # Name of the volume
+    Path: /rootfs  # Path in the container
+    ReadOnly: true # Set if it is readonly mount
+    Spec:          # K8s Defined volumes
+      HostPath:
+        Path: /    # Path on the host
+  # Deployment using host directory mount in read-write mode
+  - Name: var-run
+    Path: /var/run
+    Spec:
+      HostPath:
+        Path: /var/run
+  # Deployment mounting secret into directory
+  - Name: nginx
+    Path: /etc/nginx/conf.d
+    Spec:
+      Secret:
+        SecretName: nginx
+  # Deployment mounting config map into directory
+  - Name: nginx
+    Path: /etc/nginx/conf.d
+    Spec:
+      ConfigMap:
+        Name: nginx
+  # Deployment using PersistentVolumeClaim. 
+  - Name: nginx
+    Path: /usr/share/nginx/html
+    Spec:
+      PersistentVolumeClaim:
+        claimName: efs-claim
+  ```
+PodConfigK8s: |-
+  Deployment and Pod confiiguration
+  ```yaml
+  Subdomain: same-name-as-my-service
+  Labels:
+    label1: values1
+  Annotations:
+    seccomp.security.alpha.kubernetes.io/pod: docker/default
+  PodLabels:
+    label1: values1
+  PodAnnotations:
+    seccomp.security.alpha.kubernetes.io/pod: docker/default
+  RestartPolicy: Always
+  PodSecurityContext:
+    RunAsUser: 1000
+    RunAsGroup: 3000
+    FsGroup: 2000
+  Volumes:
+    - name: cache-volume
+      emptyDir: {}
+    - name: config-vol
+      configMap:
+        name: log-config
+        items:
+          - key: log_level
+            path: log_level
+  ImagePullSecrets:
+    - name: myregistrykey
+  ServiceAccountName: my-service-account-name
+  AutomountServiceAccountToken: true
+  # mount secretprovider class volume
+  Volumes:
+  - Name: <secretvolume-name>
+    Csi:
+      driver: secrets-store.csi.k8s.io
+      readOnly: true
+      VolumeAttributes:
+        secretProviderClass: <my-secret-provider-class>
+  ```
+ContainerConfigK8s: |-
+  Deployment and Pod confiiguration
+  ```yaml
+  ImagePullPolicy: IfNotPresent
+  Args:
+    - '-- somearg'
+  LivenessProbe:
+    httpGet:
+      path: /
+      port: 80
+      httpHeaders:
+        - name: Custom-Header
+          value: Awesome
+    initialDelaySeconds: 3
+    periodSeconds: 3
+  ReadinessProbe:
+    exec:
+      command:
+        - cat
+        - /tmp/healthy
+    initialDelaySeconds: 5
+    periodSeconds: 5
+  SecurityContext:
+    Capabilities:
+      Add:
+      - NET_BIND_SERVICE
+      Drop:
+      - ALL
+    ReadOnlyRootFilesystem: false
+    RunAsNonRoot: true
+    RunAsUser: 1000
+  AutomountServiceAccountToken: true
+  VolumesMounts:
+  EnvFrom:
+  - secretRef:
+      name: <secret_name>
+  - configMapRef:
+      name: <configmap_name>
+  # Mount SecretProvider
+  VolumesMounts:
+  - Name: <volumename>
+    MountPath: /mnt/secrets
+    readOnly: true
+  EnvFrom:
+  - SecretRef:
+      Name: <secretobject-name>
+  # Add Resource Limits
+  Resources:
+  Requests:
+    memory:2Gi
+    cpu: '2'
+    ephemeral-storage: 2Gi
+  Limits:
+    memory: 2Gi
+    cpu: '2'
+    ephemeral-storage: 4Gi
+ 
+  ```
