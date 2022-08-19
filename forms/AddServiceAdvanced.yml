@@ -71,15 +71,15 @@ PodConfigK8s: |-
   AutomountServiceAccountToken: true
   # mount secretprovider class volume
   Volumes:
-  - Name: <secretvolume-name>
+  - Name: secretvolume-name
     Csi:
       driver: secrets-store.csi.k8s.io
       readOnly: true
       VolumeAttributes:
-        secretProviderClass: <my-secret-provider-class>
+        secretProviderClass: my-secret-provider-class
   ```
 ContainerConfigK8s: |-
-  Deployment and Pod confiiguration
+  Deployment and Pod configurations
   ```yaml
   ImagePullPolicy: IfNotPresent
   Args:
@@ -113,26 +113,26 @@ ContainerConfigK8s: |-
   VolumesMounts:
   EnvFrom:
   - secretRef:
-      name: <secret_name>
+      name: secret_name
   - configMapRef:
-      name: <configmap_name>
+      name: configmap-name
   # Mount SecretProvider
   VolumesMounts:
-  - Name: <volumename>
+  - Name: volume-name
     MountPath: /mnt/secrets
     readOnly: true
   EnvFrom:
   - SecretRef:
-      Name: <secretobject-name>
-  # Add Resource Limits
-  Resources:
-  Requests:
-    memory:2Gi
-    cpu: '2'
-    ephemeral-storage: 2Gi
-  Limits:
-    memory: 2Gi
-    cpu: '2'
-    ephemeral-storage: 4Gi
- 
+      Name: secretobject-name
+  # Set Resource Request and Limits
+  resources:
+    requests:
+      memory: "10Gi"
+      cpu: "500m"
+      ephemeral-storage: 2Gi
+    limits:
+      memory: "10Gi"
+      cpu: "500m"
+      ephemeral-storage: 4Gi
+  
   ```

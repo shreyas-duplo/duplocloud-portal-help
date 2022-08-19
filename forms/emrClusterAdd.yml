@@ -4,8 +4,8 @@ ReleaseLabel: Choose ReleaseLabel or to provide ReleaseLabel not in list choose
   Other.
 IdleTimeBeforeShutdown: Idle time (when no job is running) in hours before terminating
   the cluster.
-StepConcurrencyLevel: How many jobs can run concurrenly. This settinngs should
-  depend on avialable resources.
+StepConcurrencyLevel: Number of steps that can be executed concurrently. This setting should
+  depend on the available resources.
 Applications: |
   Applications to be installed in cluster (master and slaves).
   ```js
