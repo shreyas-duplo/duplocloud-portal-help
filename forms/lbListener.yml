@@ -1,24 +1,24 @@
 lbType: |
-  Type of AWS loadbalencer. It supports following two types
-  1. **Application**: Use this type when user wants to expose HTTP or HTTPS port using the Loadbalencer.
+  Type of AWS loadbalancer. It supports following two types
+  1. **Application**: Use this type when user wants to expose HTTP or HTTPS port using the Loadbalancer.
   2. **Network**: For any other ports use this type.
 ContainerPort: Port exposed by the container. 
 ExternalPort: |
-  Port user want to expose using loadbalencer. It may not be same as to the contaiener port.
+  Port user want to expose using loadbalancer. It may not be same as to the container port.
 visibility: |
   Visibility of the service to be exposed which can be either Internal or Public.
   1 **Internal Only**: When this option is selected service will accessible within the infrastructure created in AWS.
   2. **Public**: When this option is selected, service will be accessible to the internet. 
 HealthCheck: |
-  Helath check URL for this container. This required paramter when Application load balencer is selected. 
+  Health check URL for this container. This required parameter when Application loadbalancer is selected. 
   It helps AWS ALB to decide whether service is up and running.
 BackendProtocol: Protocol for the service exposed by the container.
 BeProtocolVersion: |
-  Protocol version only applicatible when application loadbalencer is selected
+  Protocol version only applicable when application loadbalancer is selected
   1. **HTTP1**: Send requests to targets using HTTP/1.1. Supported when the request protocol is HTTP/1.1 or HTTP/2.
   2. **HTTP2**: Send requests to targets using HTTP/2. Supported when the request protocol is HTTP/2 or gRPC, but gRPC-specific features are not available.
   3. **gRPC**: Send requests to targets using gRPC. Supported when the request protocol is gRPC.
-Certificates: AWS Certificate to be attached to loadbalencer to expose the service over SSL.
+Certificates: AWS Certificate to be attached to loadbalancer to expose the service over SSL.
 TgCount: Target group count.
 HealthyThresholdCount: The number of consecutive health checks successes required before considering an unhealthy target healthy.
 UnHealthyThresholdCount: The number of consecutive health check failures required before considering a target unhealthy.

@@ -10,7 +10,7 @@ environmentvars: |
   [
     {
       "Name": "<env_var_name>"
-      "Value" "<env_var_value>"
+      "Value": "<env_var_value>"
     }
   ]
   ```

@@ -1,0 +1,8 @@
+Name: Enter Databricks workspace name.
+Tier: Choose between Standard or Premium. View Pricing details [here](https://azure.microsoft.com/en-us/pricing/details/databricks/).
+DisablePublicIP:  |
+  If you set this to `Disabled`, no user access is permitted from the public internet.
+  If you set this to `Enabled`, users and REST API clients on the public internet can access Azure Databricks
+VnetIntegration: Choosing `Enabled` allows you to deploy an Azure Databricks workspace in your virtual network.
+PrivateSubnet: Use the default private subnet name.
+PublicSubnet: Use the default public subnet name.
