@@ -1,8 +1,8 @@
 Name: The name of the Virtual Machine.
-Subnets: Select the subnet
+Subnets: Select the subnet.
 InstanceType: The size of the Virtual Machine.
 ImageId: Choose the Image for the VM. Image should be compatible with the agent platform. Select type as "Other" if you don't see desired option in dropdown.
-publicIp: Choose `Enable1 to use a public IP address if you want to communicate with the virtual machine from outside the virtual network.
+publicIp: Choose `Enable` to use a public IP address if you want to communicate with the virtual machine from outside the virtual network.
 Encryption: Choose to encrypt the given VM.
 diskSize: Disk size in GB.
 allocationTags: Allocation tags is the simplest way to constraint containers/pods with hosts/nodes. DuploCloud/Kubernetes Orchestrator will make sure containers will run on the hosts having same allocation tags.

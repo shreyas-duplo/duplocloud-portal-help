@@ -1,0 +1,7 @@
+name:
+InstanceType:
+MinSize:
+MaxSize:
+DesiredCapacity:
+AllocationTag:
+enableAutoScaling:
