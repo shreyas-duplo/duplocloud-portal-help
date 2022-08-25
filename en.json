@@ -177,13 +177,13 @@
                 "CisCloudWatchAlarmNotificationEmail": "Specifies an email address that should receive the CIS CloudTrail CloudWatch Alarms.\n\nIn order to satisfy AWS CIS controls 3.1 through 3.14, the email recipient must first confirm the subscription to receive the alerts from AWS."
             },
             "azureAddAgentPool": {
-                "name": null,
-                "InstanceType": null,
-                "MinSize": null,
-                "MaxSize": null,
-                "DesiredCapacity": null,
-                "AllocationTag": null,
-                "enableAutoScaling": null
+                "name": "Select Id to create a node pool",
+                "InstanceType": "The size of the virtual machines that will form the nodes in this node pool.",
+                "MinSize": "Set the minimum node count.",
+                "MaxSize": "Set the maximum node count.",
+                "DesiredCapacity": "Set the Desired capacity for the autoscaling.",
+                "AllocationTag": "Allocation tags is the simplest way to constraint containers/pods with hosts/nodes. DuploCloud/Kubernetes Orchestrator will make sure containers will run on the hosts having same allocation tags.",
+                "enableAutoScaling": "Enable this when you want kubernetes cluster to sized correctly for the current running workloads."
             },
             "azureAddVM": {
                 "Name": "The name of the Virtual Machine.",
