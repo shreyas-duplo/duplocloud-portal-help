@@ -176,6 +176,24 @@
                 "EnableCisCloudTrailCloudWatchAlarms": "Enables CIS CloudTrail CloudWatch Alarms in all AWS regions managed by Duplo.\n\nEnabling this feature and specifying an email address to receive alerts will satisfy AWS CIS controls 3.1 through 3.14.\n",
                 "CisCloudWatchAlarmNotificationEmail": "Specifies an email address that should receive the CIS CloudTrail CloudWatch Alarms.\n\nIn order to satisfy AWS CIS controls 3.1 through 3.14, the email recipient must first confirm the subscription to receive the alerts from AWS."
             },
+            "azureAddVM": {
+                "Name": "The name of the Virtual Machine.",
+                "Subnets": "Select the subnet",
+                "InstanceType": "The size of the Virtual Machine.",
+                "ImageId": "Choose the Image for the VM. Image should be compatible with the agent platform. Select type as \"Other\" if you don't see desired option in dropdown.",
+                "publicIp": "Choose `Enable1 to use a public IP address if you want to communicate with the virtual machine from outside the virtual network.",
+                "Encryption": "Choose to encrypt the given VM.",
+                "diskSize": "Disk size in GB.",
+                "allocationTags": "Allocation tags is the simplest way to constraint containers/pods with hosts/nodes. DuploCloud/Kubernetes Orchestrator will make sure containers will run on the hosts having same allocation tags.",
+                "joinDomain": "Choose Yes to join the VM to the managed domain.",
+                "joinLogAnalytics": "Select Yes to connect Azure virtual machines to Log Analytics.",
+                "Username": "The administrator username for the VM",
+                "Password": "The administrator password for the VM.",
+                "Name0": "Specify the Disk name.",
+                "VolumeId0": "Logical unit number(LUN) of the data disk. This value is used to identify data disks within the VM and therefore must be unique for each data disk attached to a VM.",
+                "Size0": "Disk size in GB.",
+                "VolumeType0": "Choose the Storage Type."
+            },
             "batchEnv": {
                 "OtherConfigurations": "All Other Create Compute Environment Request parameters as documented [here](https://docs.aws.amazon.com/batch/latest/APIReference/API_CreateComputeEnvironment.html).\nSample Value for customized EC2 configuration.\n```js\n{\n    \"ComputeResources\": {\n        \"Ec2Configuration\": [\n            {\n                \"ImageType\": \"ECS_AL2_NVIDIA\"\n            }\n        ]\n    }\n}\n```"
             },
