@@ -1,0 +1,6 @@
+Name: The name of the Apache Airflow Environment.
+AirflowVersion_other: Airflow version of your environment, will be set by default to the latest version that MWAA supports.
+WeeklyMaintenanceWindowStart_day:  Specify the start date for the weekly maintenance window.
+WeeklyMaintenanceWindowStart_time: Specify the time for the weekly maintenance window.
+KmsKey: Choose to encrypt.
+WebserverAccessMode_bool: Enable if you want to access the webserver over the internet.
