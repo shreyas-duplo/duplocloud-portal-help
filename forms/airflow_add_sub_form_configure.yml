@@ -4,10 +4,9 @@ MinWorkers: The minimum number of workers that you want to run in your environme
 MaxWorkers: The maximum number of workers that can be automatically scaled up. Value need to be between `1` and `25`.
 AirflowConfigurationOptions_str: |
   Specify parameters to override airflow options.
-  Sample Value can be as bellow
+  Sample Value can be as below
   ```js
   {
     "core.log_format": "[%%(asctime)s] {{%%(filename)s:%%(lineno)d}} %%(levelname)s - %%(message)s"
   }
   ```
-
