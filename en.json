@@ -152,6 +152,29 @@
                 "storageClassLabels": "Kubernetes labels in key value format. Sample value is like below\n```yml\nkey1: value1\nkey2: value2\n```\n",
                 "allowedTopologies": "When a cluster operator specifies the `WaitForFirstConsumer` volume binding mode, it is no longer necessary to restrict provisioning to specific topologies in most situations. However, if still required, `allowedTopologies` can be specified.\nSample Value Allowed Toplogies\n```yml\n- matchLabelExpressions:\n  - key: failure-domain.beta.kubernetes.io/zone\n    values:\n    - us-central-1a\n    - us-central-1b\n```"
             },
+            "airflow_add_sub_form_basics": {
+                "Name": "The name of the Apache Airflow Environment.",
+                "AirflowVersion_other": "Airflow version of your environment, will be set by default to the latest version that MWAA supports.",
+                "WeeklyMaintenanceWindowStart_day": "Specify the start date for the weekly maintenance window.",
+                "WeeklyMaintenanceWindowStart_time": "Specify the time for the weekly maintenance window.",
+                "KmsKey": "Choose to encrypt.",
+                "WebserverAccessMode_bool": "Enable if you want to access the webserver over the internet."
+            },
+            "airflow_add_sub_form_configure": {
+                "EnvironmentClass_other": "Environment class for the cluster.",
+                "Schedulers": "The number of schedulers that you want to run in your environment. v2.0.2 and above accepts `2` - `5`, default `2`. v1.10.12 accepts `1`.",
+                "MinWorkers": "The minimum number of workers that you want to run in your environment.",
+                "MaxWorkers": "The maximum number of workers that can be automatically scaled up. Value need to be between `1` and `25`.",
+                "AirflowConfigurationOptions_str": "Specify parameters to override airflow options.\nSample Value can be as bellow\n```js\n{\n  \"core.log_format\": \"[%%(asctime)s] {{%%(filename)s:%%(lineno)d}} %%(levelname)s - %%(message)s\"\n}\n```"
+            },
+            "airflow_add_sub_form_dag": {
+                "S3Bucket": "Choose Amazon S3 storage bucket where DAG is stored.",
+                "DagS3Path": "Specify the relative path to the DAG folder from S3 bucket. For example, `AirflowDags/`",
+                "PluginsS3Path": "Specify the relative path to the plugins.zip file from S3 bucket. For example, plugins.zip. If a relative path is provided in the request, then `Plugins S3Object Version` is required.",
+                "RequirementsS3Path": "Specify the relative path to the requirements.txt file from S3 bucket. For example, requirements.txt or AirflowDags/folder1/requirements.txt. If a relative path is provided in the request, then `Requirements S3Object Version is required.",
+                "RequirementsS3ObjectVersion": "Specify the Version Id of the The requirements.txt file version you want to use. S3 Enable Versioning is required. For example, lSHNqFtO5Z7_6K6YfGpKnpyjqP2JTvSf.",
+                "PluginsS3ObjectVersion": "Specify the plugin.zip version."
+            },
             "awsAccountSecurity": {
                 "EnableSecurityHub": "Enable AWS Security Hub in any region where there is infrastructure managed by Duplo",
                 "EnableAllSecurityHubRegions": "Enable AWS Security Hub in all AWS regions managed by Duplo",
