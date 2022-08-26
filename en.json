@@ -165,13 +165,13 @@
                 "Schedulers": "The number of schedulers that you want to run in your environment. v2.0.2 and above accepts `2` - `5`, default `2`. v1.10.12 accepts `1`.",
                 "MinWorkers": "The minimum number of workers that you want to run in your environment.",
                 "MaxWorkers": "The maximum number of workers that can be automatically scaled up. Value need to be between `1` and `25`.",
-                "AirflowConfigurationOptions_str": "Specify parameters to override airflow options."
+                "AirflowConfigurationOptions_str": "Specify parameters to override airflow options.\nSample Value can be as below\n```js\n{\n  \"core.log_format\": \"[%%(asctime)s] {{%%(filename)s:%%(lineno)d}} %%(levelname)s - %%(message)s\"\n}\n```\n"
             },
             "airflow_add_sub_form_dag": {
                 "S3Bucket": "Choose Amazon S3 storage bucket where DAG is stored.",
                 "DagS3Path": "Specify the relative path to the DAG folder from S3 bucket. For example, `AirflowDags/`",
                 "PluginsS3Path": "Specify the relative path to the plugins.zip file from S3 bucket. For example, plugins.zip. If a relative path is provided in the request, then `Plugins S3Object Version` is required.",
-                "RequirementsS3Path": "Specify the relative path to the requirements.txt file from S3 bucket. For example, `requirements.txt` or `AirflowDags/folder1/requirements.txt`. If a relative path is provided in the request, then `Requirements S3Object Version is required.",
+                "RequirementsS3Path": "Specify the relative path to the requirements.txt file from S3 bucket. For example, `requirements.txt` or `AirflowDags/folder1/requirements.txt`.",
                 "RequirementsS3ObjectVersion": "Specify the Version Id of the the requirements.txt file version you want to use. S3 Enable Versioning is required. For example, lSHNqFtO5Z7_6K6YfGpKnpyjqP2JTvSf.",
                 "PluginsS3ObjectVersion": "Specify the plugin.zip version."
             },
