@@ -5,4 +5,5 @@ RequirementsS3Path: Specify the relative path to the requirements.txt file from 
 RequirementsS3ObjectVersion: |
   Specify the Version Id of the the requirements.txt file version you want to use. For example, lSHNqFtO5Z7_6K6YfGpKnpyjqP2JTvSf.
   S3 Enable Versioning is required to use this in your environment.
-PluginsS3ObjectVersion: Specify the plugin.zip version.
+PluginsS3ObjectVersion: Specify the plugin.zip version. For example, lSHNqFtO5Z7_6K6YfGpKnpyjqP2JTvSf.
+  S3 Enable Versioning is required to use this in your environment.
