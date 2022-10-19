@@ -1,0 +1,11 @@
+Name: Name of the domain.
+Version: Select the version of Elasticsearch to deploy.
+DataInstanceType: Select the Instance type of data nodes in the cluster.
+DataInstanceCount: Provide Data Instance Count.
+VolumeSize: Provide Storage in Gb.
+DedicatedMasterType: Select the Instance type of the dedicated master nodes in the cluster.
+DedicatedMasterCount: Provide the Number of dedicated master nodes in the cluster.
+Kms: Select the key to encrypt the Elasticsearch domain with.
+RequireSSL: Enable if Https is required.
+UseLatestTlsCipher: Select to use latest TLS Cipher.
+EnableNodeToNodeEncryption: Select to enable node-to-node encryption.

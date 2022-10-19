@@ -154,28 +154,6 @@ EnvVariablesK8s: |-
       name: env-config
       key: log_level
   ```
-VolumeMappings: |
-  Example of mounting a host drive into the container
-  ```js
-  "/home/ubuntu/data:/data","/home/ubuntu/confg:/config"
-  ```
-otherDockerConfig: |
-  Any custom docker create container can be passed here based
-    on the documentation at https://docs.docker.com/engine/api/v1.41/#operation/ContainerCreate
-    for example the following config overrides the entrypoint of the container and
-    sets a few labels
-  ```js
-  {
-  "Entrypoint": "["/bin/bash", "-c",
-    "sleep 1h"],
-  "Labels": {
-  "com.example.vendor": "Acme",
-  "com.example.license":
-    "GPL",
-  "com.example.version": "1.0"
-  }
-  }
-  ```
 NetworkMode: If host network is selected then the container will share the same
   networking stack as host. This means any port in the container is accessible
   as is on host ip address without any explicit port mapping
