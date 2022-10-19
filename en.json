@@ -345,7 +345,7 @@
                 "itemConditionType0": "Following types of Rule Conditions are supported:\n**Path**: Route based on path patterns in the request URLs.\n**Host Header**: Route based on the host name of each request.\n**Source IP**: Route based on the source IP address of each request.\n**HTTP Request Method**: Route based on the HTTP request method of each request.\nFor details, refer [here](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-listeners.html#listener-rules)\n",
                 "Priority": "(Optional) Priority would be added by DuploCloud when not entered. A listener can't have multiple rules with the same priority.",
                 "tgForwardActionArn": "Select the Target Group to which to route the traffic.",
-                "itemVal00": "Enter Value applicable as per the Rule Condition selected. For details, refer (here)[https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-listeners.html#listener-rules]"
+                "itemVal00": "Enter Value applicable as per the Rule Condition selected. For details, refer [here](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-listeners.html#listener-rules)"
             },
             "taskdef": {
                 "Name": "Specify a name for your task definition. Up to 255 letters (uppercase and lowercase), numbers, hyphens, and underscores are allowed.",

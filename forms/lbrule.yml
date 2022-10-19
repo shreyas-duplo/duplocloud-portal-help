@@ -7,4 +7,4 @@ itemConditionType0: |
   For details, refer [here](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-listeners.html#listener-rules)
 Priority: (Optional) Priority would be added by DuploCloud when not entered. A listener can't have multiple rules with the same priority.
 tgForwardActionArn: Select the Target Group to which to route the traffic.
-itemVal00: Enter Value applicable as per the Rule Condition selected. For details, refer (here)[https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-listeners.html#listener-rules]
+itemVal00: Enter Value applicable as per the Rule Condition selected. For details, refer [here](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-listeners.html#listener-rules)
