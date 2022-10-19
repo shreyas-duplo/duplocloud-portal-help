@@ -185,7 +185,7 @@ ReplicationStrategy: |
     2. **Daemonset**: If this option is selected, DuploCloud will make sure pods will run on every host created in this tenant.
     3. **Horizontal Pod Autoscaler**: This is more advanced option which user can use to automcatically scale up or down the replicas as per the different metrics like CPU Usage, Memory Usage, Ingress requests per second etc. [Click Here](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale-walkthrough/) for more information on *Horizontal Pod Autoscaler*.
 HPAConfig: |-
-  Horizontal pod autoscaller specifications as documented [here](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale-walkthrough/). Sample value can be like below.
+  Horizontal pod autoscaler specifications as documented [here](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale-walkthrough/). Sample value can be like below.
   ```yaml
   maxReplicas: 5
   metrics:
@@ -196,4 +196,25 @@ HPAConfig: |-
           type: Utilization
       type: Resource
   minReplicas: 2
+  ```
+envVariables: |
+  Environment Variables to be passed in json format. Refer sample as below.
+  ```js
+  {
+      "discovery.type": "single-node",
+       "plugins.security.disabled" : "true",
+       "compatibility.override_main_response_version" : "true"
+  }
+  ```
+VolumeMappings: |
+  Provide inputs to map volume. Refer syntax as ```"/path/in/container:/path/on/host","/second/path/in/container:/second/path/on/host"```
+  Refer sample as below.
+  ```
+  "/zap:/zap/wrk/:rw",
+  "/zaphome:/home/zap/.ZAP/sessions/"
+  ```
+otherDockerConfig: |
+  Additional Configurations can be passed in json format. Refer example
+  ```js
+  {"Cmd":"zap-webswing.sh"}
   ```

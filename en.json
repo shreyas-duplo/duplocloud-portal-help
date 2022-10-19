@@ -83,7 +83,7 @@
                 "Engine": "Select Database engine for creating RDS instance.",
                 "EngineVersion": "Select database engine version. If not selected latest version will be used while creating database. Select type as 'Other' if you don't see desired option in dropdown list.",
                 "Username": "Specify an alphanumeric string that defines the login ID for the master user. You use the master user login to start defining all users, objects, and permissions in a databases of your DB instance. Master Username must start with a letter.",
-                "Password": "Specify a string that defines the password for the master user. Master Password must be at least eight characters long.",
+                "Password": "Specify a string that defines the password for the master user. Master Password must be at least eight characters long and listed characters are accepted ```[a-z] [A-Z] [0-9] [- * ! $ % &]```.",
                 "ClusterIdentifier": "Cluster Identifier",
                 "DbSize": "Instance size for RDS. Select type as 'Other' if you don't see desired option in dropdown list.",
                 "AllocatedStorage": "Storage allocation for RDS instance in GB.",
@@ -132,14 +132,15 @@
                 "k8sPodConfig": "Any generic Kubernetes Pod configuration can be passed here, for\nexample resource limits, restart policy. As an example: \n```js\n{\n  \"RestartPolicy\":\n  \"Always\",\n  \"envFrom\": [\n    {\n      \"configMapRef\": {\n        \"name\":\n  \"api-configs\"\n      }\n    },\n    {\n      \"secretRef\": {\n\n        \"name\": \"api-secrets\"\n      }\n    },\n    {\n      \"configMapRef\":\n  {\n        \"name\": \"api-db\",\n        \"optional\": true\n      }\n\n    }\n  ],\n  \"resources\": {\n    \"limits\": {\n      \"memory\":\n  \"1Gi\"\n    },\n    \"requests\": {\n      \"memory\": \"384Mi\"\n\n    }\n  }\n}\n```\n",
                 "podSecurityContext": "Example: \n```js\n{\n\"FsGroup\":1001,\n\"RunAsUser\":1001\n}\n```\n",
                 "EnvVariablesK8s": "Environment variables to be passed to the containers in the YAML format.\n```yaml\n---\n- Name: DB_HOST\n  Value: abc.com\n- Name: DB_USER\n  Value: myuser\n- Name: DB_PASSWORD\n  Value: mypassword\n# using secrets\n- name: SECRET_USERNAME\n  valueFrom:\n    secretKeyRef:\n      name: mysecret\n      key: username\n# using ConfigMap data \n- name: LOG_LEVEL\n  valueFrom:\n  configMapKeyRef:\n    name: env-config\n    key: log_level\n```",
-                "VolumeMappings": "Example of mounting a host drive into the container\n```js\n\"/home/ubuntu/data:/data\",\"/home/ubuntu/confg:/config\"\n```\n",
-                "otherDockerConfig": "Any custom docker create container can be passed here based\n  on the documentation at https://docs.docker.com/engine/api/v1.41/#operation/ContainerCreate\n  for example the following config overrides the entrypoint of the container and\n  sets a few labels\n```js\n{\n\"Entrypoint\": \"[\"/bin/bash\", \"-c\",\n  \"sleep 1h\"],\n\"Labels\": {\n\"com.example.vendor\": \"Acme\",\n\"com.example.license\":\n  \"GPL\",\n\"com.example.version\": \"1.0\"\n}\n}\n```\n",
+                "VolumeMappings": "Provide inputs to map volume. Refer syntax as ```\"/path/in/container:/path/on/host\",\"/second/path/in/container:/second/path/on/host\"```\nRefer sample as below.\n```\n\"/zap:/zap/wrk/:rw\",\n\"/zaphome:/home/zap/.ZAP/sessions/\"\n```\n",
+                "otherDockerConfig": "Additional Configurations can be passed in json format. Refer example\n```js\n{\"Cmd\":\"zap-webswing.sh\"}\n```",
                 "NetworkMode": "If host network is selected then the container will share the same networking stack as host. This means any port in the container is accessible as is on host ip address without any explicit port mapping",
                 "ReplicationStrategy": "Replication Strategy can be used to manage the replica count for this Deployment/StatefulSet. Replication Strategy has three options as below.\n  1. **Static**: This option can be used to set fixed count for the replicas.\n  2. **Daemonset**: If this option is selected, DuploCloud will make sure pods will run on every host created in this tenant.\n  3. **Horizontal Pod Autoscaler**: This is more advanced option which user can use to automcatically scale up or down the replicas as per the different metrics like CPU Usage, Memory Usage, Ingress requests per second etc. [Click Here](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale-walkthrough/) for more information on *Horizontal Pod Autoscaler*.\n",
-                "HPAConfig": "Horizontal pod autoscaller specifications as documented [here](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale-walkthrough/). Sample value can be like below.\n```yaml\nmaxReplicas: 5\nmetrics:\n  - resource:\n      name: cpu\n      target:\n        averageUtilization: 80\n        type: Utilization\n    type: Resource\nminReplicas: 2\n```"
+                "HPAConfig": "Horizontal pod autoscaler specifications as documented [here](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale-walkthrough/). Sample value can be like below.\n```yaml\nmaxReplicas: 5\nmetrics:\n  - resource:\n      name: cpu\n      target:\n        averageUtilization: 80\n        type: Utilization\n    type: Resource\nminReplicas: 2\n```",
+                "envVariables": "Environment Variables to be passed in json format. Refer sample as below.\n```js\n{\n    \"discovery.type\": \"single-node\",\n     \"plugins.security.disabled\" : \"true\",\n     \"compatibility.override_main_response_version\" : \"true\"\n}\n```\n"
             },
             "addStorageAccount": {
-                "name": "Enter name of the storage account. This must be unique across the entire Azure service, not just within the resource group."
+                "Name": "Enter name of the storage account. This must be unique across the entire Azure service, not just within the resource group."
             },
             "AddStorageClass": {
                 "name": "Storage Class Name.",
@@ -165,7 +166,7 @@
                 "Schedulers": "The number of schedulers that you want to run in your environment. v2.0.2 and above accepts `2` - `5`, default `2`. v1.10.12 accepts `1`.",
                 "MinWorkers": "The minimum number of workers that you want to run in your environment.",
                 "MaxWorkers": "The maximum number of workers that can be automatically scaled up. Value need to be between `1` and `25`.",
-                "AirflowConfigurationOptions_str": "Specify parameters to override airflow options.\nSample Value can be as below\n```js\n{\n  \"core.log_format\": \"[%%(asctime)s] {{%%(filename)s:%%(lineno)d}} %%(levelname)s - %%(message)s\"\n}\n```"
+                "AirflowConfigurationOptions_str": "Specify parameters to override airflow options.\nSample Value can be as below\n```js\n{\n  \"core.log_format\": \"[%%(asctime)s] {{%%(filename)s:%%(lineno)d}} %%(levelname)s - %%(message)s\"\n}\n```\n"
             },
             "airflow_add_sub_form_dag": {
                 "S3Bucket": "Choose Amazon S3 storage bucket where DAG is stored.",
@@ -173,7 +174,7 @@
                 "PluginsS3Path": "Specify the relative path to the plugins.zip file from S3 bucket. For example, plugins.zip. If a relative path is provided in the request, then `Plugins S3Object Version` is required.",
                 "RequirementsS3Path": "Specify the relative path to the requirements.txt file from S3 bucket. For example, `requirements.txt` or `AirflowDags/folder1/requirements.txt`.  If a relative path is provided in the request, then `Requirements S3Object Version` is required.",
                 "RequirementsS3ObjectVersion": "Specify the Version Id of the the requirements.txt file version you want to use. For example, lSHNqFtO5Z7_6K6YfGpKnpyjqP2JTvSf.\nS3 Enable Versioning is required to use this in your environment.\n",
-                "PluginsS3ObjectVersion": "Specify the plugin.zip version.  For example, lSHNqFtO5Z7_6K6YfGpKnpyjqP2JTvSf.\nS3 Enable Versioning is required to use this in your environment."
+                "PluginsS3ObjectVersion": "Specify the plugin.zip version. For example, lSHNqFtO5Z7_6K6YfGpKnpyjqP2JTvSf. S3 Enable Versioning is required to use this in your environment."
             },
             "awsAccountSecurity": {
                 "EnableSecurityHub": "Enable AWS Security Hub in any region where there is infrastructure managed by Duplo",
@@ -339,6 +340,12 @@
                 "HealthCheckIntervalSeconds": "The approximate amount of time between health checks of an individual target.",
                 "HttpSuccessCode": "The HTTP codes to use when checking for a successful response from a target. You can specify multiple values (for example, \"200,202\") or a range of values (for example, \"200-299\").",
                 "GrpcSuccessCode": "The gRPC codes to use when checking for a successful response from a target. You can specify multiple values (for example, \"20,25\") or a range of values (for example, \"0-99\"). Only applicable when protocol version is selected as **GRPc**."
+            },
+            "lbrule": {
+                "itemConditionType0": "Following types of Rule Conditions are supported:\n**Path**: Route based on path patterns in the request URLs.\n**Host Header**: Route based on the host name of each request.\n**Source IP**: Route based on the source IP address of each request.\n**HTTP Request Method**: Route based on the HTTP request method of each request.\nFor details, refer [here](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-listeners.html#listener-rules)\n",
+                "Priority": "(Optional) Priority would be added by DuploCloud when not entered. A listener can't have multiple rules with the same priority.",
+                "tgForwardActionArn": "Select the Target Group to which to route the traffic.",
+                "itemVal00": "Enter Value applicable as per the Rule Condition selected. For details, refer (here)[https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-listeners.html#listener-rules]"
             },
             "taskdef": {
                 "Name": "Specify a name for your task definition. Up to 255 letters (uppercase and lowercase), numbers, hyphens, and underscores are allowed.",
