@@ -205,16 +205,3 @@ envVariables: |
        "plugins.security.disabled" : "true",
        "compatibility.override_main_response_version" : "true"
   }
-  ```
-VolumeMappings: |
-  Provide inputs to map volume. Refer syntax as ```"/path/in/container:/path/on/host","/second/path/in/container:/second/path/on/host"```
-  Refer sample as below.
-  ```
-  "/zap:/zap/wrk/:rw",
-  "/zaphome:/home/zap/.ZAP/sessions/"
-  ```
-otherDockerConfig: |
-  Additional Configurations can be passed in json format. Refer example
-  ```js
-  {"Cmd":"zap-webswing.sh"}
-  ```
