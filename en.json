@@ -167,6 +167,19 @@
                 "storageClassLabels": "Kubernetes labels in key value format. Sample value is like below\n```yml\nkey1: value1\nkey2: value2\n```\n",
                 "allowedTopologies": "When a cluster operator specifies the `WaitForFirstConsumer` volume binding mode, it is no longer necessary to restrict provisioning to specific topologies in most situations. However, if still required, `allowedTopologies` can be specified.\nSample Value Allowed Toplogies\n```yml\n- matchLabelExpressions:\n  - key: failure-domain.beta.kubernetes.io/zone\n    values:\n    - us-central-1a\n    - us-central-1b\n```"
             },
+            "addTimestreamDatabase": {
+                "DatabaseName": "The name of the Timestream database.",
+                "KmsKeyId": "Select the KMS key to be used to encrypt the data stored in the database."
+            },
+            "addTimestreamTable": {
+                "TableName": "The name of the Timestream table.",
+                "MemoryStoreRetentionHours": "The duration for which data must be stored in the memory store. Minimum value of 1. Maximum value of 8766.",
+                "MagneticStoreRetentionPeriodInDays": "The duration for which data must be stored in the magnetic store. Minimum value of 1. Maximum value of 73000.",
+                "EnableMagneticStorageWrites": "Select to enable magnetic store writes.",
+                "S3BucketError": "Select S3 location for storing the error logs.",
+                "S3FolderError": "Specify the S3 folder location name.",
+                "KmsKeyId": "Select the KMS key for the S3 location."
+            },
             "airflow_add_sub_form_basics": {
                 "Name": "The name of the Apache Airflow Environment.",
                 "AirflowVersion_other": "Airflow version of your environment, will be set by default to the latest version that MWAA supports.",

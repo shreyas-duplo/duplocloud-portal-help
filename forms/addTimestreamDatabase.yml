@@ -1,0 +1,2 @@
+DatabaseName: The name of the Timestream database.
+KmsKeyId: Select the KMS key to be used to encrypt the data stored in the database.
