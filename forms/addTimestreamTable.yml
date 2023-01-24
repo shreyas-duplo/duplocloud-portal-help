@@ -1,0 +1,7 @@
+TableName: The name of the Timestream table.
+MemoryStoreRetentionHours: The duration for which data must be stored in the memory store. Minimum value of 1. Maximum value of 8766.
+MagneticStoreRetentionPeriodInDays: The duration for which data must be stored in the magnetic store. Minimum value of 1. Maximum value of 73000.
+EnableMagneticStorageWrites: Select to enable magnetic store writes.
+S3BucketError: Select S3 location for storing the error logs.
+S3FolderError: Specify the S3 folder location name.
+KmsKeyId: Select the KMS key for the S3 location.
