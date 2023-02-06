@@ -2,16 +2,15 @@ ApplicationConfiguration: |
   Specify job configurations to override the default configurations for your applications.
    1. **Spark:** 
   ```js
-  [
-    {
-      "Classification": "spark-site",
-      "monitoringConfiguration": {
-        "s3MonitoringConfiguration": {
-          "logUri": "s3://<S3_BUCKET_NAME>/emrserverless/logs"
-        }
-      }
-    }
-  ]
+  [{
+                "Classification": "spark-defaults",
+                "Configurations": [],
+                "Properties": {
+                    "spark.driver.cores": "2",
+                    "spark.driver.memory": "4g",
+  			        "spark.dynamicAllocation.minExecutors":"1"
+                }
+            }]
   ```
   2. **Hive:** 
   ```js
