@@ -1,0 +1,3 @@
+MaximumCapacityCpu: Specify the maximum allowed CPU for an application.
+MaximumCapacityMemory: Specify the maximum allowed resources for an application.
+MaximumCapacityDisk: Specify the maximum allowed disk for an application.

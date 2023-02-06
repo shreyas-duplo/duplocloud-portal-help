@@ -1,0 +1,30 @@
+ApplicationConfiguration: |
+  Specify job configurations to override the default configurations for your applications.
+  *Spark*: 
+  ```js
+  [
+            {
+                "Classification": "hive-site",
+                "Configurations": [],
+                "Properties": {
+                    "hive.driver.cores": "2",
+                    "hive.driver.memory": "4g",
+                    "hive.tez.container.size": "8192",
+                    "hive.tez.cpu.vcores": "4"
+                }
+            }
+        ]
+  ```
+  *Hive*:
+  ```js
+  [
+    {
+      "Classification": "spark-site",
+      "monitoringConfiguration": {
+        "s3MonitoringConfiguration": {
+          "logUri": "s3://<S3_BUCKET_NAME>/emrserverless/logs"
+        }
+      }
+    }
+  ]
+  ```

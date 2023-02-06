@@ -1,0 +1,3 @@
+AutoStartConfiguration_Enabled: Enable the configuration for an application to automatically start on job submission.
+AutoStopConfiguration_Enabled: Enable the configuration for an application to automatically stop after a certain amount of time being idle.
+IdleTimeoutMinutes: The amount of idle time in minutes after which your application will automatically stop.
