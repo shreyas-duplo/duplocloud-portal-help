@@ -24,7 +24,7 @@ ScriptSubmitParameters: |
       Example:
       `
         --hiveconf hive.exec.scratchdir=s3://<YOUR_S3_BUCKET_NAME>/hive/scratch, --hiveconf hive.metastore.warehouse.dir=s3://<YOUR_S3_BUCKET_NAME>/hive/warehouse
-      `````
+      `
     2. **Hive:** 
       Example: 
      `
