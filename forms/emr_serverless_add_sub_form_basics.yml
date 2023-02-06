@@ -3,9 +3,9 @@ ReleaseLabel_other: The EMR release version associated with the application.
 Type: The type of application you want to start, such as `spark` or `hive`.
 Architecture: The CPU architecture of an application. Valid values are `arm64 new` or `x86_64`. Default value is `x86_64`.
 DriverImageUri:  |
-  To use the custom image Image URI for Spark drivers in your application, specify the ECR location of the image.
+  To use the custom image Image URI for drivers in your application, specify the ECR location of the image.
   Must be compatible with the selected EMR release [6.9.0 and above] and located in the same region.
 ExecutorImageUri: |
-  To use the custom Image URI for Spark executors, specify the ECR location of the image.
+  To use the custom Image URI for executors, specify the ECR location of the image.
   Must be compatible with the selected EMR release [6.9.0 and above] and located in the same region.
 
