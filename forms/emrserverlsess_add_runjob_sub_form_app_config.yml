@@ -1,6 +1,19 @@
 ApplicationConfiguration: |
   Specify job configurations to override the default configurations for your applications.
-  *Spark*: 
+   1. **Spark:** 
+  ```js
+  [
+    {
+      "Classification": "spark-site",
+      "monitoringConfiguration": {
+        "s3MonitoringConfiguration": {
+          "logUri": "s3://<S3_BUCKET_NAME>/emrserverless/logs"
+        }
+      }
+    }
+  ]
+  ```
+  2. **Hive:** 
   ```js
   [
             {
@@ -15,16 +28,4 @@ ApplicationConfiguration: |
             }
         ]
   ```
-  *Hive*:
-  ```js
-  [
-    {
-      "Classification": "spark-site",
-      "monitoringConfiguration": {
-        "s3MonitoringConfiguration": {
-          "logUri": "s3://<S3_BUCKET_NAME>/emrserverless/logs"
-        }
-      }
-    }
-  ]
-  ```
+ 
