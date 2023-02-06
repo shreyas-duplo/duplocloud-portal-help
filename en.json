@@ -345,10 +345,10 @@
                 "ExecutorImageUri": "To use the custom Image URI for Spark executors, specify the ECR location of the image.\nMust be compatible with the selected EMR release [6.9.0 and above] and located in the same region.\n"
             },
             "emrserverlsess_add_runjob_sub_form_app_config": {
-                "ApplicationConfiguration": "Specify job configurations to override the default configurations for your applications.\n*Spark*: \n```js\n[\n          {\n              \"Classification\": \"hive-site\",\n              \"Configurations\": [],\n              \"Properties\": {\n                  \"hive.driver.cores\": \"2\",\n                  \"hive.driver.memory\": \"4g\",\n                  \"hive.tez.container.size\": \"8192\",\n                  \"hive.tez.cpu.vcores\": \"4\"\n              }\n          }\n      ]\n```\n*Hive*:\n```js\n[\n  {\n    \"Classification\": \"spark-site\",\n    \"monitoringConfiguration\": {\n      \"s3MonitoringConfiguration\": {\n        \"logUri\": \"s3://<S3_BUCKET_NAME>/emrserverless/logs\"\n      }\n    }\n  }\n]\n```\n"
+                "ApplicationConfiguration": "Specify job configurations to override the default configurations for your applications.\n 1. **Spark:** \n```js\n[\n  {\n    \"Classification\": \"spark-site\",\n    \"monitoringConfiguration\": {\n      \"s3MonitoringConfiguration\": {\n        \"logUri\": \"s3://<S3_BUCKET_NAME>/emrserverless/logs\"\n      }\n    }\n  }\n]\n```\n2. **Hive:** \n```js\n[\n          {\n              \"Classification\": \"hive-site\",\n              \"Configurations\": [],\n              \"Properties\": {\n                  \"hive.driver.cores\": \"2\",\n                  \"hive.driver.memory\": \"4g\",\n                  \"hive.tez.container.size\": \"8192\",\n                  \"hive.tez.cpu.vcores\": \"4\"\n              }\n          }\n      ]\n```\n"
             },
             "emrserverlsess_add_runjob_sub_form_basics": {
-                "ApplicationName": "EMr Serverless Application Name.",
+                "ApplicationName": "EMR Serverless Application Name.",
                 "Type": "EMR Serverless Application Architecture type.",
                 "Name": "Enter Application Run Job Name.",
                 "ApplicationId": "Application Id",
