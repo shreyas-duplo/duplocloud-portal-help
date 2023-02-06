@@ -11,7 +11,7 @@ ScriptArguments: |
   1. **Spark:** Specify array of arguments passed to your main JAR or Python script. Each argument in the array must be separated by a comma. 
     Example:
     ```js
-       ["s3://<YOUR_S3_BUCKET_NAME>/wordcount_output", 40000]
+       ["s3://<YOUR_S3_BUCKET_NAME>/wordcount_output", "40000"]
     ```
   2. **Hive:** The S3 URI of the main JAR or Python script in S3 which needs to be executed in the job. 
     Example:
@@ -22,11 +22,9 @@ ScriptSubmitParameters: |
   Specify additional configuration properties for your each job.
     1. **Spark:** 
       Example:
-      `
-        --conf spark.executor.cores=1 --conf spark.executor.memory=4g --conf spark.driver.cores=1 --conf spark.driver.memory=4g --conf spark.executor.instances=1    
+      `--conf spark.executor.cores=1 --conf spark.executor.memory=4g --conf spark.driver.cores=1 --conf spark.driver.memory=4g --conf spark.executor.instances=1    
       `
     2. **Hive:** 
       Example: 
-     `
-        --hiveconf hive.exec.scratchdir=s3://<YOUR_S3_BUCKET_NAME>/hive/scratch, --hiveconf hive.metastore.warehouse.dir=s3://<YOUR_S3_BUCKET_NAME>/hive/warehouse
+     `--hiveconf hive.exec.scratchdir=s3://<YOUR_S3_BUCKET_NAME>/hive/scratch, --hiveconf hive.metastore.warehouse.dir=s3://<YOUR_S3_BUCKET_NAME>/hive/warehouse
       `
