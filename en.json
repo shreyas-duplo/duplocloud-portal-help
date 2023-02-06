@@ -58,6 +58,12 @@
                 "UseLatestTlsCipher": "Select to use latest TLS Cipher.",
                 "EnableNodeToNodeEncryption": "Select to enable node-to-node encryption."
             },
+            "addEmrStudioSidebar": {
+                "Name": "EMR Studio.",
+                "Description": "A detailed description of the Amazon EMR Studio.",
+                "S3Bucket": "Select S3 for backup.",
+                "S3Folder": "Specify folder name in S3."
+            },
             "AddIngress": {
                 "name": "Name for your ingress object.",
                 "ingressClassName": "Select ingress controller name.",

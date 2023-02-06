@@ -1,0 +1,4 @@
+Name: EMR Studio.
+Description: A detailed description of the Amazon EMR Studio.
+S3Bucket: Select S3 for backup.
+S3Folder: Specify folder name in S3.
