@@ -352,7 +352,9 @@
                 "Type": "EMR Serverless Application Architecture type.",
                 "Name": "Enter Application Run Job Name.",
                 "ApplicationId": "Application Id",
-                "ExecutionTimeoutMinutes": "Sepecify execution time in minutes.",
+                "ExecutionTimeoutMinutes": "Sepecify execution time in minutes."
+            },
+            "emrserverlsess_add_runjob_sub_form_script": {
                 "ScriptS3Bucket": "Choose S3 Bucket location\n*Spark*: S3 Bucket where scripts are stored.\n*Hive*: S3 Bucket where the initialization script is stored.\n",
                 "ScriptS3BucketFolder": "Specify the S3 folder location.\n*Spark*: S3 Bucket where scripts are stored. Example: `samples/wordcount/scripts/wordcount.py`\n*Hive*: S3 location of the initialization script that you can use to initialize tables prior to running the Hive script. Example: `hive/create_table.sql`\n",
                 "ScriptArguments": "Specify the arguments\n*Spark*: Specify array of arguments passed to your main JAR or Python script. Each argument in the array must be separated by a comma. \n  Example:\n  ```js\n     [\"s3://<YOUR_S3_BUCKET_NAME>/wordcount_output\", 40000]\n  ```\n*Hive*: The S3 URI of the main JAR or Python script in S3 which needs to be executed in the job. Example: s3://<YOUR_S#_BUCKET>/hive/extreme_weather.sql\n",
