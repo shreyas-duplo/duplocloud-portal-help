@@ -13,8 +13,20 @@ ScriptArguments: |
     ```js
        ["s3://<YOUR_S3_BUCKET_NAME>/wordcount_output", 40000]
     ```
-  2. **Hive:** The S3 URI of the main JAR or Python script in S3 which needs to be executed in the job. Example: s3://<YOUR_S3_BUCKET_NAME>/hive/extreme_weather.sql
+  2. **Hive:** The S3 URI of the main JAR or Python script in S3 which needs to be executed in the job. 
+    Example:
+   ```js
+    s3://<YOUR_S3_BUCKET_NAME>/hive/extreme_weather.sql
+  ```
 ScriptSubmitParameters: |
   Specify additional configuration properties for your each job.
-    **Spark:** Example: `--hiveconf hive.exec.scratchdir=s3://<YOUR_S3_BUCKET_NAME>/hive/scratch, --hiveconf hive.metastore.warehouse.dir=s3://<YOUR_S3_BUCKET_NAME>/hive/warehouse`
-    2. **Hive:** Example: `--conf spark.executor.cores=1 --conf spark.executor.memory=4g --conf spark.driver.cores=1 --conf spark.driver.memory=4g --conf spark.executor.instances=1`
+    1. **Spark:** 
+      Example:
+      ```js
+      --hiveconf hive.exec.scratchdir=s3://<YOUR_S3_BUCKET_NAME>/hive/scratch, --hiveconf hive.metastore.warehouse.dir=s3://<YOUR_S3_BUCKET_NAME>/hive/warehouse
+      ```
+    2. **Hive:** 
+      Example: 
+      ```js
+      --conf spark.executor.cores=1 --conf spark.executor.memory=4g --conf spark.driver.cores=1 --conf spark.driver.memory=4g --conf spark.executor.instances=1
+      ```
