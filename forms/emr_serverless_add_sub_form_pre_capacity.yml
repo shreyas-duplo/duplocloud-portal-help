@@ -1,0 +1,8 @@
+DriverCount: Specify initialized Driver Capacity.
+ExecutorCount: Specify initialized Executors Capacity.
+DriverCpu: Specify vCPU per driver.
+DriverMemory: Specify Memory in GB per driver.
+DriverDisk: Specify Disk in GB per driver.
+ExecutorCpu: Specify vCPU per executor.
+ExecutorMemory: Specify Memory in GB per executor.
+ExecutorDisk: Specify Disk in GB per executor.
