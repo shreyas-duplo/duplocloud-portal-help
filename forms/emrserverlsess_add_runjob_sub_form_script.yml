@@ -23,10 +23,10 @@ ScriptSubmitParameters: |
     1. **Spark:** 
       Example:
       `
-        --hiveconf hive.exec.scratchdir=s3://<YOUR_S3_BUCKET_NAME>/hive/scratch, --hiveconf hive.metastore.warehouse.dir=s3://<YOUR_S3_BUCKET_NAME>/hive/warehouse
+        --conf spark.executor.cores=1 --conf spark.executor.memory=4g --conf spark.driver.cores=1 --conf spark.driver.memory=4g --conf spark.executor.instances=1    
       `
     2. **Hive:** 
       Example: 
      `
-        --conf spark.executor.cores=1 --conf spark.executor.memory=4g --conf spark.driver.cores=1 --conf spark.driver.memory=4g --conf spark.executor.instances=1
+        --hiveconf hive.exec.scratchdir=s3://<YOUR_S3_BUCKET_NAME>/hive/scratch, --hiveconf hive.metastore.warehouse.dir=s3://<YOUR_S3_BUCKET_NAME>/hive/warehouse
       `
