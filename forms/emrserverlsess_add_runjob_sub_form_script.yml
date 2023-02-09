@@ -1,10 +1,7 @@
 ScriptQueryBucket: Choose S3 bucket where the query files are stored.
 ScriptQueryFile: |
   Specify the S3 folder location of the script which needs to be executed in the job.
-  Example:
-  ```js
-  samples/hive-scripts/extreme_weather.sql
-  ```
+  Example: `samples/hive-scripts/extreme_weather.sql`
 ScriptS3Bucket: |
   Choose S3 Bucket location
   1. **Spark:** S3 Bucket where scripts are stored.
