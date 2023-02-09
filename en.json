@@ -354,7 +354,7 @@
             },
             "emrserverlsess_add_runjob_sub_form_script": {
                 "ScriptQueryBucket": "Choose S3 bucket where the query files are stored.",
-                "ScriptQueryFile": "Specify the S3 folder location of the script which needs to be executed in the job.\nExample:\n```js\nsamples/hive-scripts/extreme_weather.sql\n```\n",
+                "ScriptQueryFile": "Specify the S3 folder location of the script which needs to be executed in the job.\nExample: `samples/hive-scripts/extreme_weather.sql`\n",
                 "ScriptS3Bucket": "Choose S3 Bucket location\n1. **Spark:** S3 Bucket where scripts are stored.\n2. **Hive:** S3 Bucket where the initialization script is stored.\n",
                 "ScriptS3BucketFolder": "Specify the S3 folder location.\n1. **Spark:** S3 Bucket where scripts are stored. Example: `samples/spark-scripts/wordcount.py`\n2. **Hive:** S3 location of the initialization script that you can use to initialize tables prior to running the Hive script. Example: `samples/hive-scripts/create_table.sql`\n",
                 "ScriptArguments": "Specify array of arguments passed to your main JAR or Python script. Each argument in the array must be separated by a comma. \n  Example:\n  ```js\n     [\"s3://<YOUR_S3_BUCKET_NAME>/wordcount_output\", \"40000\"]\n  ```\n",
