@@ -1,20 +1,18 @@
+ScriptQueryInitFileBucket: Choose S3 Bucket where the initialization script is stored.
+ScriptQueryInitFile: |
+  Specify S3 folder location of the initialization script that you can use to initialize tables prior to running the Hive script. Example: `samples/hive-scripts/create_table.sql`
 ScriptQueryBucket: Choose S3 bucket where the query files are stored.
 ScriptQueryFile: |
   Specify the S3 folder location of the script which needs to be executed in the job.
   Example: `samples/hive-scripts/extreme_weather.sql`
-ScriptS3Bucket: |
-  Choose S3 Bucket location
-  1. **Spark:** S3 Bucket where scripts are stored.
-  2. **Hive:** S3 Bucket where the initialization script is stored.
+ScriptS3Bucket: Choose S3 Bucket location S3 Bucket where scripts are stored.
 ScriptS3BucketFolder: |
-  Specify the S3 folder location.
-  1. **Spark:** S3 Bucket where scripts are stored. Example: `samples/spark-scripts/wordcount.py`
-  2. **Hive:** S3 location of the initialization script that you can use to initialize tables prior to running the Hive script. Example: `samples/hive-scripts/create_table.sql`
+  Specify the S3 folder location where scripts are stored. Example: `samples/spark-scripts/wordcount.py`
 ScriptArguments: |
   Specify array of arguments passed to your main JAR or Python script. Each argument in the array must be separated by a comma. 
     Example:
     ```js
-       ["s3://<YOUR_S3_BUCKET_NAME>/wordcount_output", "40000"]
+       ["s3://<YOUR_S3_BUCKET_NAME>/wordcount_output", "40000"}]
     ```
 ScriptSubmitParameters: |
   Specify additional configuration properties for your each job.
