@@ -1,12 +1,14 @@
-name: Resource Name
+name: Resource Quota Name
 cpu: |
   Across all pods in a non-terminal state, the sum of CPU limits cannot exceed this value. 
-  Examples 
+
+  Examples:
      1: 1 CPU
      5: 5 CPUs
   500m: 0.5 CPU
 memory: |
   Across all pods in a non-terminal state, the sum of memory limits cannot exceed this value.
+  
   Examples 
     512Mi: For 512Mb 
       5Gi: For 5Gb
