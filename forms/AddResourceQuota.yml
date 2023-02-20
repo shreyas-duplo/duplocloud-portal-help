@@ -8,16 +8,16 @@ memory: |
 otherLimits: |
   You can use this input to all other quotas like storage, Object count etc. Value has to be provided in YAML format like below.  
   ```yaml
-    requests.storage: 500Gi
-    persistentvolumeclaims: 10
+  requests.storage: 500Gi
+  persistentvolumeclaims: 10
   ```
 scopeSelector: |
   Each quota can have an associated set of scopes. A quota will only measure usage for a resource if it matches the intersection of enumerated scopes. 
   When a scope is added to the quota, it limits the number of resources it supports to those that pertain to the scope. Resources specified on the quota outside of the allowed set results in a validation error. 
   Value has to be provided in YAML format as below.  
   ```yaml
-    matchExpressions:
-    - operator : In
-      scopeName: PriorityClass
-      values: ["medium"]
+  matchExpressions:
+  - operator : In
+    scopeName: PriorityClass
+    values: ["medium"]
   ```
