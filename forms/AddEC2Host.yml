@@ -19,7 +19,7 @@ agentPlatform: |
 ImageId: AMI id for the EC2 instance. AMI should be compatible with the agent platform. Select type as "Other" if you don't see desired option in dropdown.
 blockEBSOptimization: Set this to enable block EBS optimization.
 enableHibernation: Hibernation stops your instance and saves the contents of the instance’s RAM to the root volume. You cannot enable hibernation after EC2 host is launch. 
-metaDataServiceFlag: Select `Disabled` to turn off access to instance metadata. Otherwise you can set `V1 and V2`, or just `V2`. If you do not specify a value, the default is V1 and V2.
+metaDataServiceFlag: Select `Disabled` to turn off access to instance metadata. Otherwise you can set `V1 and V2`, or just `V2`. If you do not specify a value, the default is V2 only.
 base64: Base64 encoded user data. On Linux machine you can encode script file using command ```cat <filepath> | base64 -w 0 ```.
 tags: |
   Tags to be added to ec2 instance. Format for adding tags is as below.
