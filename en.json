@@ -166,6 +166,15 @@
                 "HPAConfig": "Horizontal pod autoscaler specifications as documented [here](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale-walkthrough/). Sample value can be like below.\n```yaml\nmaxReplicas: 5\nmetrics:\n  - resource:\n      name: cpu\n      target:\n        averageUtilization: 80\n        type: Utilization\n    type: Resource\nminReplicas: 2\n```",
                 "envVariables": "Environment Variables to be passed in json format. Refer sample as below.\n```js\n{\n    \"discovery.type\": \"single-node\",\n     \"plugins.security.disabled\" : \"true\",\n     \"compatibility.override_main_response_version\" : \"true\"\n}\n"
             },
+            "AddSQS": {
+                "Name": "The name of the queue.",
+                "QueueType": "Select AWS supported standard or FIFO queues.",
+                "MessageRetentionPeriod": "The number of seconds Amazon SQS retains a message in seconds, from 60 (1 minute) to 1209600 (14 days).",
+                "VisibilityTimeout": "The visibility timeout for the queue in seconds. Inputs allowed from 0 to 43200 (12 hours).",
+                "ContentBasedDuplication": "Enables content-based deduplication for FIFO queues.",
+                "DuplicationScope": "Specifies whether message deduplication occurs at the message group or queue level.",
+                "FIFOthroughput": "Specifies whether the FIFO queue throughput quota applies to the entire queue or per message group."
+            },
             "addStorageAccount": {
                 "Name": "Enter name of the storage account. This must be unique across the entire Azure service, not just within the resource group."
             },

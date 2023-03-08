@@ -1,0 +1,8 @@
+Name: The name of the queue.
+QueueType: Select AWS supported standard or FIFO queues.
+MessageRetentionPeriod: The number of seconds Amazon SQS retains a message in seconds, from 60 (1 minute) to 1209600 (14 days).
+VisibilityTimeout: The visibility timeout for the queue in seconds. Inputs allowed from 0 to 43200 (12 hours).
+ContentBasedDuplication: Enables content-based deduplication for FIFO queues.
+DuplicationScope: Specifies whether message deduplication occurs at the message group or queue level.
+FIFOthroughput: Specifies whether the FIFO queue throughput quota applies to the entire queue or per message group.
+
