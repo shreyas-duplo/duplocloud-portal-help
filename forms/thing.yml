@@ -1,0 +1,8 @@
+Name: The name of the thing.
+IotCertificateArn: Select IoT certificate.
+ThingTypeName: Select the thing type name. Defaults to `DuploDefault`
+Attributes: |
+  Map of attributes of the thing. Example
+  ```json
+  {"First":"examplevalue"}
+  ```
