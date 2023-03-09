@@ -300,7 +300,7 @@
                 "ShareDistribution": "An array of SharedIdentifier objects that contain the weights for the fair share identifiers for the fair share policy. Fair share identifiers that aren't included have a default weight of 1.0.\n[Click Here](https://docs.aws.amazon.com/batch/latest/APIReference/API_ShareAttributes.html) to know more about **ShareDistribution**.\nSample Value for the Other Job properties to set **ContainerOverrides** is as below\n```js\n[\n    {\n        \"ShareIdentifier\": \"SomeIdentifier\",\n        \"WeightFactor\": 0.1\n    }\n]\n```"
             },
             "cert": {
-                "SetAsActive": "Select to if the certificate should be active."
+                "SetAsActive": "Enable to create to Certificate in Active state."
             },
             "cloudfront-add": {
                 "Name": "Any friendly name to the cloudfront distribution",
