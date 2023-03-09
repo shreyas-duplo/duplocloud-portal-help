@@ -292,6 +292,9 @@
                 "Tags": "A tag is a label that you assign to an AWS resource. Each tag consists of a key and an optional value. You can use tags to search and filter your resources or track your AWS costs\nSample Value for **Tags** is as below\n```js\n{\n    \"Key\" : \"Value\"\n}\n\n```\n",
                 "ShareDistribution": "An array of SharedIdentifier objects that contain the weights for the fair share identifiers for the fair share policy. Fair share identifiers that aren't included have a default weight of 1.0.\n[Click Here](https://docs.aws.amazon.com/batch/latest/APIReference/API_ShareAttributes.html) to know more about **ShareDistribution**.\nSample Value for the Other Job properties to set **ContainerOverrides** is as below\n```js\n[\n    {\n        \"ShareIdentifier\": \"SomeIdentifier\",\n        \"WeightFactor\": 0.1\n    }\n]\n```"
             },
+            "cert": {
+                "SetAsActive": "Select to if the certificate should be active."
+            },
             "cloudfront-add": {
                 "Name": "Any friendly name to the cloudfront distribution",
                 "certificate": "Certificate ARN to be used by the distribution. Make sure the certificate is in the us-east-1 region.",
@@ -437,6 +440,9 @@
                 "tgForwardActionArn": "Select the Target Group to which to route the traffic.",
                 "itemVal00": "Enter Value applicable as per the Rule Condition selected. For details, refer [here](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-listeners.html#listener-rules)."
             },
+            "selectIotDeviePackageCert": {
+                "certificateId": "Choose the certificate to download the device package."
+            },
             "taskdef": {
                 "Name": "Specify a name for your task definition. Up to 255 letters (uppercase and lowercase), numbers, hyphens, and underscores are allowed.",
                 "Image": "Image for your docker container.",
@@ -450,6 +456,12 @@
                 "Secret": "This is another way of setting up the environment values from AWS secrets in a JSON format. \n```js\n[\n    {\n        \"Name\": \"<env_var_name>\",\n        \"ValueFrom\": \"<aws_secret_arn>:<key_in_aws_secret>::\"\n    },\n    {\n        \"Name\": \"DB_HOST\",\n        \"ValueFrom\": \"arn:aws:secretsmanager:us-west-2:2432432434343:secret:db-secret:DB_HOST::\"\n    }\n]\n```\n",
                 "containerotherconfig": "All other advance properties documented [here](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_DeregisterTaskDefinition.html) applicable only for the Fargate in a JSON format.\nSample value can look like below.\n```js\n{\n  \"LogConfiguration\": {\n      \"LogDriver\": {\n          \"Value\": \"awslogs\"\n      },\n      \"Options\": {\n          \"awslogs-create-group\": \"true\",\n          \"awslogs-group\": \"/ecs/duploservices-nonprod-api\",\n          \"awslogs-region\": \"us-west-2\",\n          \"awslogs-stream-prefix\": \"ecs\"\n      },\n      \"SecretOptions\": []\n  }\n}\n```\n",
                 "volumes": "Volumes which can be mounted within container as documented [here](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definition_parameters.html#volumes) in a json format.\nSample Value with all the possible options can look like as below.\n```js\n[ \n  { \n    \"dockerVolumeConfiguration\": { \n        \"autoprovision\": boolean,\n        \"driver\": \"string\",\n        \"driverOpts\": { \n          \"string\" : \"string\" \n        },\n        \"labels\": { \n          \"string\" : \"string\" \n        },\n        \"scope\": \"string\"\n    },\n    \"efsVolumeConfiguration\": { \n        \"authorizationConfig\": { \n          \"accessPointId\": \"string\",\n          \"iam\": \"string\"\n        },\n        \"fileSystemId\": \"string\",\n        \"rootDirectory\": \"string\",\n        \"transitEncryption\": \"string\",\n        \"transitEncryptionPort\": number\n    },\n    \"fsxWindowsFileServerVolumeConfiguration\": { \n        \"authorizationConfig\": { \n          \"credentialsParameter\": \"string\",\n          \"domain\": \"string\"\n        },\n        \"fileSystemId\": \"string\",\n        \"rootDirectory\": \"string\"\n    },\n    \"host\": { \n        \"sourcePath\": \"string\"\n    },\n    \"name\": \"string\"\n  }\n]\n```\n"
+            },
+            "thing": {
+                "Name": "The name of the thing.",
+                "IotCertificateArn": "Select IoT certificate.",
+                "ThingTypeName": "Select the thing type name. Defaults to `DuploDefault`",
+                "Attributes": "Map of attributes of the thing. Example\n```json\n{\"First\":\"examplevalue\"}\n```"
             }
         }
     }
