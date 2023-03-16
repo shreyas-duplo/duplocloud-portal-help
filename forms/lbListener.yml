@@ -5,6 +5,8 @@ lbType: |
 ContainerPort: Port exposed by the container. 
 ExternalPort: |
   Port user want to expose using loadbalancer. It may not be same as to the container port.
+customCidrs: |
+  Specify CIDR and click on Add. You can add multiple CIDR Values.
 visibility: |
   Visibility of the service to be exposed which can be either Internal or Public.
   1 **Internal Only**: When this option is selected service will accessible within the infrastructure created in AWS.
