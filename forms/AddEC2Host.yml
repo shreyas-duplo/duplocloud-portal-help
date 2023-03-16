@@ -31,7 +31,7 @@ tags: |
   ```
   **Linux Docker/Native:** Platform
   ```js
-  key=value, key1=value1
+  "key=value, key1=value1"
   ```
 volumes: |
   Array of extra block devices in json format as below.
