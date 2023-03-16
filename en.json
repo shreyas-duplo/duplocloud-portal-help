@@ -32,7 +32,7 @@
                 "enableHibernation": "Hibernation stops your instance and saves the contents of the instance\u2019s RAM to the root volume. You cannot enable hibernation after EC2 host is launch.",
                 "metaDataServiceFlag": "Select `Disabled` to turn off access to instance metadata. Otherwise you can set `V1 and V2`, or just `V2`. If you do not specify a value, the default is V2 only.",
                 "base64": "Base64 encoded user data. On Linux machine you can encode script file using command ```cat <filepath> | base64 -w 0 ```.",
-                "tags": "Tags to be added to ec2 instance. Format for adding tags is as below.\n **EKS Linux:** Platform\n```js\n{\n    \"key\" : \"value\"\n}\n```\n**Linux Docker/Native:** Platform\n```js\n\"key=value, key1=value1\"\n```\n",
+                "tags": "Tags to be added to ec2 instance. Format for adding tags is as below.\n 1. **EKS Linux:** Platform\n```js\n{\n    \"key\" : \"value\"\n}\n```\n2. **Linux Docker/Native:** Platform\n`\"key=value, key1=value1\"`\n",
                 "volumes": "Array of extra block devices in json format as below.\n```js\n[\n    {\n        \"Name\":\"/dev/sda\", \n        \"VolumeType\":\"gp2\", \n        \"Size\":\"100\"\n    }\n]\n```\n",
                 "nwInterfaces": "Extra network interfaces to be attached to the ec2 host in a JSON format as below.\n```js\n[\n  {\n    \"NetworkInterfaceId\": \"eni-095827b411091db43\",\n    \"DeviceIndex\": 0\n  },\n  {\n    \"NetworkInterfaceId\": \"eni-0df26c4b283cde675\",\n    \"DeviceIndex\": 1\n  }\n] \n```\n"
             },
