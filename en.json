@@ -309,6 +309,10 @@
                 "customCachePathPattern0": "The pattern (for example, images/*.jpg ) that specifies which requests to apply the behavior to. When CloudFront receives a viewer request, the requested path is compared with path patterns in the order in which cache behaviors are listed in the distribution.",
                 "customTargetOriginId0": "Target Origin to apply the cache policy. This Origin will be used as source by the cloudfront if the request URL matches the path pattern"
             },
+            "cwrule-add": {
+                "Rule Name": "The name of the rule.",
+                "Description": "The description of the rule."
+            },
             "databrick": {
                 "Name": "Enter Databricks workspace name.",
                 "Tier": "Choose between Standard or Premium. View Pricing details [here](https://azure.microsoft.com/en-us/pricing/details/databricks/).",
