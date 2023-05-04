@@ -1,2 +1,4 @@
 Rule Name: The name of the rule.
 Description: The description of the rule.
+ScheduleExpression: The scheduling expression. Use Rate Expressions. For example, `rate(5 minutes)` or `rate(1 day)`. Refer here[https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/ScheduledEvents.html#RateExpressions].
+State: Select the state of the rule.
