@@ -447,6 +447,19 @@
                 "tgForwardActionArn": "Select the Target Group to which to route the traffic.",
                 "itemVal00": "Enter Value applicable as per the Rule Condition selected. For details, refer [here](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-listeners.html#listener-rules)."
             },
+            "redisInstance": {
+                "Name": "The ID of the instance or a fully qualified identifier for the instance.",
+                "DisplayName": "Specify optional user-provided name for the instance.",
+                "Tier": "Select the service tier of the instance.\n 1. *Basic*: Tier0 standalone instance\n 2. *Standard*: Tier1 highly available primary/replica instances\n",
+                "RedisVersion": "Specify the version of Redis software.",
+                "MemorySizeGb": "Redis memory size in GiB.",
+                "AuthEnabled": "Indicates whether OSS Redis AUTH is enabled for the instance. If set to \"true\" AUTH is enabled on the instance.",
+                "TransitEncryptionEnabled": "Select to enable the TLS mode of the Redis instance.",
+                "ReadReplicaEnabled": "Select to enable Read replica mode.",
+                "ReplicasCount": "Specify the number of replica nodes. The valid range for the Standard Tier with read replicas enabled is [1-5].",
+                "Redis Config": "Specify Redis Configuration.\nExample: \n```js\n            {\n            \"activedefrag\":\"yes\",\n            \"maxmemory-policy\":\"allkeys-lru\"\n            }\nRefer [here](https://cloud.google.com/memorystore/docs/redis/supported-redis-configurations?authuser=1&_ga=2.150484978.-535098261.1654188041).\n",
+                "Labels": "Specify labels in below format\n```js\n  {\n      \"key\" : \"value\"\n  }\n  ```"
+            },
             "selectIotDeviePackageCert": {
                 "certificateId": "Choose the certificate to download the device package."
             },
