@@ -33,7 +33,7 @@
                 "metaDataServiceFlag": "Select `Disabled` to turn off access to instance metadata. Otherwise you can set `V1 and V2`, or just `V2`. If you do not specify a value, the default is V2 only.",
                 "base64": "Base64 encoded user data. On Linux machine you can encode script file using command ```cat <filepath> | base64 -w 0 ```.",
                 "tags": "Tags to be added to ec2 instance. Format for adding tags is as below.\n 1. **EKS Linux:** Platform\n```js\n{\n    \"key\" : \"value\"\n}\n```\n2. **Linux Docker/Native:** Platform\n`\"key=value, key1=value1\"`\n",
-                "volumes": "Array of extra block devices in json format as below.\n```js\n[\n    {\n        \"Name\":\"/dev/sda\", \n        \"VolumeType\":\"gp2\", \n        \"Size\":\"100\"\n    }\n]\n```\n",
+                "volumes": "Array of extra block devices in json format as below.\n```js\n[\n    {\n        \"Name\":\"/dev/sda\", \n        \"VolumeType\":\"gp2\", \n        \"Size\":\"100\",\n        \"DeleteOnTermination\": \"true\"}\n    }\n]\n```\n",
                 "nwInterfaces": "Extra network interfaces to be attached to the ec2 host in a JSON format as below.\n```js\n[\n  {\n    \"NetworkInterfaceId\": \"eni-095827b411091db43\",\n    \"DeviceIndex\": 0\n  },\n  {\n    \"NetworkInterfaceId\": \"eni-0df26c4b283cde675\",\n    \"DeviceIndex\": 1\n  }\n] \n```\n"
             },
             "AddEFS": {
@@ -465,7 +465,7 @@
                 "ReadReplicaEnabled": "Select to enable Read replica mode.",
                 "ReplicasCount": "Specify the number of replica nodes. The valid range for the Standard Tier with read replicas enabled is [1-5].",
                 "Redis Config": "Specify Redis Configuration. Refer [here](https://cloud.google.com/memorystore/docs/redis/supported-redis-configurations?authuser=1&_ga=2.150484978.-535098261.1654188041).\nExample: \n```js\n            {\n            \"activedefrag\":\"yes\",\n            \"maxmemory-policy\":\"allkeys-lru\"\n            }\n```\n",
-                "Labels": "Specify labels in below format\n```js\n  {\n      \"key\" : \"value\"\n  }\n  ```"
+                "Labels": "Specify labels in below format\n```js\n  {\n      \"key\" : \"value\"\n  }\n  ```\n"
             },
             "selectIotDeviePackageCert": {
                 "certificateId": "Choose the certificate to download the device package."
