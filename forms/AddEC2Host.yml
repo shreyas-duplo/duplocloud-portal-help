@@ -40,7 +40,7 @@ volumes: |
           "Name":"/dev/sda", 
           "VolumeType":"gp2", 
           "Size":"100",
-          "DeleteOnTermination": "true"}
+          "DeleteOnTermination": "true"
       }
   ]
   ```
