@@ -37,7 +37,7 @@ volumes: |
   ```js
   [
       {
-          "Name":"/dev/sda", 
+          "Name":"/dev/sda1", 
           "VolumeType":"gp2", 
           "Size":"100",
           "DeleteOnTermination": "true"

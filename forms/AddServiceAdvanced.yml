@@ -77,6 +77,11 @@ PodConfigK8s: |-
       readOnly: true
       VolumeAttributes:
         secretProviderClass: my-secret-provider-class
+  # deployment strategy
+  DeploymentStrategy:
+  RollingUpdate:
+    MaxSurge: 1
+    MaxUnavailable: 0
   ```
 ContainerConfigK8s: |-
   Deployment and Pod configurations
