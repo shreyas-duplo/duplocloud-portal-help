@@ -327,7 +327,7 @@
                 "Target Type": "Select the Target type."
             },
             "cwrule-target-lambda-add": {
-                "Lambda Function Name": "Select the Lambda function to use if teh event target is Lambda."
+                "Lambda Function Name": "Select the Lambda function."
             },
             "cwtarget-ecs-add": {
                 "Task Definition Family": "Specify the task definition to use if the event target is ECS.",
