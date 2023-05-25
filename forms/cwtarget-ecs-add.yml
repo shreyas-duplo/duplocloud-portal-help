@@ -1,0 +1,3 @@
+Task Definition Family: Specify the task definition to use if the event target is ECS.
+Task Version: Select the task version.
+Task Count: Specify the number of tasks to create based on the TaskDefinition. Minimum value 1, Maximum value 10.

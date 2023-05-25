@@ -317,11 +317,15 @@
             },
             "cwrule-target-add": {
                 "Target Name": "Specify the name of the rule you want to add targets to.",
-                "Target Type": "Select the Target type.",
+                "Target Type": "Select the Target type."
+            },
+            "cwrule-target-lambda-add": {
+                "Lambda Function Name": "Select the Lambda function to use if teh event target is Lambda."
+            },
+            "cwtarget-ecs-add": {
                 "Task Definition Family": "Specify the task definition to use if the event target is ECS.",
                 "Task Version": "Select the task version.",
-                "Task Count": "Specify the number of tasks to create based on the TaskDefinition. Minimum value 1, Maximum value 10.",
-                "Lambda Function Name": "Select the Lambda function to use if teh event target is Lambda."
+                "Task Count": "Specify the number of tasks to create based on the TaskDefinition. Minimum value 1, Maximum value 10."
             },
             "databrick": {
                 "Name": "Enter Databricks workspace name.",
