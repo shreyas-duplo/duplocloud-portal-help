@@ -1,0 +1,3 @@
+Name: The name of the SNS topic.
+KmsKeyId: Select the KMS key for encryption.
+

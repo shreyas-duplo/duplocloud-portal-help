@@ -77,15 +77,19 @@
                 "AddIngressingressLabels": "Key Value pair of labels to be added to SecretProviderClass\nSample Value Can be as bellow\n```yaml\nkey1: value1\nkey2: value2\n```\n",
                 "portOverride": "Select port to override. This field allows to configure frontend listener to use different ports other than 80/443 for http/https."
             },
-            "AddLambda": {
+            "addLambda": {
                 "FunctionName": "Unique name for your Lambda Function.",
                 "Description": "Description of what your Lambda Function does.",
                 "PackageType": "Lambda deployment package type.\n1. **Zip:** Upload a .zip file as your deployment package using Amazon Simple Storage Service (Amazon S3).\n2. **Image:** Upload your container images to Amazon Elastic Container Registry (Amazon ECR).\n",
-                "RuntimeValue": "Runtime is required if the deployment package type is a `Zip` file archive.",
+                "RuntimeValue": "Runtime is required if the deployment package type is a `Zip` file archive. Select the runtime compatible to the function code.",
                 "MemorySize": "Amount of memory in MB your Lambda Function can use at runtime.",
                 "TimeoutInt": "The amount of time in seconds that Lambda allows a function to run before stopping it.",
                 "Handler": "The name of the method within your code that Lambda calls to execute your function. Handler is required if the deployment package type is a `Zip` file archive.",
-                "EnvironmentVariables": "Map of environment variables that are accessible from the function code during execution."
+                "EnvironmentVariables": "Map of environment variables that are accessible from the function code during execution.\nExample:\n```js\n{\n  \"Variables\": {\"foo\":\"bar\"}\n}\n```\n",
+                "S3Bucket": "Select the S3 bucket location containing the function's deployment package.",
+                "S3BucketKey": "Enter the S3 key of an object containing the function's deployment package.",
+                "ImageConfiguration": "Specify container image configuration values.\nExample:\n```js\n{\"EntryPoint\":[\"/usr/local/bin/python\", \"-m\", \"awslambdaruntimeclient\"],\"Command\":[\"app.handler\"],\"WorkingDirectory\":\"/var/task\"}\n```\n",
+                "ImageUri": "Enter the ECR image URI containing the function's deployment package."
             },
             "AddPVC": {
                 "name": "Name for Persistent Volume Claim.",
@@ -165,6 +169,10 @@
                 "ReplicationStrategy": "Replication Strategy can be used to manage the replica count for this Deployment/StatefulSet. Replication Strategy has three options as below.\n  1. **Static**: This option can be used to set fixed count for the replicas.\n  2. **Daemonset**: If this option is selected, DuploCloud will make sure pods will run on every host created in this tenant.\n  3. **Horizontal Pod Autoscaler**: This is more advanced option which user can use to automcatically scale up or down the replicas as per the different metrics like CPU Usage, Memory Usage, Ingress requests per second etc. [Click Here](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale-walkthrough/) for more information on *Horizontal Pod Autoscaler*.\n",
                 "HPAConfig": "Horizontal pod autoscaler specifications as documented [here](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale-walkthrough/). Sample value can be like below.\n```yaml\nmaxReplicas: 5\nmetrics:\n  - resource:\n      name: cpu\n      target:\n        averageUtilization: 80\n        type: Utilization\n    type: Resource\nminReplicas: 2\n```",
                 "envVariables": "Environment Variables to be passed in json format. Refer sample as below.\n```js\n{\n    \"discovery.type\": \"single-node\",\n     \"plugins.security.disabled\" : \"true\",\n     \"compatibility.override_main_response_version\" : \"true\"\n}\n"
+            },
+            "AddSNS": {
+                "Name": "The name of the SNS topic.",
+                "KmsKeyId": "Select the KMS key for encryption."
             },
             "AddSQS": {
                 "Name": "The name of the queue.",
@@ -505,9 +513,9 @@
             "topicRule": {
                 "Name": "Specify the name of the rule.",
                 "Description": "Add description to the rule.",
-                "SqlSelect": "The SQL statement used to query the topic. For SQL Expressions refer [here](https://docs.aws.amazon.com/iot/latest/developerguide/iot-sql-reference.html).",
-                "TopicFilter": "TopicFilter for the query. Defaults to `#`.",
-                "SqlWhere": "clause determines if the actions specified by a rule are carried out. Refer [here](https://docs.aws.amazon.com/iot/latest/developerguide/iot-sql-where.html).",
+                "SqlSelect_later": "The SQL statement used to query the topic. For SQL Expressions refer [here](https://docs.aws.amazon.com/iot/latest/developerguide/iot-sql-reference.html).",
+                "TopicFilter_later": "TopicFilter for the query. Defaults to `#`.",
+                "SqlWhere_later": "clause determines if the actions specified by a rule are carried out. Refer [here](https://docs.aws.amazon.com/iot/latest/developerguide/iot-sql-where.html).",
                 "SqlVersion": "The version of the SQL rules engine to use when evaluating the rule. Defaults to `2016-03-23`.",
                 "Disabled": "Select to enable or disable  the destination.",
                 "Action 1": "Specify actions when a rule is invoked. For more details refer [here](https://docs.aws.amazon.com/iot/latest/developerguide/iot-rule-actions.html).",
