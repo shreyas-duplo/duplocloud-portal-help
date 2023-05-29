@@ -1,0 +1,2 @@
+SelectLayer: Select the Layer. The list shows the layers compatible to the runtime of the function. Applicable for only `.zip` package type.
+SelectVersion: Select the version of the layer to use in the function.
