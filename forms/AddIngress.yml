@@ -19,7 +19,7 @@ ingressAnnotations: |
     *Azure Application Gateway Ingress* [here](https://azure.github.io/application-gateway-kubernetes-ingress/annotations/#list-of-supported-annotations)
 httpPort: HTTP Listener Port. If you dont want to exposed your services over HTTP, make it blank.
 httpsPort: HTTPS Listener Port. HTTPS Listener port can be specified only when SSL certificate ARN is specified.
-AddIngressingressLabels: |
+ingressLabels: |
   Key Value pair of labels to be added to SecretProviderClass
   Sample Value Can be as bellow
   ```yaml

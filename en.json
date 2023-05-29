@@ -74,7 +74,7 @@
                 "ingressAnnotations": "List of Key Value pairs to annotate the Ingress Object. \nAnnotations are used for controlling the behavior of the services exposed by the Ingress. \nEach ingress controller defines the set of annotations which can be used to control the behavior.\nRefer these links: \n  *AWS ALB ingress controller* [here](https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.2/guide/ingress/annotations/)\n  *Azure Application Gateway Ingress* [here](https://azure.github.io/application-gateway-kubernetes-ingress/annotations/#list-of-supported-annotations)\n",
                 "httpPort": "HTTP Listener Port. If you dont want to exposed your services over HTTP, make it blank.",
                 "httpsPort": "HTTPS Listener Port. HTTPS Listener port can be specified only when SSL certificate ARN is specified.",
-                "AddIngressingressLabels": "Key Value pair of labels to be added to SecretProviderClass\nSample Value Can be as bellow\n```yaml\nkey1: value1\nkey2: value2\n```\n",
+                "ingressLabels": "Key Value pair of labels to be added to SecretProviderClass\nSample Value Can be as bellow\n```yaml\nkey1: value1\nkey2: value2\n```\n",
                 "portOverride": "Select port to override. This field allows to configure frontend listener to use different ports other than 80/443 for http/https."
             },
             "addLambda": {
@@ -435,13 +435,17 @@
             "IngressRule": {
                 "serviceName": "Name of the kubernetes service which Ingress will use as backend to serve the request. User will have to first configure a Loadbalancer/Kubernetes NodePort/Kubernetes ClusterIP for the DuploCloud service. \nYou can find the document [here](https://docs.duplocloud.com/docs/aws/quick-start/step-6-create-a-load-balancer)\n",
                 "port": "Port from the kubernetes service that ingress will use as backend port to serve the requests.",
-                "host": "If a host is provided (for e.g. example, foo.bar.com), the rules apply to that host.",
+                "host": "If a host is provided (for e.g. example.com, foo.bar.com), the rules apply to that host.",
                 "path": "Specify the path (for e.g. /api /v1/api/) to do a path base routing. If host is specified then both path and host should be match for the incoming request.",
                 "pathType": "Each path in an Ingress is required to have a corresponding path type. Paths that do not include an explicit pathType will fail validation. There are three supported path types:\n\nImplementationSpecific: With this path type, matching is up to the IngressClass. Implementations can treat this as a separate pathType or treat it identically to Prefix or Exact path types.\n\n1. *Exact*: Matches the URL path exactly and with case sensitivity.\n\n2. *Prefix*: Matches based on a URL path prefix split by /. Matching is case sensitive and done on a path element by element basis. A path element refers to the list of labels in the path split by the / separator. A request is a match for path p if every p is an element-wise prefix of p of the request path. \n"
             },
             "jobDefinition": {
                 "OtherContainerProperties": "All Other Container Properties for the Register Job Definition Request parameters as documented [here](https://docs.aws.amazon.com/batch/latest/APIReference/API_RegisterJobDefinition.html) only for the **ContainerProperties** section.\nSample Value for the Other Container properties to override **Command** is as below\n```js\n{\n    \"Command\" : [\"sleep\", \"5\"]\n}\n```\n",
                 "OtherJobProperties": "All Other Job Properties for the Register Job Definition Request parameters as documented [here](https://docs.aws.amazon.com/batch/latest/APIReference/API_RegisterJobDefinition.html) except the **ContainerProperties** section.\nSample Value for the Other Job properties to set **RetryStrategy** is as below\n```js\n{\n    \"RetryStrategy\": {\n      \"EvaluateOnExit\": [\n          {\n            \"Action\": \"EXIT\",\n            \"OnExitCode\": \"1*\",\n            \"OnReason\": \"reason*\",\n            \"OnStatusReason\": \"status\"\n          }\n      ]\n    }\n}\n```"
+            },
+            "lambda-add-layer": {
+                "SelectLayer": "Select the Layer. The list shows the layers compatible to the runtime of the function. Applicable for only `.zip` package type.",
+                "SelectVersion": "Select the version of the layer to use in the function."
             },
             "lbListener": {
                 "lbType": "Type of AWS loadbalancer. It supports following two types\n1. **Application**: Use this type when user wants to expose HTTP or HTTPS port using the Loadbalancer.\n2. **Network**: For any other ports use this type.\n",
