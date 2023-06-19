@@ -494,6 +494,14 @@
             "selectIotDeviePackageCert": {
                 "certificateId": "Choose the certificate to download the device package."
             },
+            "sqlDatabase": {
+                "Name": "Enter the name of the instance.",
+                "DatabaseVersion": "Select the MySQL, PostgreSQL or SQL Server version to use.",
+                "Tier": "Select from the list of all available machine types (tiers) for the database.",
+                "RootPassword": "Specify the root password. Required for MS SQL Server.",
+                "DataDiskSizeGb": "Specify the size of data disk, in GB.",
+                "Labels": "Specify labels in below format\n```js\n{\n    \"key\" : \"value\"\n}\n```\n"
+            },
             "taskdef": {
                 "Name": "Specify a name for your task definition. Up to 255 letters (uppercase and lowercase), numbers, hyphens, and underscores are allowed.",
                 "Image": "Image for your docker container.",
