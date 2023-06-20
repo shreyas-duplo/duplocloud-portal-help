@@ -22,6 +22,16 @@ ImageConfiguration: |
   Specify container image configuration values.
   Example:
   ```js
-  {"EntryPoint":["/usr/local/bin/python", "-m", "awslambdaruntimeclient"],"Command":["app.handler"],"WorkingDirectory":"/var/task"}
+  {
+    "Command": [
+        "app.handler"
+    ],
+    "EntryPoint": [
+        "/usr/local/bin/python",
+        "-m",
+        "awslambdaruntimeclient"
+    ],
+    "WorkingDirectory": "/var/task"
+  }
   ```
 ImageUri: Enter the ECR image URI containing the function's deployment package.
