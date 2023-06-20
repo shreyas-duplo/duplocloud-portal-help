@@ -88,7 +88,7 @@
                 "EnvironmentVariables": "Map of environment variables that are accessible from the function code during execution.\nExample:\n```js\n{\n  \"Variables\": {\"foo\":\"bar\"}\n}\n```\n",
                 "S3Bucket": "Select the S3 bucket location containing the function's deployment package.",
                 "S3BucketKey": "Enter the S3 key of an object containing the function's deployment package.",
-                "ImageConfiguration": "Specify container image configuration values.\nExample:\n```js\n{\"EntryPoint\":[\"/usr/local/bin/python\", \"-m\", \"awslambdaruntimeclient\"],\"Command\":[\"app.handler\"],\"WorkingDirectory\":\"/var/task\"}\n```\n",
+                "ImageConfiguration": "Specify container image configuration values.\nExample:\n```js\n{\n  \"Command\": [\n      \"app.handler\"\n  ],\n  \"EntryPoint\": [\n      \"/usr/local/bin/python\",\n      \"-m\",\n      \"awslambdaruntimeclient\"\n  ],\n  \"WorkingDirectory\": \"/var/task\"\n}\n```\n",
                 "ImageUri": "Enter the ECR image URI containing the function's deployment package."
             },
             "AddPVC": {
