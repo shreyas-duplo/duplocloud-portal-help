@@ -121,6 +121,11 @@
                 "EnableLogging": "Select this option to enable logging for the RDS instance.",
                 "MultiAZ": "Create database in multiple availability zones for high availability."
             },
+            "AddS3Bucket": {
+                "Name": "Specify name of the bucket.",
+                "InTenantRegion": "Select the AWS region.",
+                "s3ObjectLock": "Enable to configure S3 Object Lock. When you create a bucket with S3 Object Lock enabled, Amazon S3 automatically enables versioning for the bucket."
+            },
             "addSecretObjects": {
                 "Name": "Kubernetes secret name. It should only contain alphanumeric characters and '-'.\nSelect the parameters which you want to include into the secrets. You can also change the name of the parameter.\n"
             },
