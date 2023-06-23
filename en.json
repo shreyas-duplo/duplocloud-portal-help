@@ -128,6 +128,11 @@
                 "otherLimits": "You can use this input to all other quotas like storage, Object count etc. Value has to be provided in YAML format like below.  \n```yaml\nrequests.storage: 500Gi\npersistentvolumeclaims: 10\n```\n",
                 "scopeSelector": "Each quota can have an associated set of scopes. A quota will only measure usage for a resource if it matches the intersection of enumerated scopes. \nWhen a scope is added to the quota, it limits the number of resources it supports to those that pertain to the scope. Resources specified on the quota outside of the allowed set results in a validation error. \nValue has to be provided in YAML format as below.  \n```yaml\nmatchExpressions:\n- operator : In\n  scopeName: PriorityClass\n  values: [\"medium\"]\n```"
             },
+            "AddS3Bucket": {
+                "Name": "Specify name of the bucket.",
+                "InTenantRegion": "Select the AWS region.",
+                "s3ObjectLock": "Enable to configure S3 Object Lock. When you create a bucket with S3 Object Lock enabled, Amazon S3 automatically enables versioning for the bucket."
+            },
             "addSecretObjects": {
                 "Name": "Kubernetes secret name. It should only contain alphanumeric characters and '-'.\nSelect the parameters which you want to include into the secrets. You can also change the name of the parameter.\n"
             },
