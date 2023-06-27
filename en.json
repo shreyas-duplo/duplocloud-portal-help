@@ -538,6 +538,10 @@
                 "Action 1": "Specify actions when a rule is invoked. For more details refer [here](https://docs.aws.amazon.com/iot/latest/developerguide/iot-rule-actions.html).",
                 "UseErrorAction": "Enable to activate the rules engine an error action, if any problem is identified while activating the topic rule.",
                 "Error Action": "Define the error action message. Refer [here](https://docs.aws.amazon.com/iot/latest/developerguide/rule-error-handling.html) for examples."
+            },
+            "UpdateEfsLifecyclePolicy": {
+                "TransitionToIA": "Select the duration to transition files to the IA storage class.",
+                "TransitionToPrimaryStorageClass": "Enable to transition a file to primary storage."
             }
         }
     }
