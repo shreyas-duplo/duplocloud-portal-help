@@ -107,15 +107,15 @@ ContainerConfigK8s: |-
     initialDelaySeconds: 5
     periodSeconds: 5
   startupProbe:
-  initialDelaySeconds: 1
-  periodSeconds: 5
-  timeoutSeconds: 1
-  successThreshold: 1
-  failureThreshold: 1
-  exec:
-    command:
-      - cat
-      - /etc/nginx/nginx.conf
+    initialDelaySeconds: 1
+    periodSeconds: 5
+    timeoutSeconds: 1
+    successThreshold: 1
+    failureThreshold: 1
+    exec:
+      command:
+        - cat
+        - /etc/nginx/nginx.conf
   SecurityContext:
     Capabilities:
       Add:
