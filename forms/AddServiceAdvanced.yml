@@ -79,9 +79,10 @@ PodConfigK8s: |-
         secretProviderClass: my-secret-provider-class
   # deployment strategy
   DeploymentStrategy:
-  RollingUpdate:
-    MaxSurge: 1
-    MaxUnavailable: 0
+    RollingUpdate:
+      MaxSurge: 1
+      MaxUnavailable: 0  
+  
   ```
 ContainerConfigK8s: |-
   Deployment and Pod configurations
@@ -105,6 +106,16 @@ ContainerConfigK8s: |-
         - /tmp/healthy
     initialDelaySeconds: 5
     periodSeconds: 5
+  startupProbe:
+  initialDelaySeconds: 1
+  periodSeconds: 5
+  timeoutSeconds: 1
+  successThreshold: 1
+  failureThreshold: 1
+  exec:
+    command:
+      - cat
+      - /etc/nginx/nginx.conf
   SecurityContext:
     Capabilities:
       Add:
