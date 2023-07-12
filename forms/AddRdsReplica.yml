@@ -1,4 +1,4 @@
-Identifier: Provide unique identifier for the RDS replica instance across all tenants. The cluster identifier is used in determining the cluster's endpoint. An identifier can't end with a hyphen or contain two consecutive hyphens or start with a number. It should also be 57 characters or shorter. Must be in all lower-case.
+Identifier: Please provide a unique identifier for the RDS replica instance that is unique across all tenants. The cluster identifier is used to determine the cluster's endpoint. An identifier cannot end with a hyphen or contain two consecutive hyphens or start with a number. It should also be 57 characters or shorter and must be in all lowercase.
 Engine: Select Database engine for creating RDS instance.
 EngineVersion: Select database engine version. If not selected latest version will be used while creating database. Select type as 'Other' if you don't see desired option in dropdown list.
 Size: Instance size for RDS. Select type as 'Other' if you don't see desired option in dropdown list.
