@@ -1,2 +1,6 @@
- .DS_Store
- .idea
+.vscode/*
+.vs/*
+.idea/
+.DS_Store
+*/.DS_Store
+tmp/
