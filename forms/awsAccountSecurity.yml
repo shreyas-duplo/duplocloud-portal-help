@@ -1,4 +1,4 @@
-EnableSecurityHub: Enable AWS Security Hub in any region where there is infrastructure managed by Duplo
+EnableSecurityHub: Enable AWS Security Hub in any region where there is infrastructure managed by DuploCloud.
 EnableAllSecurityHubRegions: Enable AWS Security Hub in all AWS regions managed
   by Duplo
 SecurityHubMembershipType: |
@@ -6,7 +6,7 @@ SecurityHubMembershipType: |
 
   - **Local**: Disable any multi-account administration by this account in AWS Security Hub.
   - **Centralized (in this account)**: Allow this account to manage other accounts in AWS Security Hub.
-  - **Centralized (in another account)**: Allow this account to be managed by another Duplo in AWS Security Hub. Disable any multi-account administration by this account in AWS Security Hub.
+  - **Centralized (in another account)**: Allow this account to be managed by another DuploCloud in AWS Security Hub. Disable any multi-account administration by this account in AWS Security Hub.
 SecurityHubAdminAccount: The AWS Account ID of the Security Hub administrator
   account.
 ConfigLogBucketType: |
@@ -16,11 +16,11 @@ ConfigLogBucketType: |
   - **Centralized (in this account)**: AWS Config will log to an S3 bucket owned by this account. Allow AWS Config in other accounts to log to this same bucket.
   - **Centralized (in another account)**: AWS Config will log to an S3 bucket owned by another account.
 ConfigLogBucketName: The S3 bucket name that AWS Config will log to.
-EnableGuardDuty: Enable AWS Guard Duty in all AWS regions managed by Duplo
+EnableGuardDuty: Enable AWS Guard Duty in all AWS regions managed by DuploCloud.
 EnableInspector: Enable AWS Inspector in any region where there is infrastructure
-  managed by Duplo
+  managed by DuploCloud.
 EnableAllInspectorRegions: Enable AWS Inspector in all AWS regions managed by
-  Duplo
+  DuploCloud.
 IgnoreDefaultEbsEncryption: |
   Normally, DuploCloud enables EBS Default Encryption for all regions in which you deploy infrastructure.
 
@@ -41,7 +41,7 @@ EnablePasswordPolicy: |
 EnableCloudTrail: |
   Enable a multi-region CloudTrail for this AWS account.
 
-  Enabling this feature will tell Duplo to:
+  Enabling this feature will tell DuploCloud to:
 
   - Create and manage a multi-region CloudTrail in this AWS account
   - Create a CloudWatch log group named `/cloudtrail/duplo` that receives CloudTrail events
@@ -56,13 +56,13 @@ CloudTrailLogBucketAccount: The AWS Account where AWS CloudTrail S3 logs will
   reside in.
 CloudTrailLogBucketName: The S3 bucket name that AWS CloudTrail will log to.
 CloudTrailLogBucketKmsKeyId: The KMS Key ID that AWS CloudTrail S3 logs will use.
-EnableVpcFlowLogs: Enable VPC flow logs for all VPCs created by Duplo
-DeleteDefaultVpcs: Delete default VPCs in all AWS regions managed by Duplo
-DeleteDefaultNaclRules: Delete default NACL rules for all VPCs created by Duplo
+EnableVpcFlowLogs: Enable VPC flow logs for all VPCs created by DuploCloud.
+DeleteDefaultVpcs: Delete default VPCs in all AWS regions managed by DuploCloud.
+DeleteDefaultNaclRules: Delete default NACL rules for all VPCs created by DuploCloud.
 RevokeDefaultSgRules: Revoke default Security Group rules for all VPCs created
-  by Duplo
+  by DuploCloud.
 EnableCisCloudTrailCloudWatchAlarms: |
-  Enables CIS CloudTrail CloudWatch Alarms in all AWS regions managed by Duplo.
+  Enables CIS CloudTrail CloudWatch Alarms in all AWS regions managed by DuploCloud.
 
   Enabling this feature and specifying an email address to receive alerts will satisfy AWS CIS controls 3.1 through 3.14.
 CisCloudWatchAlarmNotificationEmail: |
