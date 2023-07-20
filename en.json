@@ -256,7 +256,7 @@
             },
             "awsAccountSecurity": {
                 "EnableSecurityHub": "Enable AWS Security Hub in any region where there is infrastructure managed by DuploCloud.",
-                "EnableAllSecurityHubRegions": "Enable AWS Security Hub in all AWS regions managed by Duplo",
+                "EnableAllSecurityHubRegions": "Enable AWS Security Hub in all AWS regions managed by DuploCloud.",
                 "SecurityHubMembershipType": "Enable or disable multi-account AWS Security Hub:\n\n- **Local**: Disable any multi-account administration by this account in AWS Security Hub.\n- **Centralized (in this account)**: Allow this account to manage other accounts in AWS Security Hub.\n- **Centralized (in another account)**: Allow this account to be managed by another DuploCloud in AWS Security Hub. Disable any multi-account administration by this account in AWS Security Hub.\n",
                 "SecurityHubAdminAccount": "The AWS Account ID of the Security Hub administrator account.",
                 "ConfigLogBucketType": "Enable or disable cross-account AWS Config logging:\n\n- **Local**: AWS Config will log to an S3 bucket owned by this account.\n- **Centralized (in this account)**: AWS Config will log to an S3 bucket owned by this account. Allow AWS Config in other accounts to log to this same bucket.\n- **Centralized (in another account)**: AWS Config will log to an S3 bucket owned by another account.\n",

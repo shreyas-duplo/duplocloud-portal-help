@@ -1,6 +1,6 @@
 EnableSecurityHub: Enable AWS Security Hub in any region where there is infrastructure managed by DuploCloud.
 EnableAllSecurityHubRegions: Enable AWS Security Hub in all AWS regions managed
-  by Duplo
+  by DuploCloud.
 SecurityHubMembershipType: |
   Enable or disable multi-account AWS Security Hub:
 
