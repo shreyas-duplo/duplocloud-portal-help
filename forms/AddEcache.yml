@@ -1,0 +1,8 @@
+CacheType: Select the cache engine to be used for this cache cluster.
+Name: Enter Cluster Identifier.
+EngineVersion: Select version number of the cache engine to be used. If not set, defaults to the latest version.
+Size: Select the NodeType.
+Replicas: Specify the initial number of cache nodes that the cache cluster will have.
+EnableEncryptionAtTransit: Select if Encryption At Transit is needed.
+ParameterGroupName: Specify hte name of the parameter group to associate with this cache cluster.
+SnapshotArnsInput: Specify the ARN of a Redis RDB snapshot file stored in Amazon S3. Example- `arn:aws:s3:::s3-backup-foldername/backupobject.rdb`
