@@ -129,7 +129,9 @@
                 "ClusterParameterGroupName": "Cluster parameters group name.",
                 "EncryptionKey": "Choose to encrypt the given instance.",
                 "EnableLogging": "Select this option to enable logging for the RDS instance.",
-                "MultiAZ": "Create database in multiple availability zones for high availability."
+                "MultiAZ": "Create database in multiple availability zones for high availability.",
+                "StorageType": "Select the StorageType. Default is `gp3`.",
+                "StoreDetailsInSecretManager": "Enable to store RDS password in AWS Secret Manager."
             },
             "AddRdsAuroraReplica": {
                 "Identifier": "Please provide a unique identifier for the RDS replica instance that is unique across all tenants. The cluster identifier is used to determine the cluster's endpoint. An identifier cannot end with a hyphen or contain two consecutive hyphens or start with a number. It should also be 49 characters or shorter and must be in all lowercase.",
