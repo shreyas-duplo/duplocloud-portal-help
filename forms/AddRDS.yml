@@ -17,3 +17,4 @@ EncryptionKey: Choose to encrypt the given instance.
 EnableLogging: Select this option to enable logging for the RDS instance.
 MultiAZ: Create database in multiple availability zones for high availability.
 StorageType: Select the StorageType. Default is `gp3`.
+StoreDetailsInSecretManager: Enable to save RDS password in AWS Secret Manager.
