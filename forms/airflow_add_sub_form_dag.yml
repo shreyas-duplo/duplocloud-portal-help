@@ -7,3 +7,8 @@ RequirementsS3ObjectVersion: |
   S3 Enable Versioning is required to use this in your environment.
 PluginsS3ObjectVersion: Specify the plugin.zip version. For example, lSHNqFtO5Z7_6K6YfGpKnpyjqP2JTvSf.
   S3 Enable Versioning is required to use this in your environment.
+StartupScriptS3Path: |
+  Specify a shell (.sh) script to be executed during startup on Apache Airflow components. You need to specify the relative path to the script hosted in S3 Bucket, for example, `AirflowDags/startup.sh`.
+StartupScriptS3ObjectVersion: |
+  Specify the version ID of the startup shell script from S3 Bucket. For example, YVu1x62otML9W8TQgCjm5iXWBtrGL3HP.
+  S3 Enable Versioning is required to use this in your environment.
