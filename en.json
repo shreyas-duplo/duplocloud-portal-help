@@ -298,7 +298,7 @@
                 "BudgetAmount": "Specify the custom threshold which will be used to compute the alert. Enter a positive dollar amount.",
                 "AlertTrigger": "Select the percentage of the threshold above which the alert will be triggered.",
                 "AlertTriggerOther": "Specify the custom trigger value. Enter a positive integer percent value.",
-                "EmailNotifications": "Select the admin users to which the Billing Alert will be emailed to."
+                "EmailNotifications": "Select the admin users to receive the billing alert email."
             },
             "azureAddAgentPool": {
                 "name": "Select Id to create a node pool",
