@@ -3,4 +3,4 @@ Previous Month Spend: If selected, the threshold will be set to the monthly spen
 BudgetAmount: Specify the custom threshold which will be used to compute the alert. Enter a positive dollar amount.
 AlertTrigger: Select the percentage of the threshold above which the alert will be triggered.
 AlertTriggerOther: Specify the custom trigger value. Enter a positive integer percent value.
-EmailNotifications: Select the admin users to which the Billing Alert will be emailed to.
+EmailNotifications: Select the admin users to receive the billing alert email.
