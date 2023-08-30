@@ -292,6 +292,14 @@
                 "EnableCisCloudTrailCloudWatchAlarms": "Enables CIS CloudTrail CloudWatch Alarms in all AWS regions managed by DuploCloud.\n\nEnabling this feature and specifying an email address to receive alerts will satisfy AWS CIS controls 3.1 through 3.14.\n",
                 "CisCloudWatchAlarmNotificationEmail": "Specifies an email address that should receive the CIS CloudTrail CloudWatch Alarms.\n\nIn order to satisfy AWS CIS controls 3.1 through 3.14, the email recipient must first confirm the subscription to receive the alerts from AWS."
             },
+            "awsBillingAlert": {
+                "Disable": "Enable or Disable the Billing Alert. If disabled, no alert will be triggered.",
+                "Previous Month Spend": "If selected, the threshold will be set to the monthly spend of the previous month. If not, the threshold must be set manually.",
+                "BudgetAmount": "Specify the custom threshold which will be used to compute the alert. Enter a positive dollar amount.",
+                "AlertTrigger": "Select the percentage of the threshold above which the alert will be triggered.",
+                "AlertTriggerOther": "Specify the custom trigger value. Enter a positive integer percent value.",
+                "EmailNotifications": "Select the admin users to which the Billing Alert will be emailed to."
+            },
             "azureAddAgentPool": {
                 "name": "Select Id to create a node pool",
                 "InstanceType": "The size of the virtual machines that will form the nodes in this node pool.",
