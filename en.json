@@ -87,6 +87,18 @@
                 "ingressLabels": "Key Value pair of labels to be added to SecretProviderClass\nSample Value Can be as bellow\n```yaml\nkey1: value1\nkey2: value2\n```\n",
                 "portOverride": "Select port to override. This field allows to configure frontend listener to use different ports other than 80/443 for http/https."
             },
+            "AddK8sJob": {
+                "JobName": "Specify the name of the service, must be unique.",
+                "Schedule": "Specify schedule in Cron format. Example- `0 0 * * 0`. This will run once a week at midnight on Sunday morning.",
+                "ImageName": "Specify the image name.",
+                "CleanupFinished": "Specify time in seconds.\n1. **if set as 0**: Job becomes eligible to be deleted immediately after it finishes.\n2. **if field is unset/blank**: Jobs won't be automatically deleted. \n3. **if the field is set**: Job is eligible to be automatically delete after the seconds specified\n",
+                "restartPolicy": "**Never**: Job won't restart on failure.\n**OnFailure**: Job will restart on failure.\n",
+                "envVariables": "Environment variables to be passed to the jobs in the YAML format.\n  ```yaml\n   ---\n   - Name: DB_HOST\n     Value: abc.com\n   - Name: DB_USER\n     Value: myuser\n  ```\n",
+                "advancedConfig": "Example:\n```yaml\nspec:\n    template:\n      spec:\n        containers:\n        - name: hello\n          image: busybox:1.28\n          imagePullPolicy: IfNotPresent\n          command:\n          - /bin/sh\n          - -c\n          - date; echo Hello from the Kubernetes cluster\n```\n",
+                "specYaml": "Cron job template specification.",
+                "annotationsYaml": "Specify annotation.",
+                "labelYaml": "Key Value pair of labels to be added to the job.\n  Sample Value Can be as bellow\n  ```yaml\n  key1: value1\n  key2: value2\n  ```"
+            },
             "addLambda": {
                 "FunctionName": "Unique name for your Lambda Function.",
                 "Description": "Description of what your Lambda Function does.",
