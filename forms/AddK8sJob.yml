@@ -1,0 +1,44 @@
+JobName: Specify the name of the service, must be unique.
+Schedule: Specify schedule in Cron format. Example- `0 0 * * 0`. This will run once a week at midnight on Sunday morning.
+ImageName: Specify the image name.
+CleanupFinished: |
+  Specify time in seconds.
+  1. **if set as 0**: Job becomes eligible to be deleted immediately after it finishes.
+  2. **if field is unset/blank**: Jobs won't be automatically deleted. 
+  3. **if the field is set**: Job is eligible to be automatically delete after the seconds specified
+restartPolicy: |
+  **Never**: Job won't restart on failure.
+  **OnFailure**: Job will restart on failure.
+envVariables: |
+    Environment variables to be passed to the jobs in the YAML format.
+      ```yaml
+       ---
+       - Name: DB_HOST
+         Value: abc.com
+       - Name: DB_USER
+         Value: myuser
+      ```
+advancedConfig: |
+  Example:
+  ```yaml
+  spec:
+      template:
+        spec:
+          containers:
+          - name: hello
+            image: busybox:1.28
+            imagePullPolicy: IfNotPresent
+            command:
+            - /bin/sh
+            - -c
+            - date; echo Hello from the Kubernetes cluster
+  ```
+specYaml: Cron job template specification.
+annotationsYaml: Specify annotation.
+labelYaml: |
+  Key Value pair of labels to be added to the job.
+    Sample Value Can be as bellow
+    ```yaml
+    key1: value1
+    key2: value2
+    ```
