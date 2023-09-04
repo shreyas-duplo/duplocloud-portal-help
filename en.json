@@ -87,18 +87,6 @@
                 "ingressLabels": "Key Value pair of labels to be added to SecretProviderClass\nSample Value Can be as bellow\n```yaml\nkey1: value1\nkey2: value2\n```\n",
                 "portOverride": "Select port to override. This field allows to configure frontend listener to use different ports other than 80/443 for http/https."
             },
-            "AddK8sJob": {
-                "JobName": "Specify the name of the service, must be unique.",
-                "Schedule": "Specify schedule in Cron format. Example- `0 0 * * 0`. This will run once a week at midnight on Sunday morning.",
-                "ImageName": "Specify the image name.",
-                "CleanupFinished": "Specify time in seconds.\n1. **if set as 0**: Job becomes eligible to be deleted immediately after it finishes.\n2. **if field is unset/blank**: Jobs won't be automatically deleted. \n3. **if the field is set**: Job is eligible to be automatically delete after the seconds specified\n",
-                "restartPolicy": "**Never**: Job won't restart on failure.\n**OnFailure**: Job will restart on failure.\n",
-                "envVariables": "Environment variables to be passed to the jobs in the YAML format.\n  ```yaml\n   ---\n   - Name: DB_HOST\n     Value: abc.com\n   - Name: DB_USER\n     Value: myuser\n  ```\n",
-                "advancedConfig": "Example:\n```yaml\nspec:\n    template:\n      spec:\n        containers:\n        - name: hello\n          image: busybox:1.28\n          imagePullPolicy: IfNotPresent\n          command:\n          - /bin/sh\n          - -c\n          - date; echo Hello from the Kubernetes cluster\n```\n",
-                "specYaml": "Cron job template specification.",
-                "annotationsYaml": "Specify annotation.",
-                "labelYaml": "Key Value pair of labels to be added to the job.\n  Sample Value Can be as bellow\n  ```yaml\n  key1: value1\n  key2: value2\n  ```"
-            },
             "addLambda": {
                 "FunctionName": "Unique name for your Lambda Function.",
                 "Description": "Description of what your Lambda Function does.",
@@ -500,6 +488,20 @@
                 "host": "If a host is provided (for e.g. example.com, foo.bar.com), the rules apply to that host.",
                 "path": "Specify the path (for e.g. /api /v1/api/) to do a path base routing. If host is specified then both path and host should be match for the incoming request.",
                 "pathType": "Each path in an Ingress is required to have a corresponding path type. Paths that do not include an explicit pathType will fail validation. There are three supported path types:\n\nImplementationSpecific: With this path type, matching is up to the IngressClass. Implementations can treat this as a separate pathType or treat it identically to Prefix or Exact path types.\n\n1. *Exact*: Matches the URL path exactly and with case sensitivity.\n\n2. *Prefix*: Matches based on a URL path prefix split by /. Matching is case sensitive and done on a path element by element basis. A path element refers to the list of labels in the path split by the / separator. A request is a match for path p if every p is an element-wise prefix of p of the request path. \n"
+            },
+            "JobAdvancedForm": {
+                "advancedConfig": "Example:\n```yaml\nspec:\n    template:\n      spec:\n        containers:\n        - name: hello\n          image: busybox:1.28\n          imagePullPolicy: IfNotPresent\n          command:\n          - /bin/sh\n          - -c\n          - date; echo Hello from the Kubernetes cluster\n```\n",
+                "specYaml": "Cron job template specification.",
+                "annotationsYaml": "Specify annotation.",
+                "labelYaml": "Key Value pair of labels to be added to the job.\n  Sample Value Can be as bellow\n  ```yaml\n  key1: value1\n  key2: value2\n  ```"
+            },
+            "JobBasicForm": {
+                "JobName": "Specify the name of the service, must be unique.",
+                "Schedule": "Specify schedule in Cron format. Example- `0 0 * * 0`. This will run once a week at midnight on Sunday morning.",
+                "ImageName": "Specify the image name.",
+                "CleanupFinished": "Specify time in seconds.\n1. **if set as 0**: Job becomes eligible to be deleted immediately after it finishes.\n2. **if field is unset/blank**: Jobs won't be automatically deleted. \n3. **if the field is set**: Job is eligible to be automatically delete after the seconds specified\n",
+                "restartPolicy": "**Never**: Job won't restart on failure.\n**OnFailure**: Job will restart on failure.\n",
+                "envVariables": "Environment variables to be passed to the jobs in the YAML format.\n  ```yaml\n   ---\n   - Name: DB_HOST\n     Value: abc.com\n   - Name: DB_USER\n     Value: myuser\n  ```"
             },
             "jobDefinition": {
                 "OtherContainerProperties": "All Other Container Properties for the Register Job Definition Request parameters as documented [here](https://docs.aws.amazon.com/batch/latest/APIReference/API_RegisterJobDefinition.html) only for the **ContainerProperties** section.\nSample Value for the Other Container properties to override **Command** is as below\n```js\n{\n    \"Command\" : [\"sleep\", \"5\"]\n}\n```\n",
