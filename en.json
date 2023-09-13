@@ -101,6 +101,24 @@
                 "ImageConfiguration": "Specify container image configuration values.\nExample:\n```js\n{\n  \"Command\": [\n      \"app.handler\"\n  ],\n  \"EntryPoint\": [\n      \"/usr/local/bin/python\",\n      \"-m\",\n      \"awslambdaruntimeclient\"\n  ],\n  \"WorkingDirectory\": \"/var/task\"\n}\n```\n",
                 "ImageUri": "Enter the ECR image URI containing the function's deployment package."
             },
+            "AddNamespace": {
+                "Name": "Specify the name of the ServiceBus Namespace resource.",
+                "SkuTier": "Select the Pricing Tier.",
+                "Version": "Select a specific TLS version for your namespace.",
+                "AutoGrow": "Enable/ Disable SAS authentication for the Service Bus namespace."
+            },
+            "AddNamespaceQueue": {
+                "Name": "Specify name of the ServiceBus Queue resource.",
+                "MaxSizeInMegabytes": "Select the maximum size of memory allocated for the queue.",
+                "LockDuration": "Specify the amount of time in seconds that the message is locked for other receivers.",
+                "MaxDeliveryCount": "Specify value which controls when a message is automatically dead lettered.",
+                "AddNamespaceQueue": "Enter Days. Specifies the duration on how long a message will stay in a queue before its expiry.",
+                "Hours": "Enter Hours.",
+                "Minutes": "Enter Minutes.",
+                "Seconds": "Enter in Seconds.",
+                "AddNamespaceQueueAutoGrow": "Enable/ Disable to control whether the Queue has dead letter support when a message expires.",
+                "EnablePartitioning": "Enable/ Disable to control whether to enable the queue to be partitioned across multiple message brokers."
+            },
             "AddPVC": {
                 "name": "Name for Persistent Volume Claim.",
                 "storageClassName": "Storage Class Name for the Persistent Volume Claim to be created.",
@@ -160,6 +178,12 @@
                 "Name": "Specify name of the bucket.",
                 "InTenantRegion": "Select the AWS region.",
                 "s3ObjectLock": "Enable to configure S3 Object Lock. When you create a bucket with S3 Object Lock enabled, Amazon S3 automatically enables versioning for the bucket."
+            },
+            "AddSbAccessPolicy": {
+                "Name": "Specify the name of the Authorization Rule.",
+                "canManage": "Enable to configure authorization rule to have manage permissions to the ServiceBus Queue.",
+                "canSend": "Enable to configure authorization rule to have Send permissions to the ServiceBus Queue.",
+                "canListen": "Enable to configure authorization rule to have Listen permissions to the ServiceBus Queue."
             },
             "addSecretObjects": {
                 "Name": "Kubernetes secret name. It should only contain alphanumeric characters and '-'.\nSelect the parameters which you want to include into the secrets. You can also change the name of the parameter.\n"
