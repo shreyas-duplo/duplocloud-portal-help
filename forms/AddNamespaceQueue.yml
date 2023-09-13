@@ -1,0 +1,10 @@
+Name: Specify name of the ServiceBus Queue resource.
+MaxSizeInMegabytes: Select the maximum size of memory allocated for the queue.
+LockDuration: Specify the amount of time in seconds that the message is locked for other receivers.
+MaxDeliveryCount: Specify value which controls when a message is automatically dead lettered.
+AddNamespaceQueue: Enter Days. Specifies the duration on how long a message will stay in a queue before its expiry.
+Hours: Enter Hours.
+Minutes: Enter Minutes.
+Seconds: Enter in Seconds.
+AddNamespaceQueueAutoGrow: Enable/ Disable to control whether the Queue has dead letter support when a message expires.
+EnablePartitioning: Enable/ Disable to control whether to enable the queue to be partitioned across multiple message brokers.

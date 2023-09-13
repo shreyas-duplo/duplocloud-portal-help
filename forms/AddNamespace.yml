@@ -1,0 +1,4 @@
+Name: Specify the name of the ServiceBus Namespace resource.
+SkuTier: Select the Pricing Tier.
+Version: Select a specific TLS version for your namespace.
+AutoGrow: Enable/ Disable SAS authentication for the Service Bus namespace.

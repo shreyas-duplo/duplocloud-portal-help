@@ -1,0 +1,4 @@
+Name: Specify the name of the Authorization Rule.
+canManage: Enable to configure authorization rule to have manage permissions to the ServiceBus Queue.
+canSend: Enable to configure authorization rule to have Send permissions to the ServiceBus Queue.
+canListen: Enable to configure authorization rule to have Listen permissions to the ServiceBus Queue.
