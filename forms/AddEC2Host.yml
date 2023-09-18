@@ -58,3 +58,4 @@ nwInterfaces: |
     }
   ] 
   ```
+DedicatedHostId: Specify the Dedicated Host ID. This ID is used to launch an instance onto specified host.
