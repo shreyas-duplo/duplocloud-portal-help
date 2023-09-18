@@ -58,4 +58,4 @@ nwInterfaces: |
     }
   ] 
   ```
-DedicatedHostId: Specify the Dedicated Host ID. This ID is used to launch an instance onto specified host.
+DedicatedHostId: Specify the Dedicated Host ID. This ID is used to launch an instance onto specified host. Example- `h-0c6ab6f38bdcb24f6`.

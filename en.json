@@ -35,7 +35,7 @@
                 "tags": "Tags to be added to ec2 instance. Format for adding tags is as below.\n 1. **EKS Linux:** Platform\n```js\n{\n    \"key\" : \"value\"\n}\n```\n2. **Linux Docker/Native:** Platform\n`\"key=value, key1=value1\"`\n",
                 "volumes": "Array of extra block devices in json format as below.\n```js\n[\n    {\n        \"Name\":\"/dev/sda1\", \n        \"VolumeType\":\"gp2\", \n        \"Size\":\"100\",\n        \"DeleteOnTermination\": \"true\"\n    }\n]\n```\n",
                 "nwInterfaces": "Extra network interfaces to be attached to the ec2 host in a JSON format as below.\n```js\n[\n  {\n    \"NetworkInterfaceId\": \"eni-095827b411091db43\",\n    \"DeviceIndex\": 0\n  },\n  {\n    \"NetworkInterfaceId\": \"eni-0df26c4b283cde675\",\n    \"DeviceIndex\": 1\n  }\n] \n```\n",
-                "DedicatedHostId": "Specify the Dedicated Host ID. This ID is used to launch an instance onto specified host."
+                "DedicatedHostId": "Specify the Dedicated Host ID. This ID is used to launch an instance onto specified host. Example- `h-0c6ab6f38bdcb24f6`."
             },
             "AddEcache": {
                 "CacheType": "Select the cache engine to be used for this cache cluster.",
