@@ -524,12 +524,16 @@
                 "path": "Specify the path (for e.g. /api /v1/api/) to do a path base routing. If host is specified then both path and host should be match for the incoming request.",
                 "pathType": "Each path in an Ingress is required to have a corresponding path type. Paths that do not include an explicit pathType will fail validation. There are three supported path types:\n\nImplementationSpecific: With this path type, matching is up to the IngressClass. Implementations can treat this as a separate pathType or treat it identically to Prefix or Exact path types.\n\n1. *Exact*: Matches the URL path exactly and with case sensitivity.\n\n2. *Prefix*: Matches based on a URL path prefix split by /. Matching is case sensitive and done on a path element by element basis. A path element refers to the list of labels in the path split by the / separator. A request is a match for path p if every p is an element-wise prefix of p of the request path. \n"
             },
-            "JobAdvancedForm": {
+            "jobDefinition": {
+                "OtherContainerProperties": "All Other Container Properties for the Register Job Definition Request parameters as documented [here](https://docs.aws.amazon.com/batch/latest/APIReference/API_RegisterJobDefinition.html) only for the **ContainerProperties** section.\nSample Value for the Other Container properties to override **Command** is as below\n```js\n{\n    \"Command\" : [\"sleep\", \"5\"]\n}\n```\n",
+                "OtherJobProperties": "All Other Job Properties for the Register Job Definition Request parameters as documented [here](https://docs.aws.amazon.com/batch/latest/APIReference/API_RegisterJobDefinition.html) except the **ContainerProperties** section.\nSample Value for the Other Job properties to set **RetryStrategy** is as below\n```js\n{\n    \"RetryStrategy\": {\n      \"EvaluateOnExit\": [\n          {\n            \"Action\": \"EXIT\",\n            \"OnExitCode\": \"1*\",\n            \"OnReason\": \"reason*\",\n            \"OnStatusReason\": \"status\"\n          }\n      ]\n    }\n}\n```"
+            },
+            "K8sJobAdvancedForm": {
                 "specOther": "Add Job Spec in yaml format.\n```yaml\ncompletions: 3\nmanualSelector: true\nparallelism: 3\ntemplate:\n  spec:\n    dnsPolicy: ClusterFirst\n    schedulerName: default-scheduler\n    securityContext: {}\n    terminationGracePeriodSeconds: 30\n    volumes:\n      - name: my-volume\n        persistentVolumeClaim:\n          claimName: my-pvc-claim\n```\n",
                 "medataAnnotations": "Add Job Metadata Annotations.\nFollow below format:\n```yaml\nannotation_name: value1\nannotation_type: value2\n```\n",
                 "medataLabels": "Add Job Metadata Labels.\n```yaml\nlabel1: value1\nlabel2: value2\n```"
             },
-            "JobBasicForm": {
+            "K8sJobBasicForm": {
                 "JobName": "Specify the name of the Job, must be unique. Minimum 3 characters.",
                 "Schedule": "Specify schedule in Cron format. Example- `0 0 * * 0`. This will run once a week at midnight on Sunday morning.",
                 "ImageName": "Specify the image name.",
@@ -541,10 +545,6 @@
                 "command": "Specify the command attribute for the container.\n```yaml\n ### Example 1\n [\"perl\",  \"-Mbignum=bpi\", \"-wle\", \"print bpi(2000)\"]\n\n ### Example 2\n  - /bin/sh\n  - '-c'\n  - >-\n    echo \"Hello !!!\"\n```\n",
                 "args": "Add argument\n```yaml\n### Example 1\n[\"$(READFROMENV_VARIABLE)\"]\n\n### Example 2\n[\"-c\", \"while true; do echo hello; sleep 10;done\"]\n\n### Example 3\n - -c\n - echo \"Hello world!\" && sleep 5 && exit 42\n```\n",
                 "otherContainerConfig": "Additional Container Configurations. add here.\n```yaml\nimagePullPolicy: Always\nresources: {}\nterminationMessagePath: /dev/termination-log\nterminationMessagePolicy: File\nvolumeMounts:\n- mountPath: /opt\n  name: data\n```"
-            },
-            "jobDefinition": {
-                "OtherContainerProperties": "All Other Container Properties for the Register Job Definition Request parameters as documented [here](https://docs.aws.amazon.com/batch/latest/APIReference/API_RegisterJobDefinition.html) only for the **ContainerProperties** section.\nSample Value for the Other Container properties to override **Command** is as below\n```js\n{\n    \"Command\" : [\"sleep\", \"5\"]\n}\n```\n",
-                "OtherJobProperties": "All Other Job Properties for the Register Job Definition Request parameters as documented [here](https://docs.aws.amazon.com/batch/latest/APIReference/API_RegisterJobDefinition.html) except the **ContainerProperties** section.\nSample Value for the Other Job properties to set **RetryStrategy** is as below\n```js\n{\n    \"RetryStrategy\": {\n      \"EvaluateOnExit\": [\n          {\n            \"Action\": \"EXIT\",\n            \"OnExitCode\": \"1*\",\n            \"OnReason\": \"reason*\",\n            \"OnStatusReason\": \"status\"\n          }\n      ]\n    }\n}\n```"
             },
             "lambda-add-layer": {
                 "SelectLayer": "Select the Layer. The list shows the layers compatible to the runtime of the function. Applicable for only `.zip` package type.",
