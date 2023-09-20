@@ -525,18 +525,22 @@
                 "pathType": "Each path in an Ingress is required to have a corresponding path type. Paths that do not include an explicit pathType will fail validation. There are three supported path types:\n\nImplementationSpecific: With this path type, matching is up to the IngressClass. Implementations can treat this as a separate pathType or treat it identically to Prefix or Exact path types.\n\n1. *Exact*: Matches the URL path exactly and with case sensitivity.\n\n2. *Prefix*: Matches based on a URL path prefix split by /. Matching is case sensitive and done on a path element by element basis. A path element refers to the list of labels in the path split by the / separator. A request is a match for path p if every p is an element-wise prefix of p of the request path. \n"
             },
             "JobAdvancedForm": {
-                "advancedConfig": "Example:\n```yaml\nspec:\n    template:\n      spec:\n        containers:\n        - name: hello\n          image: busybox:1.28\n          imagePullPolicy: IfNotPresent\n          command:\n          - /bin/sh\n          - -c\n          - date; echo Hello from the Kubernetes cluster\n```\n",
-                "specYaml": "Cron job template specification.",
-                "annotationsYaml": "Specify annotation.",
-                "labelYaml": "Key Value pair of labels to be added to the job.\n  Sample Value Can be as bellow\n  ```yaml\n  key1: value1\n  key2: value2\n  ```"
+                "specOther": "Add Job Spec in yaml format.\n```yaml\ncompletions: 3\nmanualSelector: true\nparallelism: 3\ntemplate:\n  spec:\n    dnsPolicy: ClusterFirst\n    schedulerName: default-scheduler\n    securityContext: {}\n    terminationGracePeriodSeconds: 30\n    volumes:\n      - name: my-volume\n        persistentVolumeClaim:\n          claimName: my-pvc-claim\n```\n",
+                "medataAnnotations": "Add Job Metadata Annotations.\nFollow below format:\n```yaml\nannotation_name: value1\nannotation_type: value2\n```\n",
+                "medataLabels": "Add Job Metadata Labels.\n```yaml\nlabel1: value1\nlabel2: value2\n```"
             },
             "JobBasicForm": {
-                "JobName": "Specify the name of the service, must be unique.",
+                "JobName": "Specify the name of the Job, must be unique. Minimum 3 characters.",
                 "Schedule": "Specify schedule in Cron format. Example- `0 0 * * 0`. This will run once a week at midnight on Sunday morning.",
                 "ImageName": "Specify the image name.",
                 "CleanupFinished": "Specify time in seconds.\n1. **if set as 0**: Job becomes eligible to be deleted immediately after it finishes.\n2. **if field is unset/blank**: Jobs won't be automatically deleted. \n3. **if the field is set**: Job is eligible to be automatically delete after the seconds specified\n",
-                "restartPolicy": "**Never**: Job won't restart on failure.\n**OnFailure**: Job will restart on failure.\n",
-                "envVariables": "Environment variables to be passed to the jobs in the YAML format.\n  ```yaml\n   ---\n   - Name: DB_HOST\n     Value: abc.com\n   - Name: DB_USER\n     Value: myuser\n  ```"
+                "restartPolicy": "**Never**: Job won't restart on failure.\n**OnFailure**: Job will restart on failure based on the retry count set.\n",
+                "Retries": "Set the retry limit. Once the backoffLimit is reached the Job will be marked as failed.\n",
+                "envVariables": "Environment variables to be passed to the jobs in the YAML format.\n  ```yaml\n   - Name: DB_HOST\n     Value: abc.com\n   - Name: DB_USER\n     Value: myuser\n  ```\n",
+                "ContainerName": "Specify Name of the Container.",
+                "command": "Specify the command attribute for the container.\n```yaml\n ### Example 1\n [\"perl\",  \"-Mbignum=bpi\", \"-wle\", \"print bpi(2000)\"]\n\n ### Example 2\n  - /bin/sh\n  - '-c'\n  - >-\n    echo \"Hello !!!\"\n```\n",
+                "args": "Add argument\n```yaml\n### Example 1\n[\"$(READFROMENV_VARIABLE)\"]\n\n### Example 2\n[\"-c\", \"while true; do echo hello; sleep 10;done\"]\n\n### Example 3\n - -c\n - echo \"Hello world!\" && sleep 5 && exit 42\n```\n",
+                "otherContainerConfig": "Additional Container Configurations. add here.\n```yaml\nimagePullPolicy: Always\nresources: {}\nterminationMessagePath: /dev/termination-log\nterminationMessagePolicy: File\nvolumeMounts:\n- mountPath: /opt\n  name: data\n```"
             },
             "jobDefinition": {
                 "OtherContainerProperties": "All Other Container Properties for the Register Job Definition Request parameters as documented [here](https://docs.aws.amazon.com/batch/latest/APIReference/API_RegisterJobDefinition.html) only for the **ContainerProperties** section.\nSample Value for the Other Container properties to override **Command** is as below\n```js\n{\n    \"Command\" : [\"sleep\", \"5\"]\n}\n```\n",
