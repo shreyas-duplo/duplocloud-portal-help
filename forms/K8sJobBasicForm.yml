@@ -1,47 +1,47 @@
 JobName: Specify the name of the Job, must be unique. Minimum 3 characters.
 Schedule: Specify schedule in Cron format. Example- `0 0 * * 0`. This will run once a week at midnight on Sunday morning.
-ImageName: Specify the image name.
+ImageName: Specify the image name. Example- `perl:5.34.0`.
 CleanupFinished: |
   Specify time in seconds.
   1. **if set as 0**: Job becomes eligible to be deleted immediately after it finishes.
   2. **if field is unset/blank**: Jobs won't be automatically deleted. 
   3. **if the field is set**: Job is eligible to be automatically delete after the seconds specified
 restartPolicy: |
-  **Never**: Job won't restart on failure.
-  **OnFailure**: Job will restart on failure based on the retry count set.
+  1. **Never**: Job won't restart on failure.
+  2. **OnFailure**: Job will restart on failure based on the retry count set.
 Retries: |
-  Set the retry limit. Once the backoffLimit is reached the Job will be marked as failed.
+  Set the retry limit. Once the BackoffLimit is reached the Job will be marked as failed.
 envVariables: |
     Environment variables to be passed to the jobs in the YAML format.
       ```yaml
-       - Name: DB_HOST
+       - Name: VARIABLE1
          Value: abc.com
-       - Name: DB_USER
-         Value: myuser
+       - Name: VARIABLE2
+         Value: test_value
       ```
 ContainerName: Specify Name of the Container.
 command: |
   Specify the command attribute for the container.
   ```yaml
-   ### Example 1
+   # Example 1
    ["perl",  "-Mbignum=bpi", "-wle", "print bpi(2000)"]
   
-   ### Example 2
+   # Example 2
     - /bin/sh
-    - '-c'
+    - -c
     - >-
       echo "Hello !!!"
   ```
 args: |
   Add argument
   ```yaml
-  ### Example 1
-  ["$(READFROMENV_VARIABLE)"]
+  # Example 1
+  ["$(VARIABLE1)"]
   
-  ### Example 2
+  # Example 2
   ["-c", "while true; do echo hello; sleep 10;done"]
   
-  ### Example 3
+  # Example 3
    - -c
    - echo "Hello world!" && sleep 5 && exit 42
   ```
@@ -54,5 +54,5 @@ otherContainerConfig: |
   terminationMessagePolicy: File
   volumeMounts:
   - mountPath: /opt
-    name: data
+    name: my-volume
   ```
