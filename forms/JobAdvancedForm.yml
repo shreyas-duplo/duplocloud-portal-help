@@ -1,24 +1,30 @@
-advancedConfig: |
-  Example:
+specOther: |
+  Add Job Spec in yaml format.
   ```yaml
-  spec:
-      template:
-        spec:
-          containers:
-          - name: hello
-            image: busybox:1.28
-            imagePullPolicy: IfNotPresent
-            command:
-            - /bin/sh
-            - -c
-            - date; echo Hello from the Kubernetes cluster
+  completions: 3
+  manualSelector: true
+  parallelism: 3
+  template:
+    spec:
+      dnsPolicy: ClusterFirst
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+      volumes:
+        - name: my-volume
+          persistentVolumeClaim:
+            claimName: my-pvc-claim
   ```
-specYaml: Cron job template specification.
-annotationsYaml: Specify annotation.
-labelYaml: |
-  Key Value pair of labels to be added to the job.
-    Sample Value Can be as bellow
-    ```yaml
-    key1: value1
-    key2: value2
-    ```
+medataAnnotations: |
+  Add Job Metadata Annotations.
+  Follow below format:
+  ```yaml
+  annotation_name: value1
+  annotation_type: value2
+  ```
+medataLabels: |
+  Add Job Metadata Labels.
+  ```yaml
+  label1: value1
+  label2: value2
+  ```
