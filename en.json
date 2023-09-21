@@ -196,6 +196,10 @@
                 "canSend": "Enable to configure authorization rule to have Send permissions to the ServiceBus Queue.",
                 "canListen": "Enable to configure authorization rule to have Listen permissions to the ServiceBus Queue."
             },
+            "AddSbPrivateEndpoint": {
+                "Name": "Specify Private EndPoint name.",
+                "SubnetId": "Select Subnet."
+            },
             "addSecretObjects": {
                 "Name": "Kubernetes secret name. It should only contain alphanumeric characters and '-'.\nSelect the parameters which you want to include into the secrets. You can also change the name of the parameter.\n"
             },
