@@ -580,6 +580,11 @@
                 "tgForwardActionArn": "Select the Target Group to which to route the traffic.",
                 "itemVal00": "Enter Value applicable as per the Rule Condition selected. For details, refer [here](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-listeners.html#listener-rules)."
             },
+            "rdsRestorePointTime": {
+                "TargetName": "Specify the rds identifier name. Should be unique across all tenants.",
+                "latestRestorableTime": "Select  to restore DB from the latest backup time.",
+                "type": "Select Custom, enter the date and time to which you want to restore the DB instance."
+            },
             "redisInstance": {
                 "Name": "The ID of the instance or a fully qualified identifier for the instance.",
                 "DisplayName": "Specify optional user-provided name for the instance.",
