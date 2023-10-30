@@ -18,3 +18,4 @@ EnableLogging: Select this option to enable logging for the RDS instance.
 MultiAZ: Create database in multiple availability zones for high availability.
 StorageType: Select the StorageType. Default is `gp3`.
 StoreDetailsInSecretManager: Enable to store RDS password in AWS Secret Manager.
+BackupRetentionPeriod: Specify in days for automated backups. Valid values 1-35. (Optional)If not specified, by default Backup Retention Day would be set as 1.
