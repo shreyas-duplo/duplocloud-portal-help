@@ -1,1 +1,1 @@
-BackupRetentionPeriod:  Specify in days for automated backups. Valid values 1-35.
+BackupRetentionPeriod:  Specify in days to save automated backups of your DB. Valid values 1-35.
