@@ -150,7 +150,16 @@ ContainerConfigK8s: |-
       memory: "10Gi"
       cpu: "500m"
       ephemeral-storage: 4Gi
-  
+  # Pod Toleration example
+  tolerations:
+  - key: key1
+    operator: Equal
+    value: value1
+    effect: NoSchedule
+  - key: example-key
+    operator: Exists
+    effect: NoExecute
+    tolerationSeconds: 6000
   ```
 VolumeMappings: |
   Example of mounting a host drive into the container
