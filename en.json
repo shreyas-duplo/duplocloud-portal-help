@@ -162,7 +162,8 @@
                 "EnableLogging": "Select this option to enable logging for the RDS instance.",
                 "MultiAZ": "Create database in multiple availability zones for high availability.",
                 "StorageType": "Select the StorageType. Default is `gp3`.",
-                "StoreDetailsInSecretManager": "Enable to store RDS password in AWS Secret Manager."
+                "StoreDetailsInSecretManager": "Enable to store RDS password in AWS Secret Manager.",
+                "BackupRetentionPeriod": "Specify in days for automated backups. Valid values 1-35. This is optional. If not specified, by default Backup Retention Day would be configured as 1."
             },
             "AddRdsAuroraReplica": {
                 "Identifier": "Please provide a unique identifier for the RDS replica instance that is unique across all tenants. The cluster identifier is used to determine the cluster's endpoint. An identifier cannot end with a hyphen or contain two consecutive hyphens or start with a number. It should also be 49 characters or shorter and must be in all lowercase.",
@@ -376,6 +377,9 @@
                 "ImageId": "Choose the Image for the VM. Image should be compatible with the agent platform. Select type as \"Other\" if you don't see desired option in dropdown.",
                 "Username": "The administrator username for the VM.",
                 "Password": "The administrator username for the VM."
+            },
+            "backupRetentionPeriod": {
+                "BackupRetentionPeriod": "Specify in days for automated backups. Valid values 1-35."
             },
             "batchEnv": {
                 "OtherConfigurations": "All Other Create Compute Environment Request parameters as documented [here](https://docs.aws.amazon.com/batch/latest/APIReference/API_CreateComputeEnvironment.html).\nSample Value for customized EC2 configuration.\n```js\n{\n    \"ComputeResources\": {\n        \"Ec2Configuration\": [\n            {\n                \"ImageType\": \"ECS_AL2_NVIDIA\"\n            }\n        ]\n    }\n}\n```"
