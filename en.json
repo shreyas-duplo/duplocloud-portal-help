@@ -48,7 +48,9 @@
                 "SnapshotArnsInput": "Specify the ARN of a Redis RDB snapshot file stored in Amazon S3. Example- `arn:aws:s3:::s3-backup-foldername/backupobject.rdb`",
                 "ClusteringEnabled": "Enable to create Redis in Cluster mode.",
                 "NoOfShards": "Specify number of Shards for Cluster.",
-                "SnapshotName": "Select the snapshot/backup you want to use for creating redis."
+                "SnapshotName": "Select the snapshot/backup you want to use for creating redis.",
+                "SnapshotRetentionLimit": "Specify retention limit in days. Accepted values - 1-35.",
+                "Kms": "Select KMS Key."
             },
             "AddEFS": {
                 "Name": "Friendly name for Elastic File System. User provided name will be appended with prefix as \"duploservice-<tenant_name>-\".",

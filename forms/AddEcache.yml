@@ -9,3 +9,5 @@ SnapshotArnsInput: Specify the ARN of a Redis RDB snapshot file stored in Amazon
 ClusteringEnabled: Enable to create Redis in Cluster mode.
 NoOfShards: Specify number of Shards for Cluster.
 SnapshotName: Select the snapshot/backup you want to use for creating redis.
+SnapshotRetentionLimit: Specify retention limit in days. Accepted values - 1-35.
+Kms: Select KMS Key.
