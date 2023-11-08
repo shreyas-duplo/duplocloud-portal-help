@@ -16,6 +16,14 @@
                 "Password": "Password to login to your host. This is an optional field.",
                 "PrivateKey": "Private Key to login to your host using SSH. This is again an optional field. User can either specify `Password` or `Private Key`."
             },
+            "AddDynamoDB": {
+                "Name": "Specify unique name of the table.",
+                "PrimaryKeyName": "Specify the primary key of the table.",
+                "Type": "**HASH** - Select to use as the hash (partition) key.\n**Range** - Select to use as the range (sort) key.\n",
+                "Size": "Select the attribute. Data types allowed for primary key attributes are string or number.",
+                "SortKeyName": "SortKey is applicable for range attribute. Stores item in sorted order by the sort key value.",
+                "SortKeyType": "Select key type. Type supported is String or Number."
+            },
             "AddEC2Host": {
                 "Name": "Friendly name for host. User provided name will be appended by prefix as \"duploservice-<tenant_name>-\".",
                 "Zone": "AWS Availability Zone to create an EC2 instance.\n1. **Automatic:** Select this option to automatically assign the availability zone to EC2 host. DuploCloud will automatically assign a zone with subnet having most available IPv4 addresses.\n",
