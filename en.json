@@ -204,7 +204,8 @@
             "AddS3Bucket": {
                 "Name": "Specify name of the bucket.",
                 "InTenantRegion": "Select the AWS region.",
-                "s3ObjectLock": "Enable to configure S3 Object Lock. When you create a bucket with S3 Object Lock enabled, Amazon S3 automatically enables versioning for the bucket."
+                "s3ObjectLock": "Enable to configure S3 Object Lock. When you create a bucket with S3 Object Lock enabled, Amazon S3 automatically enables versioning for the bucket.",
+                "enableBucketVersioning": "Enable to configure S3 versioning."
             },
             "AddSbAccessPolicy": {
                 "Name": "Specify the name of the Authorization Rule.",
