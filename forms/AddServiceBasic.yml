@@ -183,3 +183,9 @@ envVariables: |
        "plugins.security.disabled" : "true",
        "compatibility.override_main_response_version" : "true"
   }
+ReplicaPlacement: |
+  Select replication placement strategy.
+  1. **First Available**: Replicas are not required to be spread across availability zones.  Replicas prefer to be scheduled on different hosts, but this is not required.
+  2. **Place on Different Hosts**:  Replicas are not required to be spread across availability zones.  Replicas are required to be placed on different hosts.
+  3. **Spread Across Zones**:  Replicas are required to be spread across availability zones.  Replicas prefer to be scheduled on different hosts, but this is not required.
+  4. **Different Hosts and Spread Across Zones**:  Replicas are required to be spread across availability zones.  Replicas are required to be placed on different hosts.
