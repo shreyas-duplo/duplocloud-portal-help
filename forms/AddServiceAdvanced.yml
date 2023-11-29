@@ -162,18 +162,18 @@ ContainerConfigK8s: |-
     tolerationSeconds: 6000
   #lifecycle hook sample
   lifecycle:
-  postStart:
-    exec:
-      command:
-        - /bin/sh
-        - '-c'
-        - date > /container-started.txt
-  preStop:
-    exec:
-      command:
-        - /usr/sbin/nginx
-        - '-s'
-        - quit
+    postStart:
+      exec:
+        command:
+          - /bin/sh
+          - '-c'
+          - date > /container-started.txt
+    preStop:
+      exec:
+        command:
+          - /usr/sbin/nginx
+          - '-s'
+          - quit
   ```
 VolumeMappings: |
   Example of mounting a host drive into the container
