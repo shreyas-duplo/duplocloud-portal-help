@@ -35,3 +35,4 @@ ImageConfiguration: |
   }
   ```
 ImageUri: Enter the ECR image URI containing the function's deployment package.
+EphemeralStorage: Specify Ephemeral Storage in MB, allows you to configure the storage upto 10240 MB. The default value set to 512 MB.
