@@ -115,7 +115,8 @@
                 "S3Bucket": "Select the S3 bucket location containing the function's deployment package.",
                 "S3BucketKey": "Enter the S3 key of an object containing the function's deployment package.",
                 "ImageConfiguration": "Specify container image configuration values.\nExample:\n```js\n{\n  \"Command\": [\n      \"app.handler\"\n  ],\n  \"EntryPoint\": [\n      \"/usr/local/bin/python\",\n      \"-m\",\n      \"awslambdaruntimeclient\"\n  ],\n  \"WorkingDirectory\": \"/var/task\"\n}\n```\n",
-                "ImageUri": "Enter the ECR image URI containing the function's deployment package."
+                "ImageUri": "Enter the ECR image URI containing the function's deployment package.",
+                "EphemeralStorage": "Specify Ephemeral Storage in MB, allows you to configure the storage upto 10240 MB. The default value set to 512 MB."
             },
             "AddMySQLFlexi": {
                 "Name": "Specify the name which should be used for this MySQL Flexible Server.",
