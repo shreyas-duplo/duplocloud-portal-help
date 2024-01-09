@@ -162,7 +162,8 @@
                 "EnableLogging": "Select this option to enable logging for the RDS instance.",
                 "MultiAZ": "Create database in multiple availability zones for high availability.",
                 "StorageType": "Select the StorageType. Default is `gp3`.",
-                "StoreDetailsInSecretManager": "Enable to store RDS password in AWS Secret Manager."
+                "StoreDetailsInSecretManager": "Enable to store RDS password in AWS Secret Manager.",
+                "EnableIamAuth": "Enable to set IAM database authentication. For supported regions and engine versions, refer [here](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RDS_Fea_Regions_DB-eng.Feature.IamDatabaseAuthentication.html)"
             },
             "AddRdsAuroraReplica": {
                 "Identifier": "Please provide a unique identifier for the RDS replica instance that is unique across all tenants. The cluster identifier is used to determine the cluster's endpoint. An identifier cannot end with a hyphen or contain two consecutive hyphens or start with a number. It should also be 49 characters or shorter and must be in all lowercase.",
@@ -624,6 +625,9 @@
                 "IotCertificateArn": "Select IoT certificate.",
                 "ThingTypeName": "Select the thing type name. Defaults to `DuploDefault`",
                 "Attributes": "Map of attributes of the thing. Example\n```json\n{\"First\":\"examplevalue\"}\n```"
+            },
+            "toggleIAMAuth": {
+                "EnableIamAuth": "Enable to set IAM database authentication. For supported regions and engine versions, refer [here](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RDS_Fea_Regions_DB-eng.Feature.IamDatabaseAuthentication.html)"
             },
             "topicRule": {
                 "Name": "Specify the name of the rule.",
