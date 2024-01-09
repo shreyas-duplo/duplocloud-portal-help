@@ -541,7 +541,7 @@
             },
             "K8sJobBasicForm": {
                 "JobName": "Specify the name of the Job, must be unique. Minimum 3 characters.",
-                "Schedule": "Specify schedule in Cron format. Example- `0 0 * * 0`. This will run once a week at midnight on Sunday morning.For cron schedule expression help, click[here](https://crontab.guru/#0_0_*_*_0)",
+                "Schedule": "Specify schedule in Cron format. Example- `0 0 * * 0`. This will run once a week at midnight on Sunday morning. For more help on cron schedule expressions, click [here](https://crontab.guru/#0_0_*_*_0)",
                 "ImageName": "Specify the image name. Example- `perl:5.34.0`.",
                 "CleanupFinished": "Specify time in seconds.\n1. **if set as 0**: Job becomes eligible to be deleted immediately after it finishes.\n2. **if field is unset/blank**: Jobs won't be automatically deleted. \n3. **if the field is set**: Job is eligible to be automatically delete after the seconds specified\n",
                 "restartPolicy": "1. **Never**: Job won't restart on failure.\n2. **OnFailure**: Job will restart on failure based on the retry count set.\n",
