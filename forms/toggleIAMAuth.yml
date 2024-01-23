@@ -1,0 +1,1 @@
+EnableIamAuth: Enable to set IAM database authentication. For supported regions and engine versions, refer [here](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RDS_Fea_Regions_DB-eng.Feature.IamDatabaseAuthentication.html)
