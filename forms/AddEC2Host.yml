@@ -59,3 +59,7 @@ nwInterfaces: |
   ] 
   ```
 DedicatedHostId: Specify the Dedicated Host ID. This ID is used to launch an instance onto specified host. Example- `h-0c6ab6f38bdcb24f6`.
+useSpotInstancesCheck1: Enable to launch hosts using Spot Instances.
+maximumSpotPrice: |
+  (Optional) If not specified, Default price would be referred.
+  If user wants to set, specify price in dollars, example- `0.0245`. Refer Spot Instance pricing [here](https://aws.amazon.com/ec2/spot/pricing/).
