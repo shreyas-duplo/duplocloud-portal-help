@@ -1,0 +1,12 @@
+acceleratorCount: Specify the number of GPUs.
+acceleratorType: |
+  Specify Accelerator Type(GPU Type). Enter the compatible type based on the instance type and zone. For GPU regions and zone availability, click [here](https://cloud.google.com/compute/docs/gpus/gpu-regions-zones).
+gpuPartitionSize: Specify GPC Partition Size.
+maxSharedClientsPerGpu: Specify maximum shared client.
+gpuSharingStrategy: Select GCP Sharing Strategy.
+gpuDriverInstallationConfig: |
+  Select the GPU Driver Installation Strategy
+  1. **Default:** Installs the default driver version for your GKE version.
+  2. **Latest:** Install the latest available driver version for your GKE version. Available only for nodes that use Container-Optimized OS.
+  3. **Disable GPU driver auto installation:** Automatic GCP driver auto installation will not occur,
+  4. **Do not install any GPU driver:** Skips automatic driver auto installation.

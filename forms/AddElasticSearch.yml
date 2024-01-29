@@ -9,3 +9,7 @@ Kms: Select the key to encrypt the Elasticsearch domain with.
 RequireSSL: Enable if Https is required.
 UseLatestTlsCipher: Select to use latest TLS Cipher.
 EnableNodeToNodeEncryption: Select to enable node-to-node encryption.
+WarmEnabled: Enable UltraWarm storage.
+WarmType: Select the Instance type for the OpenSearch cluster's warm nodes.
+WarmCount: Specify the number of warm nodes in the cluster. Valid values are between 2 and 150.
+ColdStorageOptions: Select to enable cold storage for an OpenSearch domain.

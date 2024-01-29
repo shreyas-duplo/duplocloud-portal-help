@@ -1,0 +1,29 @@
+Name: Specify name for your GCE VM.
+Zone: Select the zone that the vm should be created in.
+InstanceType: Select the Machine Type.
+AgentPlatform: |
+  Select container orchestration platform.
+  1. **Linux Docker/Native:** Select this option if you want to run docker native services which are Linux based.
+  2. **None:** This option has to be selected when EC2 instance is not used for running containers.
+ImageId: Enter the image name. Specify in this format `projects/{project}/global/images/{image}`.
+EnablePublicIpAddress: Enable to assign public IP address.
+Tags: Enter Network tags.
+AcceleratorType: |
+  Specify Accelerator Type(GPU Type). Enter the compatible type based on the instance type and zone. For GPU regions and zone availability, click [here](https://cloud.google.com/compute/docs/gpus/gpu-regions-zones).
+AcceleratorCount: Specify the number of GPUs.
+Labels: |
+  Specify Labels
+  ```js
+  {
+  "key" : "value"
+  }
+  ```
+Metadata: |
+  Configure Compute Engine instance metadata.
+  ```js
+  {
+  "key" : "value"
+  }
+  ```
+Base64UserData: Configure startup-script metadata in below format.
+  ```echo "Hello from startup script!" > /test.txt```
