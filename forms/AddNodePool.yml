@@ -1,0 +1,52 @@
+Name: Specify the name for your Node Pool.
+Zones: Specify the zone for your Node Pool.
+InstanceType: Select the machine type.
+AutoscalingEnabled:  Enable autoscaler configuration for this node pool. Per zone limits will enforce given limits on a per zone basis.
+UseTotalCount: Enable to limit total number of nodes independently of the spreading.
+InitialNodeCount: Specify initial number of nodes.
+MinNodeCount: Minimum number of nodes in the NodePool. Must be less than or equal to Maximum Node Count.
+MaxNodeCount: Maximum number of nodes in the NodePool. Must be greater than or equal to Maximum Node Count.
+LocationPolicy: |
+  Select the Location Policy.
+  1. **BALANCED:** autoscaler tries to spread the nodes equally among zones.
+  2. **ANY:** autoscaler prioritize utilization of unused reservations and to account for current resource availability constraints.
+ImageType: Select the Image Type.
+DiscType: |
+  Select the Location Policy.
+  1. **Standard:** Suitable for large data processing workloads that primarily use sequential I/Os.
+  2. **Balanced:** This disk type offers performance levels suitable for most general-purpose applications at a price point between that of standard and performance (pd-ssd) persistent disks.
+  3. **SSD*:* Suitable for enterprise applications and high-performance databases that require lower latency and more IOPS than standard persistent disks provide.
+DiscSizeGb: Sepcify Boot Disk Type in GB per node.
+Spot: When specified, the node pool will provision Spot instances. Spot Instances are ideal for fault-tolerant workloads and may be terminated at any time.
+cgroupMode: Select the Cgroup Policy. Defaults to Cgroupv2.
+LoggingConfig: Select teh logging config,
+Tags: Enter the Network Tags. Multiple Network tags can be specified.
+AutoRepair: Whether or not the nodes will be automatically repaired.
+Sysctls: |
+  Specify Linix Node SysCtls.
+  Refer example here.
+  ```js
+  {
+      "net.core.somaxconn": "2048",
+      "net.ipv4.tcp_rmem": "4096 87380 6291456"
+  }
+  ```
+ResourceLabels: |
+  Labels are applied to all nodes.
+  ```js
+   {
+       "key" : "value"
+   }
+   ```
+Metadata: |
+  Configure Compute Engine instance metadata.
+   ```js
+   {
+       "key" : "value"
+   }
+   ```
+UpdateStrategy: |
+  Select Upgrade Strategy. Defaults to Surge upgrade. For more details, click [here](https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-upgrades?&_ga=2.113758275.-535098261.1654188041#surge).
+MaxSurge: Max surge is the maximum number of nodes that can be created beyond the current size of the node pool during the upgrade process.
+MaxUnavailable: Max unavailable is the maximum number of nodes that can be simultaneously unavailable during the upgrade process. A node is considered available if its status is Ready.
+AllocationTags: Allocation tags is the simplest way to constraint containers/pods with hosts/nodes. DuploCloud/Kubernetes Orchestrator will make sure containers will run on the hosts having same allocation tags.

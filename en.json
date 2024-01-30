@@ -2,6 +2,14 @@
     "lang": "en",
     "data": {
         "FORM": {
+            "addAcceleratorForm": {
+                "acceleratorCount": "Specify the number of GPUs.",
+                "acceleratorType": "Specify Accelerator Type(GPU Type). Enter the compatible type based on the instance type and zone. For GPU regions and zone availability, click [here](https://cloud.google.com/compute/docs/gpus/gpu-regions-zones).\n",
+                "gpuPartitionSize": "Specify GPC Partition Size.",
+                "maxSharedClientsPerGpu": "Specify maximum shared client.",
+                "gpuSharingStrategy": "Select GCP Sharing Strategy.",
+                "gpuDriverInstallationConfig": "Select the GPU Driver Installation Strategy\n1. **Default:** Installs the default driver version for your GKE version.\n2. **Latest:** Install the latest available driver version for your GKE version. Available only for nodes that use Container-Optimized OS.\n3. **Disable GPU driver auto installation:** Automatic GCP driver auto installation will not occur,\n4. **Do not install any GPU driver:** Skips automatic driver auto installation."
+            },
             "AddAwsSecrets": {
                 "Name": "The name of the new secret.",
                 "SecretValueType": "Secret type.\n1. **JSON Key/Value pairs:** Provide your secret information, such as credentials and connection details, as key/value pairs.\n2. **Plain text:** You can choose the `Plain text` option to store your secret in plaintext string.\n",
@@ -54,7 +62,7 @@
                 "Size": "Select the NodeType.",
                 "Replicas": "Specify the initial number of cache nodes that the cache cluster will have.",
                 "EnableEncryptionAtTransit": "Select if Encryption At Transit is needed.",
-                "ParameterGroupName": "Specify hte name of the parameter group to associate with this cache cluster.",
+                "ParameterGroupName": "Specify the name of the parameter group to associate with this cache cluster.",
                 "SnapshotArnsInput": "Specify the ARN of a Redis RDB snapshot file stored in Amazon S3. Example- `arn:aws:s3:::s3-backup-foldername/backupobject.rdb`",
                 "ClusteringEnabled": "Enable to create Redis in Cluster mode.",
                 "NoOfShards": "Specify number of Shards for Cluster.",
@@ -82,13 +90,31 @@
                 "Kms": "Select the key to encrypt the Elasticsearch domain with.",
                 "RequireSSL": "Enable if Https is required.",
                 "UseLatestTlsCipher": "Select to use latest TLS Cipher.",
-                "EnableNodeToNodeEncryption": "Select to enable node-to-node encryption."
+                "EnableNodeToNodeEncryption": "Select to enable node-to-node encryption.",
+                "WarmEnabled": "Enable UltraWarm storage.",
+                "WarmType": "Select the Instance type for the OpenSearch cluster's warm nodes.",
+                "WarmCount": "Specify the number of warm nodes in the cluster. Valid values are between 2 and 150.",
+                "ColdStorageOptions": "Select to enable cold storage for an OpenSearch domain."
             },
             "addEmrStudioSidebar": {
                 "Name": "EMR Studio.",
                 "Description": "A detailed description of the Amazon EMR Studio.",
                 "S3Bucket": "Select S3 for backup.",
                 "S3Folder": "Specify folder name in S3."
+            },
+            "AddGceVmHost": {
+                "Name": "Specify name for your GCE VM.",
+                "Zone": "Select the zone that the vm should be created in.",
+                "InstanceType": "Select the Machine Type.",
+                "AgentPlatform": "Select container orchestration platform.\n1. **Linux Docker/Native:** Select this option if you want to run docker native services which are Linux based.\n2. **None:** This option has to be selected when EC2 instance is not used for running containers.\n",
+                "ImageId": "Enter the image name. Specify in this format `projects/{project}/global/images/{image}`.",
+                "EnablePublicIpAddress": "Enable to assign public IP address.",
+                "Tags": "Enter Network tags.",
+                "AcceleratorType": "Specify Accelerator Type(GPU Type). Enter the compatible type based on the instance type and zone. For GPU regions and zone availability, click [here](https://cloud.google.com/compute/docs/gpus/gpu-regions-zones).\n",
+                "AcceleratorCount": "Specify the number of GPUs.",
+                "Labels": "Specify Labels\n```js\n{\n\"key\" : \"value\"\n}\n```\n",
+                "Metadata": "Configure Compute Engine instance metadata.\n```js\n{\n\"key\" : \"value\"\n}\n```\n",
+                "Base64UserData": "Configure startup-script metadata in below format. ```echo \"Hello from startup script!\" > /test.txt```"
             },
             "AddIngress": {
                 "name": "Name for your ingress object.",
@@ -147,6 +173,32 @@
                 "MaxDeliveryCount": "Specify value which controls when a message is automatically dead lettered.",
                 "AutoGrow": "Enable/ Disable to control whether the Queue has dead letter support when a message expires.",
                 "EnablePartitioning": "Enable/ Disable to control whether to enable the queue to be partitioned across multiple message brokers."
+            },
+            "AddNodePool": {
+                "Name": "Specify the name for your Node Pool.",
+                "Zones": "Specify the zone for your Node Pool.",
+                "InstanceType": "Select the machine type.",
+                "AutoscalingEnabled": "Enable autoscaler configuration for this node pool. Per zone limits will enforce given limits on a per zone basis.",
+                "UseTotalCount": "Enable to limit total number of nodes independently of the spreading.",
+                "InitialNodeCount": "Specify initial number of nodes.",
+                "MinNodeCount": "Minimum number of nodes in the NodePool. Must be less than or equal to Maximum Node Count.",
+                "MaxNodeCount": "Maximum number of nodes in the NodePool. Must be greater than or equal to Maximum Node Count.",
+                "LocationPolicy": "Select the Location Policy.\n1. **BALANCED:** autoscaler tries to spread the nodes equally among zones.\n2. **ANY:** autoscaler prioritize utilization of unused reservations and to account for current resource availability constraints.\n",
+                "ImageType": "Select the Image Type.",
+                "DiscType": "Select the Location Policy.\n1. **Standard:** Suitable for large data processing workloads that primarily use sequential I/Os.\n2. **Balanced:** This disk type offers performance levels suitable for most general-purpose applications at a price point between that of standard and performance (pd-ssd) persistent disks.\n3. **SSD*:* Suitable for enterprise applications and high-performance databases that require lower latency and more IOPS than standard persistent disks provide.\n",
+                "DiscSizeGb": "Sepcify Boot Disk Type in GB per node.",
+                "Spot": "When specified, the node pool will provision Spot instances. Spot Instances are ideal for fault-tolerant workloads and may be terminated at any time.",
+                "cgroupMode": "Select the Cgroup Policy. Defaults to Cgroupv2.",
+                "LoggingConfig": "Select teh logging config,",
+                "Tags": "Enter the Network Tags. Multiple Network tags can be specified.",
+                "AutoRepair": "Whether or not the nodes will be automatically repaired.",
+                "Sysctls": "Specify Linix Node SysCtls.\nRefer example here.\n```js\n{\n    \"net.core.somaxconn\": \"2048\",\n    \"net.ipv4.tcp_rmem\": \"4096 87380 6291456\"\n}\n```\n",
+                "ResourceLabels": "Labels are applied to all nodes.\n```js\n {\n     \"key\" : \"value\"\n }\n ```\n",
+                "Metadata": "Configure Compute Engine instance metadata.\n ```js\n {\n     \"key\" : \"value\"\n }\n ```\n",
+                "UpdateStrategy": "Select Upgrade Strategy. Defaults to Surge upgrade. For more details, click [here](https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-upgrades?&_ga=2.113758275.-535098261.1654188041#surge).\n",
+                "MaxSurge": "Max surge is the maximum number of nodes that can be created beyond the current size of the node pool during the upgrade process.",
+                "MaxUnavailable": "Max unavailable is the maximum number of nodes that can be simultaneously unavailable during the upgrade process. A node is considered available if its status is Ready.",
+                "AllocationTags": "Allocation tags is the simplest way to constraint containers/pods with hosts/nodes. DuploCloud/Kubernetes Orchestrator will make sure containers will run on the hosts having same allocation tags."
             },
             "AddPVC": {
                 "name": "Name for Persistent Volume Claim.",
@@ -291,6 +343,11 @@
                 "storageClassAnnotations": "Kubernetes annotations in key value format. Sample value is like below\n```yml\nkey1: value1\nkey2: value2\n```\n",
                 "storageClassLabels": "Kubernetes labels in key value format. Sample value is like below\n```yml\nkey1: value1\nkey2: value2\n```\n",
                 "allowedTopologies": "When a cluster operator specifies the `WaitForFirstConsumer` volume binding mode, it is no longer necessary to restrict provisioning to specific topologies in most situations. However, if still required, `allowedTopologies` can be specified.\nSample Value Allowed Toplogies\n```yml\n- matchLabelExpressions:\n  - key: failure-domain.beta.kubernetes.io/zone\n    values:\n    - us-central-1a\n    - us-central-1b\n```"
+            },
+            "addTaintForm": {
+                "key": "Specify the Key for taint.",
+                "value": "Specify the Value for taint.",
+                "effect": "Select the taint effect."
             },
             "addTimestreamDatabase": {
                 "DatabaseName": "The name of the Timestream database.",
