@@ -549,6 +549,11 @@
                 "OldTaskDefinitionBufferSize": "Old task definitions buffer size. This can be used to limit the size the stale task definitions in buffer. Default value is 10.",
                 "CapacityProvider": "Add a capacity provider to the custom capacity provider strategy for the cluster. Add a capacity provider to the custom capacity provider strategy for the cluster. If there are no existing capacity providers, create a new capacity provider from the capacity providers tab on the cluster details screen."
             },
+            "EditGceVmHost": {
+                "Tags": "Enter Network tags.",
+                "Labels": "Specify Labels\n```js\n{\n\"key\" : \"value\"\n}\n```\n",
+                "Metadata": "Configure Compute Engine instance metadata.\n```js\n{\n\"key\" : \"value\"\n}\n```"
+            },
             "emrClusterAdd": {
                 "Name": "Unique Cluster Name",
                 "ReleaseLabel": "Choose ReleaseLabel or to provide ReleaseLabel not in list choose Other.",
