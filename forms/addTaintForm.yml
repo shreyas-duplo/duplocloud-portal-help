@@ -1,3 +1,3 @@
-key: Specify the Key for taint.
-value: Specify the Value for taint.
+key: Specify the Key for taint. Example- `taint-key`.
+value: Specify the Value for taint. Example- `taint-value`.
 effect: Select the taint effect.
