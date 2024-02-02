@@ -4,11 +4,11 @@
         "FORM": {
             "addAcceleratorForm": {
                 "acceleratorCount": "Specify the number of GPUs.",
-                "acceleratorType": "Specify Accelerator Type(GPU Type). Enter the compatible type based on the instance type and zone. For GPU regions and zone availability, click [here](https://cloud.google.com/compute/docs/gpus/gpu-regions-zones).\n",
-                "gpuPartitionSize": "Specify GPC Partition Size.",
+                "acceleratorType": "Specify Accelerator Type(GPU Type). Google does not offer every instance/GPU combination in every region/zone. \nEnter the compatible type based on the instance type and zone. Example: `nvidia-tesla-a100` Accelarator Type is supported for Zone `us-west4-b` for Instance Type `a2-highgpu-1g`.\nFor GPU regions and zone availability, click [here](https://cloud.google.com/compute/docs/gpus/gpu-regions-zones).\nMore details on running GPUs in GKE Standard Pool, click [here](https://cloud.google.com/kubernetes-engine/docs/how-to/gpus#terraform).\n",
+                "gpuPartitionSize": "Specify GPC Partition Size. Example- `1g.5gb`. Refer [UserGuide](https://docs.nvidia.com/datacenter/tesla/mig-user-guide/#partitioning).",
                 "maxSharedClientsPerGpu": "Specify maximum shared client.",
                 "gpuSharingStrategy": "Select GCP Sharing Strategy.",
-                "gpuDriverInstallationConfig": "Select the GPU Driver Installation Strategy\n1. **Default:** Installs the default driver version for your GKE version.\n2. **Latest:** Install the latest available driver version for your GKE version. Available only for nodes that use Container-Optimized OS.\n3. **Disable GPU driver auto installation:** Automatic GCP driver auto installation will not occur,\n4. **Do not install any GPU driver:** Skips automatic driver auto installation."
+                "gpuDriverInstallationConfig": "Select the GPU Driver Installation Strategy\n1. **Default:** Installs the default driver version for your GKE version.\n2. **Latest:** Install the latest available driver version for your GKE version. Available only for nodes that use Container-Optimized OS.\n3. **Disable GPU driver auto installation:**  Disable GPU driver auto installation and needs manual installation.\n4. **Do not install any GPU driver:** Skips automatic driver auto installation."
             },
             "AddAwsSecrets": {
                 "Name": "The name of the new secret.",
@@ -53,7 +53,8 @@
                 "nwInterfaces": "Extra network interfaces to be attached to the ec2 host in a JSON format as below.\n```js\n[\n  {\n    \"NetworkInterfaceId\": \"eni-095827b411091db43\",\n    \"DeviceIndex\": 0\n  },\n  {\n    \"NetworkInterfaceId\": \"eni-0df26c4b283cde675\",\n    \"DeviceIndex\": 1\n  }\n] \n```\n",
                 "DedicatedHostId": "Specify the Dedicated Host ID. This ID is used to launch an instance onto specified host. Example- `h-0c6ab6f38bdcb24f6`.",
                 "useSpotInstancesCheck1": "Enable to launch hosts using Spot Instances.",
-                "maximumSpotPrice": "(Optional) If not specified, Default price would be referred.\nIf user wants to set, specify price in dollars, example- `0.0245`. Refer Spot Instance pricing [here](https://aws.amazon.com/ec2/spot/pricing/)."
+                "maximumSpotPrice": "(Optional) If not specified, Default price would be referred.\nIf user wants to set, specify price in dollars, example- `0.0245`. Refer Spot Instance pricing [here](https://aws.amazon.com/ec2/spot/pricing/).\n",
+                "canScaleFromZero": "Enable the Scale From Zero (BETA) feature so DuploCloud can scale up the initial host in the ASG whenever it detects that an otherwise unschedulable pod would be able to run on such a host."
             },
             "AddEcache": {
                 "CacheType": "Select the cache engine to be used for this cache cluster.",
@@ -110,7 +111,7 @@
                 "ImageId": "Enter the image name. Specify in this format `projects/{project}/global/images/{image}`.",
                 "EnablePublicIpAddress": "Enable to assign public IP address.",
                 "Tags": "Enter Network tags.",
-                "AcceleratorType": "Specify Accelerator Type(GPU Type). Enter the compatible type based on the instance type and zone. For GPU regions and zone availability, click [here](https://cloud.google.com/compute/docs/gpus/gpu-regions-zones).\n",
+                "AcceleratorType": "Specify Accelerator Type(GPU Type). Google does not offer every instance/GPU combination in every region/zone.\nEnter the compatible type based on the instance type and zone. For example- `nvidia-tesla-t4` Accelarator Type is supported for `n1-standard-1` Image Type for Zone `us-west4-a`.\nFor GPU regions and zone availability, click [here](https://cloud.google.com/compute/docs/gpus/gpu-regions-zones).\n",
                 "AcceleratorCount": "Specify the number of GPUs.",
                 "Labels": "Specify Labels\n```js\n{\n\"key\" : \"value\"\n}\n```\n",
                 "Metadata": "Configure Compute Engine instance metadata.\n```js\n{\n\"key\" : \"value\"\n}\n```\n",
@@ -185,20 +186,27 @@
                 "MaxNodeCount": "Maximum number of nodes in the NodePool. Must be greater than or equal to Maximum Node Count.",
                 "LocationPolicy": "Select the Location Policy.\n1. **BALANCED:** autoscaler tries to spread the nodes equally among zones.\n2. **ANY:** autoscaler prioritize utilization of unused reservations and to account for current resource availability constraints.\n",
                 "ImageType": "Select the Image Type.",
-                "DiscType": "Select the Location Policy.\n1. **Standard:** Suitable for large data processing workloads that primarily use sequential I/Os.\n2. **Balanced:** This disk type offers performance levels suitable for most general-purpose applications at a price point between that of standard and performance (pd-ssd) persistent disks.\n3. **SSD*:* Suitable for enterprise applications and high-performance databases that require lower latency and more IOPS than standard persistent disks provide.\n",
-                "DiscSizeGb": "Sepcify Boot Disk Type in GB per node.",
+                "DiscType": "Select the Location Policy.\n1. **Standard:** Suitable for large data processing workloads that primarily use sequential I/Os.\n2. **Balanced:** This disk type offers performance levels suitable for most general-purpose applications at a price point between that of standard and performance (pd-ssd) persistent disks.\n3. **SSD:** Suitable for enterprise applications and high-performance databases that require lower latency and more IOPS than standard persistent disks provide.\n",
+                "DiscSizeGb": "Specify Boot Disk Type in GB per node.",
                 "Spot": "When specified, the node pool will provision Spot instances. Spot Instances are ideal for fault-tolerant workloads and may be terminated at any time.",
                 "cgroupMode": "Select the Cgroup Policy. Defaults to Cgroupv2.",
-                "LoggingConfig": "Select teh logging config,",
+                "LoggingConfig": "Select the logging config parameter for specifying the type of logging agent used in a node pool.\n1. **Default:** Select default logging variant.\n2. **Max Throughput:** Maximum logging throughput variant.\n",
                 "Tags": "Enter the Network Tags. Multiple Network tags can be specified.",
                 "AutoRepair": "Whether or not the nodes will be automatically repaired.",
-                "Sysctls": "Specify Linix Node SysCtls.\nRefer example here.\n```js\n{\n    \"net.core.somaxconn\": \"2048\",\n    \"net.ipv4.tcp_rmem\": \"4096 87380 6291456\"\n}\n```\n",
+                "Sysctls": "Specify Linux Node SysCtls.\nRefer example here.\n```js\n{\n    \"net.core.somaxconn\": \"2048\",\n    \"net.ipv4.tcp_rmem\": \"4096 87380 6291456\"\n}\n```\n",
                 "ResourceLabels": "Labels are applied to all nodes.\n```js\n {\n     \"key\" : \"value\"\n }\n ```\n",
                 "Metadata": "Configure Compute Engine instance metadata.\n ```js\n {\n     \"key\" : \"value\"\n }\n ```\n",
                 "UpdateStrategy": "Select Upgrade Strategy. Defaults to Surge upgrade. For more details, click [here](https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-upgrades?&_ga=2.113758275.-535098261.1654188041#surge).\n",
                 "MaxSurge": "Max surge is the maximum number of nodes that can be created beyond the current size of the node pool during the upgrade process.",
                 "MaxUnavailable": "Max unavailable is the maximum number of nodes that can be simultaneously unavailable during the upgrade process. A node is considered available if its status is Ready.",
-                "AllocationTags": "Allocation tags is the simplest way to constraint containers/pods with hosts/nodes. DuploCloud/Kubernetes Orchestrator will make sure containers will run on the hosts having same allocation tags."
+                "AllocationTags": "Allocation tags is the simplest way to constraint containers/pods with hosts/nodes. DuploCloud/Kubernetes Orchestrator will make sure containers will run on the hosts having same allocation tags.",
+                "AutoUpgrade": "Enable node auto-upgrade for the node pool. If enabled, node auto-upgrade helps keep the nodes in your node pool up to date with the latest release version of Kubernetes.",
+                "TotalMinNodeCount": "Specify minimum number of all nodes.",
+                "TotalMaxNodeCount": "Specify maximum number of all nodes.",
+                "NodePoolSoakDuration": "Time needed after draining entire blue pool. After this period, blue pool will be cleaned up. A duration in seconds with up to nine fractional digits, ending with 's'. Example- `3.5s`",
+                "BatchNodeCount": "Number of blue nodes to drain in a batch. Only one of the batch_percentage or batch_node_count can be specified.",
+                "BatchPercentage": "Percentage of the bool pool nodes to drain in a batch. The range of this field should be (0.0, 1.0). Only one of the batch_percentage or batch_node_count can be specified.",
+                "BatchSoakDuration": "Enter Soak time after each batch gets drained. A duration in seconds with up to nine fractional digits, ending with 's'. Example- `3.5s`."
             },
             "AddPVC": {
                 "name": "Name for Persistent Volume Claim.",
@@ -345,8 +353,8 @@
                 "allowedTopologies": "When a cluster operator specifies the `WaitForFirstConsumer` volume binding mode, it is no longer necessary to restrict provisioning to specific topologies in most situations. However, if still required, `allowedTopologies` can be specified.\nSample Value Allowed Toplogies\n```yml\n- matchLabelExpressions:\n  - key: failure-domain.beta.kubernetes.io/zone\n    values:\n    - us-central-1a\n    - us-central-1b\n```"
             },
             "addTaintForm": {
-                "key": "Specify the Key for taint.",
-                "value": "Specify the Value for taint.",
+                "key": "Specify the Key for taint. Example- `taint-key`.",
+                "value": "Specify the Value for taint. Example- `taint-value`.",
                 "effect": "Select the taint effect."
             },
             "addTimestreamDatabase": {
@@ -541,6 +549,11 @@
                 "OldTaskDefinitionBufferSize": "Old task definitions buffer size. This can be used to limit the size the stale task definitions in buffer. Default value is 10.",
                 "CapacityProvider": "Add a capacity provider to the custom capacity provider strategy for the cluster. Add a capacity provider to the custom capacity provider strategy for the cluster. If there are no existing capacity providers, create a new capacity provider from the capacity providers tab on the cluster details screen."
             },
+            "EditGceVmHost": {
+                "Tags": "Enter Network tags.",
+                "Labels": "Specify Labels\n```js\n{\n\"key\" : \"value\"\n}\n```\n",
+                "Metadata": "Configure Compute Engine instance metadata.\n```js\n{\n\"key\" : \"value\"\n}\n```"
+            },
             "emrClusterAdd": {
                 "Name": "Unique Cluster Name",
                 "ReleaseLabel": "Choose ReleaseLabel or to provide ReleaseLabel not in list choose Other.",
@@ -634,7 +647,8 @@
                 "ContainerName": "Specify Name of the Container.",
                 "command": "Specify the command attribute for the container.\n```yaml\n # Example 1\n [\"perl\",  \"-Mbignum=bpi\", \"-wle\", \"print bpi(2000)\"]\n\n # Example 2\n  - /bin/sh\n  - -c\n  - >-\n    echo \"Hello !!!\"\n```\n",
                 "args": "Add argument\n```yaml\n# Example 1\n[\"$(VARIABLE1)\"]\n\n# Example 2\n[\"-c\", \"while true; do echo hello; sleep 10;done\"]\n\n# Example 3\n - -c\n - echo \"Hello world!\" && sleep 5 && exit 42\n```\n",
-                "otherContainerConfig": "Additional Container Configurations. add here.\n```yaml\nimagePullPolicy: Always\nresources: {}\nterminationMessagePath: /dev/termination-log\nterminationMessagePolicy: File\nvolumeMounts:\n- mountPath: /opt\n  name: my-volume\n```"
+                "otherContainerConfig": "Additional Container Configurations. add here.\n```yaml\nimagePullPolicy: Always\nresources: {}\nterminationMessagePath: /dev/termination-log\nterminationMessagePolicy: File\nvolumeMounts:\n- mountPath: /opt\n  name: my-volume\n```\n",
+                "AllocationTags": "Allocation tags is the simplest way to constraint containers/pods with hosts/nodes. DuploCloud/Kubernetes Orchestrator will make sure containers will run on the hosts having same allocation tags."
             },
             "lambda-add-layer": {
                 "SelectLayer": "Select the Layer. The list shows the layers compatible to the runtime of the function. Applicable for only `.zip` package type.",

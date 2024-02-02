@@ -1,0 +1,15 @@
+Tags: Enter Network tags.
+Labels: |
+  Specify Labels
+  ```js
+  {
+  "key" : "value"
+  }
+  ```
+Metadata: |
+  Configure Compute Engine instance metadata.
+  ```js
+  {
+  "key" : "value"
+  }
+  ```
