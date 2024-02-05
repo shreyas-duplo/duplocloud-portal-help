@@ -336,7 +336,8 @@
                 "VisibilityTimeout": "The visibility timeout for the queue in seconds. Inputs allowed from 0 to 43200 (12 hours).",
                 "ContentBasedDuplication": "Enables content-based deduplication for FIFO queues.",
                 "DuplicationScope": "Specifies whether message deduplication occurs at the message group or queue level.",
-                "FIFOthroughput": "Specifies whether the FIFO queue throughput quota applies to the entire queue or per message group."
+                "FIFOthroughput": "Specifies whether the FIFO queue throughput quota applies to the entire queue or per message group.",
+                "DelaySeconds": "Set the Delivery Delay when sending a message to a queue in seconds. Default is `0`.  Maximum delay can be set is of 15 minutes (900 seconds)."
             },
             "addStorageAccount": {
                 "Name": "Enter name of the storage account. This must be unique across the entire Azure service, not just within the resource group."
