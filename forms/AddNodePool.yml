@@ -12,13 +12,13 @@ LocationPolicy: |
   2. **ANY:** autoscaler prioritize utilization of unused reservations and to account for current resource availability constraints.
 ImageType: Select the Image Type.
 DiscType: |
-  Select the Location Policy.
+  Select the Disk Type.
   1. **Standard:** Suitable for large data processing workloads that primarily use sequential I/Os.
   2. **Balanced:** This disk type offers performance levels suitable for most general-purpose applications at a price point between that of standard and performance (pd-ssd) persistent disks.
   3. **SSD:** Suitable for enterprise applications and high-performance databases that require lower latency and more IOPS than standard persistent disks provide.
 DiscSizeGb: Specify Boot Disk Type in GB per node.
 Spot: When specified, the node pool will provision Spot instances. Spot Instances are ideal for fault-tolerant workloads and may be terminated at any time.
-cgroupMode: Select the Cgroup Policy. Defaults to Cgroupv2.
+cgroupMode: Select the Cgroup Policy. Defaults to `Cgroupv2`.
 LoggingConfig: |
   Select the logging config parameter for specifying the type of logging agent used in a node pool.
   1. **Default:** Select default logging variant.
@@ -26,7 +26,7 @@ LoggingConfig: |
 Tags: Enter the Network Tags. Multiple Network tags can be specified.
 AutoRepair: Whether or not the nodes will be automatically repaired.
 Sysctls: |
-  Specify Linux Node SysCtls.
+  Specify Linux Node Sysctl. For Sysctl Configuration options, click [here](https://cloud.google.com/kubernetes-engine/docs/how-to/node-system-config#sysctl-options).
   Refer example here.
   ```js
   {

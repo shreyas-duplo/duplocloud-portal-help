@@ -1,0 +1,7 @@
+EnableVanta: Enable Vanta monitor. GuardDuty will be enabled by default when this setting is enabled.
+tenant: Select the tenant you want to configure the Vanta monitoring.
+guardDutyEmail: Enter email id. SNS Topic subscription will be sent to this email id.
+description: Specify the description.
+production: When Production is set as True, SNS Topic will be configured in the Infrastructure region fo the Tenant.
+contains: Enables User Data.
+owner: Enter email of the owner.
