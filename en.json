@@ -4,11 +4,11 @@
         "FORM": {
             "addAcceleratorForm": {
                 "acceleratorCount": "Specify the number of GPUs.",
-                "acceleratorType": "Specify Accelerator Type(GPU Type). Google does not offer every instance/GPU combination in every region/zone. \nEnter the compatible type based on the instance type and zone. Example: `nvidia-tesla-a100` Accelarator Type is supported for Zone `us-west4-b` for Instance Type `a2-highgpu-1g`.\nFor GPU regions and zone availability, click [here](https://cloud.google.com/compute/docs/gpus/gpu-regions-zones).\nMore details on running GPUs in GKE Standard Pool, click [here](https://cloud.google.com/kubernetes-engine/docs/how-to/gpus#terraform).\n",
+                "acceleratorType": "Specify Accelerator Type(GPU Type). Google does not offer every instance/GPU combination in every region/zone. \nEnter the compatible type based on the instance type and zone. Example: `nvidia-tesla-a100` Accelarator Type is supported for Zone `us-west4-b` for Instance Type `a2-highgpu-1g`.\nFor GPU regions and zone availability, click [here](https://cloud.google.com/compute/docs/gpus/gpu-regions-zones).\nMore details on running GPUs in GKE Standard Pool, click [here](https://cloud.google.com/kubernetes-engine/docs/how-to/gpus).\n",
                 "gpuPartitionSize": "Specify GPC Partition Size. Example- `1g.5gb`. Refer [UserGuide](https://docs.nvidia.com/datacenter/tesla/mig-user-guide/#partitioning).",
                 "maxSharedClientsPerGpu": "Specify maximum shared client.",
                 "gpuSharingStrategy": "Select GCP Sharing Strategy.",
-                "gpuDriverInstallationConfig": "Select the GPU Driver Installation Strategy\n1. **Default:** Installs the default driver version for your GKE version.\n2. **Latest:** Install the latest available driver version for your GKE version. Available only for nodes that use Container-Optimized OS.\n3. **Disable GPU driver auto installation:**  Disable GPU driver auto installation and needs manual installation.\n4. **Do not install any GPU driver:** Skips automatic driver auto installation."
+                "gpuDriverInstallationConfig": "Select the GPU Driver Installation Strategy\n1. **Default:** Installs the default driver version for your GKE version.\n2. **Latest:** Installs the latest available driver version for your GKE version. Available only for nodes that use Container-Optimized OS.\n3. **Disable GPU driver auto installation:**  Disables GPU driver auto installation and needs manual installation.\n4. **Do not install any GPU driver:** Skips automatic driver auto installation."
             },
             "AddAwsSecrets": {
                 "Name": "The name of the new secret.",
@@ -186,14 +186,14 @@
                 "MaxNodeCount": "Maximum number of nodes in the NodePool. Must be greater than or equal to Maximum Node Count.",
                 "LocationPolicy": "Select the Location Policy.\n1. **BALANCED:** autoscaler tries to spread the nodes equally among zones.\n2. **ANY:** autoscaler prioritize utilization of unused reservations and to account for current resource availability constraints.\n",
                 "ImageType": "Select the Image Type.",
-                "DiscType": "Select the Location Policy.\n1. **Standard:** Suitable for large data processing workloads that primarily use sequential I/Os.\n2. **Balanced:** This disk type offers performance levels suitable for most general-purpose applications at a price point between that of standard and performance (pd-ssd) persistent disks.\n3. **SSD:** Suitable for enterprise applications and high-performance databases that require lower latency and more IOPS than standard persistent disks provide.\n",
+                "DiscType": "Select the Disk Type.\n1. **Standard:** Suitable for large data processing workloads that primarily use sequential I/Os.\n2. **Balanced:** This disk type offers performance levels suitable for most general-purpose applications at a price point between that of standard and performance (pd-ssd) persistent disks.\n3. **SSD:** Suitable for enterprise applications and high-performance databases that require lower latency and more IOPS than standard persistent disks provide.\n",
                 "DiscSizeGb": "Specify Boot Disk Type in GB per node.",
                 "Spot": "When specified, the node pool will provision Spot instances. Spot Instances are ideal for fault-tolerant workloads and may be terminated at any time.",
-                "cgroupMode": "Select the Cgroup Policy. Defaults to Cgroupv2.",
+                "cgroupMode": "Select the Cgroup Policy. Defaults to `Cgroupv2`.",
                 "LoggingConfig": "Select the logging config parameter for specifying the type of logging agent used in a node pool.\n1. **Default:** Select default logging variant.\n2. **Max Throughput:** Maximum logging throughput variant.\n",
                 "Tags": "Enter the Network Tags. Multiple Network tags can be specified.",
                 "AutoRepair": "Whether or not the nodes will be automatically repaired.",
-                "Sysctls": "Specify Linux Node SysCtls.\nRefer example here.\n```js\n{\n    \"net.core.somaxconn\": \"2048\",\n    \"net.ipv4.tcp_rmem\": \"4096 87380 6291456\"\n}\n```\n",
+                "Sysctls": "Specify Linux Node Sysctl. For Sysctl Configuration options, click [here](https://cloud.google.com/kubernetes-engine/docs/how-to/node-system-config#sysctl-options).\nRefer example here.\n```js\n{\n    \"net.core.somaxconn\": \"2048\",\n    \"net.ipv4.tcp_rmem\": \"4096 87380 6291456\"\n}\n```\n",
                 "ResourceLabels": "Labels are applied to all nodes.\n```js\n {\n     \"key\" : \"value\"\n }\n ```\n",
                 "Metadata": "Configure Compute Engine instance metadata.\n ```js\n {\n     \"key\" : \"value\"\n }\n ```\n",
                 "UpdateStrategy": "Select Upgrade Strategy. Defaults to Surge upgrade. For more details, click [here](https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-upgrades?&_ga=2.113758275.-535098261.1654188041#surge).\n",
@@ -747,6 +747,15 @@
             "UpdateEfsLifecyclePolicy": {
                 "TransitionToIA": "Select the duration to transition files to the IA storage class.",
                 "TransitionToPrimaryStorageClass": "Enable to transition a file to primary storage."
+            },
+            "VantaControl": {
+                "EnableVanta": "Enable Vanta monitor. GuardDuty will be enabled by default when this setting is enabled.",
+                "tenant": "Select the tenant you want to configure the Vanta monitoring.",
+                "guardDutyEmail": "Enter email id. SNS Topic subscription will be sent to this email id.",
+                "description": "Specify the description.",
+                "production": "When Production is set as True, SNS Topic will be configured in the Infrastructure region fo the Tenant.",
+                "contains": "Enables User Data.",
+                "owner": "Enter email of the owner."
             }
         }
     }
