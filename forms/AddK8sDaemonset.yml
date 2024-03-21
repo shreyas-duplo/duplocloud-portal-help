@@ -1,0 +1,4 @@
+
+Name: "Specify the name of the Daemonset, must be unique"
+IsTenantLocal: "When set to true the daemon set will deploy only in hosts within this tenant as against an entire cluster"
+Configuration: "Add Daemonset Configurations."
