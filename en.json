@@ -130,6 +130,11 @@
                 "ingressLabels": "Key Value pair of labels to be added to SecretProviderClass\nSample Value Can be as bellow\n```yaml\nkey1: value1\nkey2: value2\n```\n",
                 "portOverride": "Select port to override. This field allows to configure frontend listener to use different ports other than 80/443 for http/https."
             },
+            "AddK8sDaemonset": {
+                "Name": "Specify the name of the Daemonset, must be unique",
+                "IsTenantLocal": "When set to true the daemon set will deploy only in hosts within this tenant as against an entire cluster",
+                "Configuration": "Add Daemonset Configurations."
+            },
             "addLambda": {
                 "FunctionName": "Unique name for your Lambda Function.",
                 "Description": "Description of what your Lambda Function does.",
