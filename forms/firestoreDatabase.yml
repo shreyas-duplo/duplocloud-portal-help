@@ -1,0 +1,5 @@
+Name: Specify the Name for your database.
+type: Select the type of the database.
+locationId: Select the location of the database.
+pointInTimeRecoveryEnablement: Choose to enable the PointInTimeRecovery feature on this database. If `POINT_IN_TIME_RECOVERY_ENABLED` is selected, reads are supported on selected versions of the data from within the past 7 days. Default value is `POINT_IN_TIME_RECOVERY_DISABLED`.
+deleteProtectionState:  Select the State of delete protection for the database. When delete protection is enabled, this database cannot be deleted. Default is set to `DELETE_PROTECTION_DISABLED`.
