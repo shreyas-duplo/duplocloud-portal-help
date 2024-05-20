@@ -27,3 +27,15 @@ ingressLabels: |
   key2: value2
   ```
 portOverride: Select port to override. This field allows to configure frontend listener to use different ports other than 80/443 for http/https.
+targetType: |
+  # Specifies how to route traffic to pods. You can choose between `instance` and `ip`.
+
+  1. **instance**
+  This mode will route traffic to all ec2 instances within cluster on NodePort opened for your service. Service must be of type "NodePort" or "LoadBalancer" to use instance mode.
+
+  2. **ip**
+  This mode will route traffic directly to the pod IP. Network plugin must use secondary IP addresses on ENI for pod IP to use ip mode. e.g. amazon-vpc-cni-k8s. 
+  Service cab be of any type like `ClusterIP` or `NodePort` or `LoadBalancer` to use instance mode.
+  IP mode is required for sticky sessions to work with Application Load Balancers. 
+
+
