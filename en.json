@@ -319,7 +319,10 @@
                 "Name0": "Specify the Disk name.",
                 "VolumeId0": "Logical unit number(LUN) of the data disk. This value is used to identify data disks within the VM and therefore must be unique for each data disk attached to a VM.",
                 "Size0": "Disk size in GB.",
-                "VolumeType0": "Choose the Storage Type."
+                "VolumeType0": "Choose the Storage Type.",
+                "ComputerName": "Enter to set Computer Name for your Virtul Machine. If not specified, will be set same as the name input provided.",
+                "DiskControllerType": "Default value set is `SCSI`. If you want to set `NVME`, specify the supported Instance Size. Check [here](https://learn.microsoft.com/en-us/azure/virtual-machines/ebdsv5-ebsv5-series#ebdsv5-series-nvme).",
+                "installDuploNativeAgent": "Enable to install agent on the host. Supports only Linux/Ubuntu."
             },
             "addStorageAccount": {
                 "Name": "Enter name of the storage account. This must be unique across the entire Azure service, not just within the resource group."
