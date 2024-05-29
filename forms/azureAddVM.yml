@@ -17,3 +17,6 @@ VolumeType0: Choose the Storage Type.
 ComputerName: Enter to set Computer Name for your Virtul Machine. If not specified, will be set same as the name input provided.
 DiskControllerType: Default value set is `SCSI`. If you want to set `NVME`, specify the supported Instance Size. Check [here](https://learn.microsoft.com/en-us/azure/virtual-machines/ebdsv5-ebsv5-series#ebdsv5-series-nvme).
 installDuploNativeAgent: Enable to install agent on the host. Supports only Linux/Ubuntu.
+joinDomainType: (optional). Select Domain Type for the host.
+timezone: Select the timezone for the host.
+base64: Base64 encoded user data.
