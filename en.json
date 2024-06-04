@@ -569,7 +569,7 @@
                 "CleanupFinished": "Specify time in seconds.\n1. **if set as 0**: Job becomes eligible to be deleted immediately after it finishes.\n2. **if field is unset/blank**: Jobs won't be automatically deleted. \n3. **if the field is set**: Job is eligible to be automatically delete after the seconds specified\n",
                 "restartPolicy": "1. **Never**: Job won't restart on failure.\n2. **OnFailure**: Job will restart on failure based on the retry count set.\n",
                 "Retries": "Set the retry limit. Once the BackoffLimit is reached the Job will be marked as failed.\n",
-                "envVariables": "Environment variables to be passed to the jobs in the YAML format.\n```yaml\n- Name: VARIABLE1\nValue: abc.com\n- Name: VARIABLE2\nValue: test_value\n```\n",
+                "envVariables": "Environment variables to be passed to the jobs in the YAML format.\n```yaml\n- Name: VARIABLE1\n  Value: abc.com\n- Name: VARIABLE2\n  Value: test_value\n```\n",
                 "ContainerName": "Specify Name of the Container.",
                 "command": "Specify the command attribute for the container.\n```yaml\n # Example 1\n [\"perl\",  \"-Mbignum=bpi\", \"-wle\", \"print bpi(2000)\"]\n\n # Example 2\n  - /bin/sh\n  - -c\n  - >-\n    echo \"Hello !!!\"\n```\n",
                 "args": "Add argument\n```yaml\n# Example 1\n[\"$(VARIABLE1)\"]\n\n# Example 2\n[\"-c\", \"while true; do echo hello; sleep 10;done\"]\n\n# Example 3\n - -c\n - echo \"Hello world!\" && sleep 5 && exit 42\n```\n",
