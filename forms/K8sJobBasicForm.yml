@@ -15,9 +15,9 @@ envVariables: |
   Environment variables to be passed to the jobs in the YAML format.
   ```yaml
   - Name: VARIABLE1
-  Value: abc.com
+    Value: abc.com
   - Name: VARIABLE2
-  Value: test_value
+    Value: test_value
   ```
 ContainerName: Specify Name of the Container.
 command: |
